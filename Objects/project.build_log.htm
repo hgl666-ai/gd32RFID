@@ -1,0 +1,203 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.34.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: HGL Administrator, HGL, LIC=R4HV2-941A8-LVP1I-T514Z-Y2SWQ-VIL0K
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.34.0.0
+Toolchain Path:  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         
+Dialog DLL:      
+Target DLL:      CMSIS_AGDI_V8M.DLL V1.6.19.0
+Dialog DLL:      TCM.DLL V1.48.0.0
+ 
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\keilProject\GD32project2-I2C-CRC-trae\project.uvprojx
+Project File Date:  05/20/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+compiling gd32e23x_cmp.c...
+compiling gd32e23x_gpio.c...
+compiling gd32e23x_adc.c...
+compiling gd32e23x_i2c.c...
+Library/gd32e23x_exti.c(91): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+Library/gd32e23x_exti.c(110): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+2 warnings generated.
+compiling gd32e23x_exti.c...
+assembling startup_gd32e23x.s...
+compiling gd32e23x_crc.c...
+compiling gd32e23x_dbg.c...
+Library/gd32e23x_misc.c(72): warning: function 'nvic_system_reset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+1 warning generated.
+compiling gd32e23x_misc.c...
+compiling gd32e23x_fwdgt.c...
+Library/gd32e23x_dma.c(35): warning: In file included from...
+./Head/gd32e23x_dma.h(115): warning: padding size of 'dma_parameter_struct' with 1 byte to alignment boundary [-Wpadded]
+typedef struct
+        ^
+1 warning generated.
+compiling gd32e23x_dma.c...
+compiling gd32e23x_pmu.c...
+compiling gd32e23x_fmc.c...
+Library/gd32e23x_rcu.c(376): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+Library/gd32e23x_rcu.c(590): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+Library/gd32e23x_rcu.c(663): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+Library/gd32e23x_rcu.c(698): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+Library/gd32e23x_rcu.c(938): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+5 warnings generated.
+compiling gd32e23x_rcu.c...
+Library/gd32e23x_rtc.c(35): warning: In file included from...
+./Head/gd32e23x_rtc.h(218): warning: padding struct 'rtc_parameter_struct' with 1 byte to align 'rtc_factor_asyn' [-Wpadded]
+    uint16_t rtc_factor_asyn;                                                          /*!< RTC asynchronous prescaler value: 0x0 - 0x7F */
+             ^
+./Head/gd32e23x_rtc.h(245): warning: padding struct 'rtc_timestamp_struct' with 2 bytes to align 'rtc_am_pm' [-Wpadded]
+    uint32_t rtc_am_pm;                                                                /*!< RTC time-stamp AM/PM value */
+             ^
+./Head/gd32e23x_rtc.h(256): warning: padding struct 'rtc_tamper_struct' with 3 bytes to align 'rtc_tamper_precharge_time' [-Wpadded]
+    uint32_t rtc_tamper_precharge_time;                                                /*!< RTC tamper precharge duration if precharge feature is enabled */
+             ^
+./Head/gd32e23x_rtc.h(249): warning: padding size of 'rtc_tamper_struct' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct
+        ^
+4 warnings generated.
+compiling gd32e23x_rtc.c...
+compiling gd32e23x_spi.c...
+compiling gd32e23x_syscfg.c...
+compiling gd32e23x_wwdgt.c...
+User/gd32e23x_it.c(49): warning: function 'NMI_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+User/gd32e23x_it.c(67): warning: function 'HardFault_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+User/gd32e23x_it.c(80): warning: function 'SVC_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+User/gd32e23x_it.c(93): warning: function 'PendSV_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+User/gd32e23x_it.c(112): warning: no previous prototype for function 'USART0_IRQHandler' [-Wmissing-prototypes]
+void USART0_IRQHandler(void)
+     ^
+User/gd32e23x_it.c(112): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void USART0_IRQHandler(void)
+^
+static 
+5 warnings generated.
+compiling gd32e23x_it.c...
+Library/gd32e23x_usart.c(280): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+1 warning generated.
+compiling gd32e23x_usart.c...
+compiling system_gd32e23x.c...
+User/main.c(33): warning: expansion of date or time macro is not reproducible [-Wdate-time]
+    printf("  Build: %s %s\r\n", __DATE__, __TIME__);
+                                 ^
+User/main.c(33): warning: expansion of date or time macro is not reproducible [-Wdate-time]
+    printf("  Build: %s %s\r\n", __DATE__, __TIME__);
+                                           ^
+2 warnings generated.
+compiling main.c...
+Library/gd32e23x_timer.c(35): warning: In file included from...
+./Head/gd32e23x_timer.h(252): warning: padding size of 'timer_parameter_struct' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct
+        ^
+1 warning generated.
+compiling gd32e23x_timer.c...
+compiling bsp_led.c...
+Bsp/bsp_systick.c(56): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+void SysTick_Handler(void)
+     ^
+Bsp/bsp_systick.c(56): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void SysTick_Handler(void)
+^
+static 
+1 warning generated.
+compiling bsp_systick.c...
+compiling bsp_i2c.c...
+Bsp/protocol.c(154): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+        s_parsed_frame.crc16 = (uint16_t)byte << 8;
+                             ~ ~~~~~~~~~~~~~~~^~~~
+Bsp/protocol.c(173): warning: default label in switch which covers all enumeration values [-Wcovered-switch-default]
+    default:
+    ^
+2 warnings generated.
+compiling protocol.c...
+compiling bsp_fm17622.c...
+Bsp/m_ams5600.c(74): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+    *ret_data = ((uint16_t)high_byte << 8) | low_byte;
+              ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+Bsp/m_ams5600.c(88): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+    *ret_data = sum / 5;
+              ~ ~~~~^~~
+Bsp/m_ams5600.c(1): warning: In file included from...
+./Head\m_ams5600.h(15): warning: padding struct 'angle_inc_t' with 2 bytes to align 'rotor_c' [-Wpadded]
+    float rotor_c;
+          ^
+Bsp/m_ams5600.c(138): warning: implicit conversion from 'volatile int32_t' (aka 'volatile int') to 'float' may lose precision [-Wimplicit-int-float-conversion]
+        float len_um = (ainc->angle_inc * (float)ainc->rotor_c / DEGREE_DATA(360)) * 1000;
+                        ~~~~~~^~~~~~~~~ ~
+4 warnings generated.
+compiling m_ams5600.c...
+compiling app_protocol.c...
+compiling bsp_uid.c...
+compiling bsp_flash.c...
+compiling bsp_usart.c...
+linking...
+Program Size: Code=7676 RO-data=556 RW-data=8 ZI-data=1816  
+FromELF: creating hex file...
+".\Objects\project.axf" - 0 Error(s), 29 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: GigaDevice
+                http://gd32mcu.com/data/documents/pack/GigaDevice.GD32E23x_DFP.2.3.2.pack
+                GigaDevice.GD32E23x_DFP.2.3.2
+                GigaDevice GD32E23x Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  D:\Develop\Keil_MDK\ARM\PACK\GigaDevice\GD32E23x_DFP\2.3.2\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
