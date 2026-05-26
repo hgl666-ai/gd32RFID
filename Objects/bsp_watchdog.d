@@ -1,5 +1,5 @@
-./objects/bsp_fm17622.o: Bsp\bsp_fm17622.c Head\bsp_fm17622.h \
-  Head\bsp_i2c.h Head\gd32e23x.h \
+./objects/bsp_watchdog.o: Bsp\bsp_watchdog.c Head\bsp_watchdog.h \
+  Head\gd32e23x.h \
   D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdint.h \
   D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\cmsis_version.h \
@@ -13,6 +13,4 @@
   Head\gd32e23x_syscfg.h Head\gd32e23x_i2c.h Head\gd32e23x_fwdgt.h \
   Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h Head\gd32e23x_rtc.h \
   Head\gd32e23x_spi.h Head\gd32e23x_timer.h Head\gd32e23x_usart.h \
-  Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
-  Head\bsp_flash.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h
+  Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h

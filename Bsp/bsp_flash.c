@@ -1,4 +1,5 @@
 #include "bsp_flash.h"
+#include "bsp_usart.h"
 #include <string.h>
 
 /*
@@ -8,7 +9,45 @@
  *   3. 写入前必须先擦除 (整页擦除)
  *   4. 编程粒度为 4 字节 (32位), 使用 fmc_word_program()
  *   5. 擦除后 FLASH 内容全为 0xFF
+ *
+ * FLASH 操作期间 UART 保护:
+ *   FLASH 擦写时 CPU 暂停, USART 硬件无法响应, 上位机可能发来数据
+ *   导致 overrun 或收到残缺帧。操作前关闭接收中断, 操作后清除错误
+ *   标志并清空接收缓冲区, 确保协议状态机不会解析到垃圾帧。
  */
+
+/* FLASH 操作前: 关闭 UART 接收, 防止操作期间收到残缺帧 */
+static void flash_uart_protect_enter(void)
+{
+    usart_interrupt_disable(USART0, USART_INT_RBNE);
+}
+
+/* FLASH 操作后: 排空硬件 RDR, 清除错误, 清空缓冲区, 重开接收 */
+static void flash_uart_protect_exit(void)
+{
+    /*
+     * 排空 RDR (Receive Data Register):
+     * FLASH 操作期间 CPU 暂停, USART 硬件仍在接收。
+     * 第 1 个字节会正常填入 RDR, 第 2 个字节起触发 OVERRUN。
+     * 操作完成后 RDR 中可能残留那第 1 个字节, 必须先读走,
+     * 否则重新使能中断后 ISR 会立即把它存入环形缓冲区。
+     */
+    if (usart_flag_get(USART0, USART_FLAG_RBNE) == SET) {
+        (void)usart_data_receive(USART0);  /* 读取并丢弃 RDR 残留字节 */
+    }
+
+    /* 清除 USART 错误标志 */
+    usart_flag_clear(USART0, USART_FLAG_ORERR);
+    usart_flag_clear(USART0, USART_FLAG_NERR);
+    usart_flag_clear(USART0, USART_FLAG_FERR);
+    usart_flag_clear(USART0, USART_FLAG_PERR);
+
+    /* 清空环形缓冲区 (丢弃已存入的垃圾字节) */
+    uart_rx_flush();
+
+    /* 重新使能接收中断 (此时 RDR 已空, 不会立即触发 ISR) */
+    usart_interrupt_enable(USART0, USART_INT_RBNE);
+}
 
 /**
  * @brief  检查 FLASH 中是否已写入 KEY
@@ -61,6 +100,9 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
 
     fmc_state_enum fmc_status;
 
+    /* FLASH 操作期间关闭 UART 接收, 防止收到残缺帧 */
+    flash_uart_protect_enter();
+
     /* 1. 解锁 FLASH */
     fmc_unlock();
 
@@ -73,6 +115,7 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
     fmc_status = fmc_page_erase(FLASH_KEY_PAGE_ADDR);
     if (fmc_status != FMC_READY) {
         fmc_lock();
+        flash_uart_protect_exit();
         return FLASH_OP_ERR;
     }
 
@@ -80,6 +123,7 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
     fmc_status = fmc_word_program(FLASH_KEY_PAGE_ADDR + FLASH_KEY_MARK_OFFSET, FLASH_KEY_MARK_VALUE);
     if (fmc_status != FMC_READY) {
         fmc_lock();
+        flash_uart_protect_exit();
         return FLASH_OP_ERR;
     }
 
@@ -94,6 +138,7 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
         fmc_status = fmc_word_program(FLASH_KEY_PAGE_ADDR + FLASH_KEY_DATA_OFFSET + i * 4, word);
         if (fmc_status != FMC_READY) {
             fmc_lock();
+            flash_uart_protect_exit();
             return FLASH_OP_ERR;
         }
     }
@@ -101,7 +146,10 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
     /* 6. 上锁 FLASH */
     fmc_lock();
 
-    /* 7. 读回校验 */
+    /* 7. 恢复 UART 接收 */
+    flash_uart_protect_exit();
+
+    /* 8. 读回校验 */
     uint8_t readBack[FLASH_KEY_LEN];
     if (flash_key_read(readBack) != FLASH_OP_OK) {
         return FLASH_OP_VERIFY;
@@ -120,6 +168,8 @@ flash_op_status flash_key_erase(void)
 {
     fmc_state_enum fmc_status;
 
+    flash_uart_protect_enter();
+
     fmc_unlock();
 
     fmc_flag_clear(FMC_FLAG_END);
@@ -129,6 +179,8 @@ flash_op_status flash_key_erase(void)
     fmc_status = fmc_page_erase(FLASH_KEY_PAGE_ADDR);
 
     fmc_lock();
+
+    flash_uart_protect_exit();
 
     return (fmc_status == FMC_READY) ? FLASH_OP_OK : FLASH_OP_ERR;
 }

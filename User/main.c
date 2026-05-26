@@ -6,6 +6,7 @@
 #include "bsp_flash.h"
 #include "bsp_uid.h"
 #include "bsp_fm17622.h"
+#include "bsp_watchdog.h"
 #include "app_protocol.h"
 
 /*
@@ -67,10 +68,17 @@ int main(void)
     /* 5. 应用层协议初始化 */
     app_protocol_init();
 
+    /* 6. 启用看门狗 (200ms 超时, 主循环喂狗) */
+    bsp_watchdog_init();
+    printf("[WDT] Watchdog enabled (200ms timeout)\r\n");
+
     printf("\r\nSystem ready. Waiting for commands...\r\n");
 
-    /* 6. 主循环 */
+    /* 7. 主循环 */
     while (1) {
+        /* 喂狗: 若主循环卡死超过 200ms, 系统自动复位 */
+        bsp_watchdog_feed();
+
         /* 任务1: UART 接收处理 (高优先级，每次循环都执行) */
         app_uart_rx_task();
 

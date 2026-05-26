@@ -34,7 +34,6 @@ OF SUCH DAMAGE.
 
 #include "gd32e23x_it.h"
 #include "main.h"
-#include "systick.h"
 #include "bsp_usart.h"
 
 #define SRAM_PARITY_CHECK_ERROR_HANDLE(s)    do{}while(1)

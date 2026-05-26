@@ -16,7 +16,7 @@
   Head\gd32e23x_cmp.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
   Head\bsp_systick.h Head\bsp_usart.h Head\bsp_i2c.h Head\bsp_flash.h \
-  Head\bsp_uid.h Head\bsp_fm17622.h Head\bsp_i2c.h Head\app_protocol.h \
-  Head\protocol.h \
+  Head\bsp_uid.h Head\bsp_fm17622.h Head\bsp_i2c.h Head\bsp_watchdog.h \
+  Head\app_protocol.h Head\protocol.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stddef.h \
   Head\bsp_fm17622.h

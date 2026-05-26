@@ -197,8 +197,9 @@ uint8_t protocol_verify_crc(const parsed_frame_t *pFrame)
 {
     if (pFrame == NULL) return 0;
 
-    /* 构建待校验缓冲区: HEADER + CMD + LENGTH + DATA */
-    uint8_t temp_buf[MAX_FRAME_LEN];
+    /* 构建待校验缓冲区: HEADER + CMD + LENGTH + DATA
+     * 使用 static 避免栈上分配 256 字节 (总栈仅 1KB) */
+    static uint8_t temp_buf[MAX_FRAME_LEN];
     uint16_t offset = 0;
 
     temp_buf[offset++] = FRAME_HEADER_0;

@@ -619,16 +619,6 @@
               <FilePath>.\Head\system_gd32e23x.h</FilePath>
             </File>
             <File>
-              <FileName>systick.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Head\systick.h</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_led.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Head\bsp_led.h</FilePath>
-            </File>
-            <File>
               <FileName>bsp_systick.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Head\bsp_systick.h</FilePath>
@@ -649,11 +639,6 @@
               <FilePath>.\Head\bsp_fm17622.h</FilePath>
             </File>
             <File>
-              <FileName>m_ams5600.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Head\m_ams5600.h</FilePath>
-            </File>
-            <File>
               <FileName>protocol.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Head\protocol.h</FilePath>
@@ -672,6 +657,16 @@
               <FileName>bsp_flash.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Head\bsp_flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_crypto.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Head\bsp_crypto.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_watchdog.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Head\bsp_watchdog.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -694,11 +689,6 @@
           <GroupName>Bsp</GroupName>
           <Files>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Bsp\bsp_led.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Bsp\bsp_systick.c</FilePath>
@@ -712,11 +702,6 @@
               <FileName>bsp_fm17622.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Bsp\bsp_fm17622.c</FilePath>
-            </File>
-            <File>
-              <FileName>m_ams5600.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Bsp\m_ams5600.c</FilePath>
             </File>
             <File>
               <FileName>protocol.c</FileName>
@@ -742,6 +727,16 @@
               <FileName>bsp_uid.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Bsp\bsp_uid.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_crypto.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\bsp_crypto.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_watchdog.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\bsp_watchdog.c</FilePath>
             </File>
           </Files>
         </Group>

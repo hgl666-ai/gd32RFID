@@ -31,7 +31,17 @@
 #define MIFARE_READ         0x30
 #define MIFARE_WRITE        0xA0
 
-// 标签数据结构 (40字节)
+/* 标签数据在 MIFARE Classic 1K 中的存储布局:
+ * 扇区 1 (块 4/5/6), 块 7 为扇区尾块 (KeyA+AccessBits+KeyB)
+ * 块4 (16B): month[1] + day[2] + year[2] + vendor[4] + batch[2] + id[0..4]
+ * 块5 (16B): id[5] + color[7] + length[4] + sn[0..3]
+ * 块6 (16B): sn[4..5] + res[6] + padding[8]
+ */
+#define TAG_SECTOR_START    1U
+#define TAG_BLOCK_START     4U     /* 扇区1 的数据起始块 */
+#define TAG_BLOCK_COUNT     3U     /* 占 3 个数据块 (48 字节, 40 有效 + 8 填充) */
+
+/* 标签数据结构 (40字节) */
 #define TAG_DATA_LEN        40U
 
 typedef struct {
@@ -66,8 +76,17 @@ uint8_t FM17622_Anticoll(uint8_t *pUid, uint8_t *pUidLen);
 /* 选卡 (Select) */
 uint8_t FM17622_Select(const uint8_t *pUid, uint8_t uidLen);
 
-/* 读取标签数据 (从指定扇区/块读取并解析为 tag_data_t 格式) */
-uint8_t FM17622_ReadTagData(tag_data_t *pTagData);
+/* MIFARE Classic 认证 (KeyA=0x60 / KeyB=0x61) */
+uint8_t FM17622_MifareAuth(uint8_t authMode, uint8_t blockAddr,
+                           const uint8_t *pKey, const uint8_t *pUid);
+
+/* MIFARE Classic 读块 (16 字节) */
+uint8_t FM17622_MifareReadBlock(uint8_t blockAddr, uint8_t *pOutBuf);
+
+/* 读取标签数据 (认证+读块+解析) */
+uint8_t FM17622_ReadTagData(tag_data_t *pTagData,
+                            const uint8_t *pKey6,
+                            const uint8_t *pCardUid);
 
 /* 将 tag_data_t 结构体序列化为 40 字节原始数据 */
 void tag_data_serialize(const tag_data_t *pTagData, uint8_t *pOutBuf);

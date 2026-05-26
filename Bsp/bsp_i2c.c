@@ -62,12 +62,12 @@ void i2c_send_byte(uint8_t byte) {
 // 等待从机应答 (这就是防死机的核心！)
 uint8_t i2c_wait_ack(void) {
     uint16_t timeout = 0;
-    
+
     I2C_SDA_H(); // 释放 SDA 线
     i2c_delay();
     I2C_SCL_H();
     i2c_delay();
-    
+
     // 如果 SDA 一直是高电平，说明从机没有拉低应答
     while (I2C_SDA_READ()) {
         timeout++;
@@ -76,7 +76,49 @@ uint8_t i2c_wait_ack(void) {
             return 1; // 1 表示失败 (NACK)
         }
     }
-    
+
     I2C_SCL_L();
     return 0; // 0 表示成功收到应答 (ACK)
+}
+
+// 软件模拟 I2C 读一个字节
+uint8_t i2c_read_byte(uint8_t send_ack) {
+    uint8_t data = 0;
+
+    I2C_SDA_H(); // 主机释放数据线
+    for (uint8_t i = 0; i < 8; i++) {
+        data <<= 1;
+        I2C_SCL_H();
+        i2c_delay();
+        if (I2C_SDA_READ()) {
+            data |= 0x01;
+        }
+        I2C_SCL_L();
+        i2c_delay();
+    }
+
+    // 主机发送 ACK(0) 或 NACK(1)
+    if (send_ack) {
+        I2C_SDA_L();
+    } else {
+        I2C_SDA_H();
+    }
+    i2c_delay();
+    I2C_SCL_H();
+    i2c_delay();
+    I2C_SCL_L();
+
+    return data;
+}
+
+// I2C 总线恢复: 发送 9 个 SCL 脉冲释放可能卡死的从机
+void i2c_bus_recovery(void) {
+    I2C_SDA_H();
+    for (uint8_t i = 0; i < 9; i++) {
+        I2C_SCL_H();
+        i2c_delay();
+        I2C_SCL_L();
+        i2c_delay();
+    }
+    i2c_stop();
 }

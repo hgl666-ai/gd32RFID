@@ -1,7 +1,10 @@
 #include "gd32e23x.h"
 #include "bsp_systick.h"
 
-// 声明一个静态的全局递减变量
+/* 全局毫秒计数器，供所有模块非阻塞计时使用 */
+volatile uint32_t g_sys_tick_ms = 0;
+
+/* 静态递减变量，供 delay_ms() 阻塞延时使用 */
 static volatile uint32_t delay_count;
 
 /*!
@@ -55,6 +58,7 @@ void delay_ms(uint32_t count)
 */
 void SysTick_Handler(void)
 {
+    g_sys_tick_ms++;
     if (0U != delay_count){
         delay_count--;
     }

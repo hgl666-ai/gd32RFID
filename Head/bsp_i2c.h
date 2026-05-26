@@ -25,4 +25,16 @@ void i2c_stop(void);
 void i2c_send_byte(uint8_t byte);
 uint8_t i2c_wait_ack(void);
 
+/**
+ * @brief  软件模拟 I2C 读一个字节
+ * @param  send_ack: 0=主机发NACK(读最后一个字节时), 1=主机发ACK(继续读)
+ * @retval 读取到的 8 位数据
+ */
+uint8_t i2c_read_byte(uint8_t send_ack);
+
+/**
+ * @brief  I2C 总线恢复: 发送 9 个 SCL 脉冲 + STOP，释放可能卡死的从机
+ */
+void i2c_bus_recovery(void);
+
 #endif /* _BSP_I2C_H */

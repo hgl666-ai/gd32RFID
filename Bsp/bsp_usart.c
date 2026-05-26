@@ -110,6 +110,14 @@ uint8_t uart_rx_read_byte(void)
 }
 
 /*!
+    \brief      清空环形缓冲区 (丢弃所有已接收但未处理的字节)
+*/
+void uart_rx_flush(void)
+{
+    s_rx_tail = s_rx_head;
+}
+
+/*!
     \brief      USART0 中断服务函数
     \note       在 gd32e23x_it.c 的 USART0_IRQHandler 中调用此函数
 */

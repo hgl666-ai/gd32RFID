@@ -22,16 +22,16 @@
 ".\objects\system_gd32e23x.o"
 ".\objects\gd32e23x_it.o"
 ".\objects\main.o"
-".\objects\bsp_led.o"
 ".\objects\bsp_systick.o"
 ".\objects\bsp_i2c.o"
 ".\objects\bsp_fm17622.o"
-".\objects\m_ams5600.o"
 ".\objects\protocol.o"
 ".\objects\app_protocol.o"
 ".\objects\bsp_flash.o"
 ".\objects\bsp_usart.o"
 ".\objects\bsp_uid.o"
+".\objects\bsp_crypto.o"
+".\objects\bsp_watchdog.o"
 --library_type=microlib --strict --scatter ".\Objects\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

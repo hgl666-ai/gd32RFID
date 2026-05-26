@@ -32,6 +32,9 @@ uint16_t uart_rx_available(void);
 /* 从环形缓冲区读取 1 字节 (非阻塞) */
 uint8_t uart_rx_read_byte(void);
 
+/* 清空环形缓冲区 (丢弃已接收但未处理的数据) */
+void uart_rx_flush(void);
+
 /* USART0 中断服务函数 (需在 gd32e23x_it.c 中调用) */
 void usart0_isr(void);
 

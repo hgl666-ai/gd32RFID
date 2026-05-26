@@ -19,4 +19,5 @@
   Head\bsp_usart.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h Head\bsp_uid.h \
   Head\bsp_flash.h Head\bsp_fm17622.h Head\bsp_systick.h \
+  Head\bsp_crypto.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h
