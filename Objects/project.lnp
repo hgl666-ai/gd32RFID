@@ -32,6 +32,10 @@
 ".\objects\bsp_uid.o"
 ".\objects\bsp_crypto.o"
 ".\objects\bsp_watchdog.o"
+".\objects\des.o"
+".\objects\fmse_port.o"
+".\objects\fmse_i2c.o"
+".\objects\se_cmd.o"
 --library_type=microlib --strict --scatter ".\Objects\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -668,6 +668,26 @@
               <FileType>5</FileType>
               <FilePath>.\Head\bsp_watchdog.h</FilePath>
             </File>
+            <File>
+              <FileName>des.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Head\des.h</FilePath>
+            </File>
+            <File>
+              <FileName>fmse_port.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Head\fmse_port.h</FilePath>
+            </File>
+            <File>
+              <FileName>fmse_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Head\fmse_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>se_cmd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Head\se_cmd.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -737,6 +757,26 @@
               <FileName>bsp_watchdog.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Bsp\bsp_watchdog.c</FilePath>
+            </File>
+            <File>
+              <FileName>des.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\des.c</FilePath>
+            </File>
+            <File>
+              <FileName>fmse_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\fmse_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>fmse_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\fmse_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>se_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\se_cmd.c</FilePath>
             </File>
           </Files>
         </Group>

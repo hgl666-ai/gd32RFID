@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(rm \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Bsp/bsp_led.c\" \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Head/bsp_led.h\" \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Bsp/m_ams5600.c\" \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Head/m_ams5600.h\")"
+      "Bash(rm \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Bsp/bsp_led.c\" \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Head/bsp_led.h\" \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Bsp/m_ams5600.c\" \"c:/Users/Administrator/Desktop/keilProject/GD32project2-I2C-CRC-claude/Head/m_ams5600.h\")",
+      "Bash(grep -rl \"write_se_data\" \"C:/Users/Administrator/Desktop/se_sdk_nfc_tag_23109/\" 2>/dev/null)",
+      "Read(//c/Users/Administrator/Desktop/se_sdk_nfc_tag_23109/**)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Administrator\\Desktop\\keilProject\\GD32project2-I2C-CRC-claude\\Bsp"

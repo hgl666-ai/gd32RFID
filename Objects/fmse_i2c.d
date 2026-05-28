@@ -1,6 +1,9 @@
-./objects/bsp_crypto.o: Bsp\bsp_crypto.c Head\bsp_crypto.h \
+./objects/fmse_i2c.o: Bsp\fmse_i2c.c \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  Head\bsp_usart.h Head\gd32e23x.h \
+  Head\fmse_i2c.h Head\se_cmd.h \
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  Head\fmse_port.h Head\bsp_systick.h Head\bsp_watchdog.h \
+  Head\gd32e23x.h \
   D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h \
   D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\cmsis_version.h \
   D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\cmsis_compiler.h \
@@ -13,7 +16,4 @@
   Head\gd32e23x_syscfg.h Head\gd32e23x_i2c.h Head\gd32e23x_fwdgt.h \
   Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h Head\gd32e23x_rtc.h \
   Head\gd32e23x_spi.h Head\gd32e23x_timer.h Head\gd32e23x_usart.h \
-  Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h Head\se_cmd.h \
-  Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h
+  Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h
