@@ -68,12 +68,12 @@ uint8_t FM17622_CheckComm(void);
 void FM17622_AntennaOn(void);
 uint8_t FM17622_RequestA(uint16_t *cardType);
 
-/* ---- 新增接口 ---- */
 
-/* 防冲突 (Anticollision)，获取卡片序列号 */
+
+/* 防冲突，获取卡片序列号 */
 uint8_t FM17622_Anticoll(uint8_t *pUid, uint8_t *pUidLen);
 
-/* 选卡 (Select) */
+/* 选卡 */
 uint8_t FM17622_Select(const uint8_t *pUid, uint8_t uidLen);
 
 /* MIFARE Classic 认证 (KeyA=0x60 / KeyB=0x61) */
@@ -91,4 +91,4 @@ uint8_t FM17622_ReadTagData(tag_data_t *pTagData,
 /* 将 tag_data_t 结构体序列化为 40 字节原始数据 */
 void tag_data_serialize(const tag_data_t *pTagData, uint8_t *pOutBuf);
 
-#endif /* _BSP_FM17622_H */
+#endif

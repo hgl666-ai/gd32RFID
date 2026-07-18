@@ -16,4 +16,5 @@
   Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h Head\se_cmd.h \
   Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h \
+  Head\debug_config.h

@@ -24,4 +24,4 @@ typedef struct {
 
 extern StSeFunc gfm_se_i2c;
 
-#endif /* __FMSE_I2C_H */
+#endif

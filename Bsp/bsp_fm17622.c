@@ -1,10 +1,9 @@
 #include "bsp_fm17622.h"
 #include "bsp_flash.h"
+#include "bsp_watchdog.h"
 #include <string.h>
 
-/* ================================================================
- * 内部辅助
- * ================================================================ */
+
 
 /* 连续通信失败计数 (用于触发 I2C 总线恢复) */
 static uint8_t s_i2c_err_count = 0;
@@ -23,9 +22,7 @@ static void i2c_err_track(uint8_t ack_fail) {
     }
 }
 
-/* 向 FM17622 FIFO 写入数据并执行 Transceive 命令
- * 依赖 FM17622_WriteReg / FM17622_ReadReg (声明于 bsp_fm17622.h)
- * 依赖 FM17622_SetBitMask / FM17622_ClearBitMask (定义于下方) */
+
 static uint8_t fm_transceive(const uint8_t *pTxData, uint8_t txLen,
                              uint8_t *pRxData, uint8_t *pRxLen);
 
@@ -56,7 +53,7 @@ static uint8_t fm_transceive(const uint8_t *pTxData, uint8_t txLen,
     FM17622_SetBitMask(FM_BitFramingReg, 0x80);
 
     /* 等待命令完成 */
-    uint16_t timeout = 2000;
+    uint16_t timeout = 200;
     while (timeout--) {
         uint8_t irq = FM17622_ReadReg(FM_ComIrqReg);
         if (irq & 0x30) { break; }
@@ -78,11 +75,10 @@ static uint8_t fm_transceive(const uint8_t *pTxData, uint8_t txLen,
     return 1;
 }
 
-/* ================================================================
- * I2C 寄存器读写 (统一使用 bsp_i2c.c 接口)
- * ================================================================ */
+
 
 void FM17622_WriteReg(uint8_t regAddr, uint8_t data) {
+    bsp_watchdog_feed();
     i2c_start();
     i2c_send_byte(FM17622_I2C_WRITE);
     if (i2c_wait_ack()) { i2c_err_track(1); return; }
@@ -98,6 +94,7 @@ void FM17622_WriteReg(uint8_t regAddr, uint8_t data) {
 }
 
 uint8_t FM17622_ReadReg(uint8_t regAddr) {
+    bsp_watchdog_feed();
     uint8_t data = 0;
 
     /* 1. 发送伪写，定位寄存器 */
@@ -174,7 +171,7 @@ uint8_t FM17622_RequestA(uint16_t *cardType) {
     FM17622_WriteReg(FM_CommandReg, 0x0C);
     FM17622_SetBitMask(FM_BitFramingReg, 0x80);
 
-    uint16_t timeout = 2000;
+    uint16_t timeout = 200;
     while (timeout--) {
         uint8_t irq = FM17622_ReadReg(FM_ComIrqReg);
         if (irq & 0x30) { break; }
@@ -216,7 +213,7 @@ uint8_t FM17622_Anticoll(uint8_t *pUid, uint8_t *pUidLen)
     FM17622_WriteReg(FM_CommandReg, 0x0C);
     FM17622_SetBitMask(FM_BitFramingReg, 0x80);
 
-    uint16_t timeout = 2000;
+    uint16_t timeout = 200;
     while (timeout--) {
         uint8_t irq = FM17622_ReadReg(FM_ComIrqReg);
         if (irq & 0x30) { break; }
@@ -254,7 +251,7 @@ uint8_t FM17622_Anticoll(uint8_t *pUid, uint8_t *pUidLen)
             FM17622_WriteReg(FM_CommandReg, 0x0C);
             FM17622_SetBitMask(FM_BitFramingReg, 0x80);
 
-            timeout = 2000;
+            timeout = 200;
             while (timeout--) {
                 uint8_t irq = FM17622_ReadReg(FM_ComIrqReg);
                 if (irq & 0x30) { break; }
@@ -321,7 +318,7 @@ uint8_t FM17622_Select(const uint8_t *pUid, uint8_t uidLen)
     FM17622_WriteReg(FM_CommandReg, 0x0C);
     FM17622_SetBitMask(FM_BitFramingReg, 0x80);
 
-    uint16_t timeout = 2000;
+    uint16_t timeout = 200;
     while (timeout--) {
         uint8_t irq = FM17622_ReadReg(FM_ComIrqReg);
         if (irq & 0x30) { break; }

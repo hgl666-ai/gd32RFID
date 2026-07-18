@@ -3,7 +3,7 @@
 #include <string.h>
 
 /*
- * GD32E230 FLASH 编程要点:
+ * GD32E230 FLASH:
  *   1. 编程前必须调用 fmc_unlock() 解锁
  *   2. 编程完成后必须调用 fmc_lock() 上锁
  *   3. 写入前必须先擦除 (整页擦除)
@@ -26,7 +26,7 @@ static void flash_uart_protect_enter(void)
 static void flash_uart_protect_exit(void)
 {
     /*
-     * 排空 RDR (Receive Data Register):
+     * 排空 RDR:
      * FLASH 操作期间 CPU 暂停, USART 硬件仍在接收。
      * 第 1 个字节会正常填入 RDR, 第 2 个字节起触发 OVERRUN。
      * 操作完成后 RDR 中可能残留那第 1 个字节, 必须先读走,
@@ -73,10 +73,10 @@ flash_op_status flash_key_read(uint8_t *pKeyBuf)
         return FLASH_OP_ERR;
     }
 
-    /* 直接从 FLASH 读取 KEY 数据 (FLASH 可直接寻址读取) */
+    /* 直接从 FLASH 读取 KEY 数据  */
     volatile uint32_t *pAddr = (volatile uint32_t *)(FLASH_KEY_PAGE_ADDR + FLASH_KEY_DATA_OFFSET);
 
-    /* 按 4 字节 (word) 读取，共 16 字节 = 4 个 word */
+    
     for (uint8_t i = 0; i < FLASH_KEY_LEN / 4; i++) {
         uint32_t word = pAddr[i];
         pKeyBuf[i * 4 + 0] = (uint8_t)(word >> 24);
@@ -103,15 +103,15 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
     /* FLASH 操作期间关闭 UART 接收, 防止收到残缺帧 */
     flash_uart_protect_enter();
 
-    /* 1. 解锁 FLASH */
+    /* 解锁 FLASH */
     fmc_unlock();
 
-    /* 2. 清除所有 FMC 挂起标志 */
+    /* 清除所有 FMC 挂起标志 */
     fmc_flag_clear(FMC_FLAG_END);
     fmc_flag_clear(FMC_FLAG_WPERR);
     fmc_flag_clear(FMC_FLAG_PGERR);
 
-    /* 3. 擦除 KEY 存储页 */
+    /*  擦除 KEY 存储页 */
     fmc_status = fmc_page_erase(FLASH_KEY_PAGE_ADDR);
     if (fmc_status != FMC_READY) {
         fmc_lock();
@@ -119,7 +119,7 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
         return FLASH_OP_ERR;
     }
 
-    /* 4. 写入标记值 "KEY\0" (大端格式存储) */
+    /*  写入标记值 "KEY\0" (大端格式存储) */
     fmc_status = fmc_word_program(FLASH_KEY_PAGE_ADDR + FLASH_KEY_MARK_OFFSET, FLASH_KEY_MARK_VALUE);
     if (fmc_status != FMC_READY) {
         fmc_lock();
@@ -127,7 +127,7 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
         return FLASH_OP_ERR;
     }
 
-    /* 5. 写入 16 字节 KEY 数据 (按 4 字节 word 编程) */
+    /*  写入 16 字节 KEY 数据 (按 4 字节 word 编程) */
     for (uint8_t i = 0; i < FLASH_KEY_LEN / 4; i++) {
         /* 将 4 个字节组合为 1 个 32 位 word (大端格式) */
         uint32_t word = ((uint32_t)pKeyData[i * 4 + 0] << 24) |
@@ -143,13 +143,13 @@ flash_op_status flash_key_write(const uint8_t *pKeyData)
         }
     }
 
-    /* 6. 上锁 FLASH */
+    /*  上锁 FLASH */
     fmc_lock();
 
-    /* 7. 恢复 UART 接收 */
+    /*  恢复 UART 接收 */
     flash_uart_protect_exit();
 
-    /* 8. 读回校验 */
+    /* 读回校验 */
     uint8_t readBack[FLASH_KEY_LEN];
     if (flash_key_read(readBack) != FLASH_OP_OK) {
         return FLASH_OP_VERIFY;

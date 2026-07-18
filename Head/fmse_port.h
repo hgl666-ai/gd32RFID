@@ -12,7 +12,7 @@
 #define FMSE_PWR_OFF_DELAY      10   /* ms */
 #define FMSE_FRAME_DELAY        5    /* ms */
 
-/* I2C 驱动函数指针结构体 (与 SDK 一致) */
+
 typedef struct {
     uint8_t se_i2c_addr;
     void (*fm_i2c_power_on)(void);
@@ -28,4 +28,4 @@ typedef struct {
 
 extern StSeI2CDriver gusr_i2c_drv;
 
-#endif /* __FMSE_PORT_H */
+#endif 

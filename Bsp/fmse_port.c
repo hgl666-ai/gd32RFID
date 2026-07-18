@@ -4,12 +4,9 @@
 
 /*
  * FMSE 端口层 — 桥接 SDK StSeI2CDriver 到 bsp_i2c.c 软件 I2C
- *
- * SDK 的 fmse_i2c.c 通过函数指针调用本文件中的函数。
- * 返回值约定: 0=成功(ACK), 非0=失败(NACK) — 与 bsp_i2c.c 的 i2c_wait_ack 一致。
+ * 返回值约定: 0=成功(ACK), 非0=失败(NACK)
  */
 
-/* 电源控制 — GD32E230 无独立 SE 电源引脚, 硬件常供电 */
 static void fmse_power_on(void)  { delay_ms(FMSE_PWR_ON_DELAY); }
 static void fmse_power_off(void) { delay_ms(FMSE_PWR_OFF_DELAY); }
 
@@ -23,7 +20,7 @@ static void fmse_i2c_stop(void)  { i2c_stop(); }
 static uint8_t fmse_i2c_send_char(uint8_t ch)
 {
     i2c_send_byte(ch);
-    return i2c_wait_ack();  /* 0=ACK, 1=NACK — 与 SDK 语义一致 */
+    return i2c_wait_ack();  /* 0=ACK, 1=NACK */
 }
 
 static uint8_t fmse_i2c_recv_char(void)

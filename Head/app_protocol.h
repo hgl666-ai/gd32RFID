@@ -5,16 +5,6 @@
 #include "protocol.h"
 #include "bsp_fm17622.h"
 
-/*
- * 应用层协议处理模块
- *
- * 职责:
- *   1. 接收协议层解析后的帧，根据 CMD 分发处理
- *   2. 实现 UID 查询应答
- *   3. 实现 KEY 写入及应答
- *   4. 实现标签数据上传
- *   5. 构建应答帧并通过 UART 发送
- */
 
 /* 命令码定义 (与上位机协议一致) */
 #define APP_CMD_QUERY_UID       0x01U   /* 查询主控UID */
@@ -24,11 +14,14 @@
 #define KEY_WRITE_FAIL         0x00U
 #define KEY_WRITE_SUCCESS      0x01U
 
-/* 标签上传命令码 (独立命令码，避免与 UID 查询冲突) */
-#define APP_CMD_UPLOAD_TAG     0x28U   /* 上传标签数据 (0x28 = 40, 即标签数据长度) */
+
+#define APP_CMD_UPLOAD_TAG     0x01U   /* 上传标签数据 (单天线=左侧, 与UID查询共用CMD, 靠LEN区分) */
 
 /* RFID 轮询间隔 (ms) */
 #define RFID_POLL_INTERVAL_MS  200U
+
+/* FM17622在线状态: 1=在线, 0=离线(离线时跳过RFID轮询, 避免I2C超时阻塞串口) */
+extern uint8_t g_fm17622_online;
 
 /**
  * @brief  应用层协议处理初始化
@@ -57,4 +50,4 @@ void app_rfid_poll_task(void);
  */
 void app_uart_rx_task(void);
 
-#endif /* __APP_PROTOCOL_H */
+#endif

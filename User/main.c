@@ -1,5 +1,5 @@
 #include "gd32e23x.h"
-#include <stdio.h>
+#include "debug_config.h"
 #include "bsp_systick.h"
 #include "bsp_usart.h"
 #include "bsp_i2c.h"
@@ -10,79 +10,49 @@
 #include "app_protocol.h"
 
 /*
- * 主程序: GD32E230C8T6 + FM17622 RFID 系统
- *
  * 功能:
- *   1. 秘钥Key下载接口 (UID查询 + KEY写入)
- *   2. 标签数据上传接口 (RFID标签识别与数据上报)
+ *   1. 秘钥Key下载接口 (UID查询 + KEY写入)  — 协议02
+ *   2. 标签数据上传接口 (RFID标签识别与数据上报) — 协议01
  *
- * 主循环架构:
- *   - 非阻塞式轮询，无 delay 死等
- *   - UART 接收任务: 从环形缓冲区读取数据，协议解析
- *   - RFID 轮询任务: 周期性检测标签，自动上传数据
+ * 调试输出由 debug_config.h 的 DEBUG_ENABLE 控制:
+ *   DEBUG_ENABLE=0 (发布): 串口只跑协议数据, 0调试输出
+ *   DEBUG_ENABLE=1 (调试): 只打印协议命令收发+CRC校验结果, 不刷屏
  */
 
 int main(void)
 {
-    /* 1. 基础硬件初始化 */
+
     systick_config();       /* SysTick 1ms 中断 */
     bsp_uart_init();        /* USART0 初始化 (115200, 8N1, 中断接收) */
     bsp_i2c_init();         /* I2C 引脚初始化 (PB6/PB7, 软件模拟) */
 
-    printf("\r\n========================================\r\n");
-    printf("  GD32E230 + FM17622 RFID System\r\n");
-    printf("  Build: %s %s\r\n", __DATE__, __TIME__);
-    printf("========================================\r\n");
+    bsp_watchdog_init();
 
-    /* 2. 读取并打印主控 UID */
-    uint8_t uid_buf[UID_LEN];
-    uid_read(uid_buf);
-    printf("[UID] ");
-    for (uint8_t i = 0; i < UID_LEN; i++) {
-        printf("%02X ", uid_buf[i]);
-    }
-    printf("\r\n");
+    /*
+     * 初始化期间持续喂狗!
+     * 看门狗200ms超时, FM17622_Init + crypto_chip_init 的初始化总耗时
+     * 可能超过200ms, 不喂狗会导致MCU反复复位重启(表现为串口刷屏)。
+     * 每个耗时步骤后都喂一次, 确保不超时。
+     */
+    bsp_watchdog_feed();
 
-    /* 3. 检查 FLASH 中是否已有 KEY */
-    if (flash_key_is_stored()) {
-        uint8_t key_buf[FLASH_KEY_LEN];
-        flash_key_read(key_buf);
-        printf("[KEY] Already stored: ");
-        for (uint8_t i = 0; i < FLASH_KEY_LEN; i++) {
-            printf("%02X ", key_buf[i]);
-        }
-        printf("\r\n");
-    } else {
-        printf("[KEY] Not stored yet, waiting for download...\r\n");
-    }
-
-    /* 4. FM17622 RFID 芯片初始化 */
+    /* FM17622 初始化 */
     FM17622_Init();
-    uint8_t fm_ver = FM17622_CheckComm();
-    if (fm_ver != 0) {
-        printf("[FM17622] Version: 0x%02X, Init OK\r\n", fm_ver);
-    } else {
-        printf("[FM17622] Communication FAILED! Check I2C connection.\r\n");
-    }
+    bsp_watchdog_feed();
 
-    /* 5. 应用层协议初始化 */
+    g_fm17622_online = FM17622_CheckComm();
+    bsp_watchdog_feed();
+
+    /* 应用协议初始化 (内部含 FMSE SE 认证, 打印 [SE] 和 [SYS] Ready) */
     app_protocol_init();
 
-    /* 6. 启用看门狗 (200ms 超时, 主循环喂狗) */
-    bsp_watchdog_init();
-    printf("[WDT] Watchdog enabled (200ms timeout)\r\n");
-
-    printf("\r\nSystem ready. Waiting for commands...\r\n");
-
-    /* 7. 主循环 */
     while (1) {
-        /* 喂狗: 若主循环卡死超过 200ms, 系统自动复位 */
         bsp_watchdog_feed();
 
-        /* 任务1: UART 接收处理 (高优先级，每次循环都执行) */
+        /* UART 接收处理 (高优先级，每次循环都执行) */
         app_uart_rx_task();
 
-        /* 任务2: RFID 标签轮询 (周期性执行，约 200ms 一次) */
+        /* RFID 标签轮询 (周期性执行，约 200ms 一次, 完全静默) */
         app_rfid_poll_task();
     }
 }

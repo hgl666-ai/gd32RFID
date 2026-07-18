@@ -4,26 +4,16 @@
 #include "bsp_systick.h"
 #include "bsp_watchdog.h"
 
-/*
- * 本文件是 FMSE 安全芯片的 I2C 通信协议层 (移植自复旦微电子 SDK)。
- *
- * 重要说明:
- *   本模块及整个 SDK 仅负责 MCU 与加密芯片之间的 I2C 通信。
- *   真正的加密运算 (3DES/AES/RSA/SM2 等) 由 FMSE 芯片内部完成,
- *   芯片固件由复旦微电子官方预烧录, MCU 侧无法也不需要干预。
- *   MCU 的职责是: 构造 APDU 命令 → 通过 I2C 发送给 SE → 接收处理结果。
- */
 
-/* 帧间延时 (原 SDK port_i2c.h 中定义) */
+/* 帧间延时 */
 #ifndef FRAME_DELAY_I2C
 #define FRAME_DELAY_I2C     5   /* ms */
 #endif
 
-/* 变量 */
 static uint8_t gfm_I2CAddr;
 static StSeI2CDriver *pgfm_I2CDrv = NULL;
 
-/* 超时辅助函数 (替代 SDK timer.c 的 init_timeout_ms / check_timeout_ms) */
+/* 超时辅助函数  */
 static uint32_t s_timeout_deadline;
 
 static void fmse_init_timeout_ms(uint32_t timeout_ms)
@@ -203,9 +193,7 @@ uint8_t fm_i2c_recv_frame(uint8_t *rbuf, uint16_t *rlen)
     return (fm_i2c_hd.flag.sta);
 }
 
-/********************************************************************
- * Function: 从 I2C SE 获取 ATR
- *********************************************************************/
+//从 I2C SE 获取 ATR
 uint8_t fm_i2c_get_atr(uint8_t *rbuf, uint16_t *rlen)
 {
     uint8_t ret;
@@ -226,10 +214,7 @@ uint8_t fm_i2c_get_atr(uint8_t *rbuf, uint16_t *rlen)
 
     return (ret);
 }
-
-/********************************************************************
- * Function:向 I2C SE 收发一帧数据
- *********************************************************************/
+// 向 I2C SE 收发一帧数据
 uint8_t fm_i2c_transceive(uint8_t *sbuf, uint16_t slen, uint8_t *rbuf, uint16_t *rlen,
                           uint16_t poll_inv, uint32_t poll_timeout)
 {

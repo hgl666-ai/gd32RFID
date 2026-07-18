@@ -90,7 +90,6 @@ typedef enum {
     ALG_SM2_SM3             = 0x11,
 } SIGN_VRFY_ALGO;
 
-/******************************************************************************/
 typedef struct {
     uint8_t cla;
     uint8_t ins;
@@ -115,14 +114,12 @@ typedef struct {
     void (*fm_driver_unregister)( void );
 } StSeFunc;
 
-/**********************************************************************************/
 /*public func */
 StSeFunc *fm_se_register( StSeFunc *fm_se );
 void fm_se_unregister( void );
 void* fm_memset( void* dst, int val, size_t count );
 void* fm_memmove( void* dst, const void* src, size_t count );
 
-/***********************************************************************************/
 /*SE private func */
 uint16_t GetChallenge( uint16_t inlen, uint8_t *rbuf, uint16_t *rlen );
 uint16_t SelectFile( uint16_t fid, uint8_t *rbuf, uint16_t *rlen );

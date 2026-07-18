@@ -13,10 +13,10 @@
   Head\gd32e23x_fwdgt.h Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h \
   Head\gd32e23x_rtc.h Head\gd32e23x_spi.h Head\gd32e23x_timer.h \
   Head\gd32e23x_usart.h Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h \
-  Head\gd32e23x_cmp.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  Head\bsp_systick.h Head\bsp_usart.h Head\bsp_i2c.h Head\bsp_flash.h \
-  Head\bsp_uid.h Head\bsp_fm17622.h Head\bsp_i2c.h Head\bsp_watchdog.h \
-  Head\app_protocol.h Head\protocol.h \
+  Head\gd32e23x_cmp.h Head\debug_config.h Head\bsp_systick.h \
+  Head\bsp_usart.h \
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h Head\bsp_i2c.h \
+  Head\bsp_flash.h Head\bsp_uid.h Head\bsp_fm17622.h Head\bsp_i2c.h \
+  Head\bsp_watchdog.h Head\app_protocol.h Head\protocol.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stddef.h \
   Head\bsp_fm17622.h

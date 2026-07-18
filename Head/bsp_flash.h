@@ -4,18 +4,6 @@
 #include "gd32e23x.h"
 #include <stdint.h>
 
-/*
- * GD32E230C8T6 FLASH 规格:
- *   - 总容量: 64KB (0x08000000 ~ 0x0800FFFF)
- *   - 页大小: 1KB (1024 字节)
- *   - 共 64 页 (Page 0 ~ Page 63)
- *
- * KEY 存储区域划分:
- *   - 使用最后一页 (Page 63) 存储 KEY 数据
- *   - 起始地址: 0x0800FC00
- *   - 存储内容: 16 字节 KEY + 4 字节 标记(0x4B455900, 即 "KEY\0")
- *   - 总占用: 20 字节 (远小于 1KB 页大小)
- */
 
 /* KEY 存储 FLASH 页地址 (最后一页) */
 #define FLASH_KEY_PAGE_ADDR     ((uint32_t)0x0800FC00U)
@@ -65,4 +53,4 @@ flash_op_status flash_key_write(const uint8_t *pKeyData);
  */
 flash_op_status flash_key_erase(void);
 
-#endif /* _BSP_FLASH_H */
+#endif 

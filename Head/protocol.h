@@ -4,10 +4,10 @@
 #include <stdint.h>
 #include <stddef.h>
 
-/* 定义支持的最大帧长度，可根据实际单片机 RAM 资源调整 */
+
 #define MAX_FRAME_LEN       256U
 
-/* 帧头定义 */
+
 #define FRAME_HEADER_0      0xA5U
 #define FRAME_HEADER_1      0x5AU
 
@@ -54,15 +54,11 @@ typedef struct {
     uint16_t crc16;                      /* 接收到的 CRC16 值 */
 } parsed_frame_t;
 
-/* ================= 接口函数声明 ================= */
 
-/* 计算 CRC16-Modbus (内部使用或开放给外部校验用) */
 uint16_t Calculate_CRC16_Modbus(uint8_t *pData, uint16_t len);
 
-/* 组装标准数据帧 */
 uint16_t Pack_Data_Frame(uint8_t cmd, uint8_t *pData, uint8_t dataLen, uint8_t *outBuffer);
 
-/* 初始化协议解析状态机 */
 void protocol_parser_init(void);
 
 /* 输入一个字节到协议解析状态机 */
@@ -71,7 +67,7 @@ parse_result_enum protocol_parse_byte(uint8_t byte);
 /* 获取最近一次成功解析的帧数据 */
 const parsed_frame_t* protocol_get_parsed_frame(void);
 
-/* 校验接收帧的 CRC16 (对已解析的帧进行校验) */
+/* 校验接收帧的 CRC16 */
 uint8_t protocol_verify_crc(const parsed_frame_t *pFrame);
 
-#endif /* __PROTOCOL_H */
+#endif 

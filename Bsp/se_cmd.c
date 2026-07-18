@@ -6,33 +6,12 @@
 #include "fmse_port.h"
 #include "des.h"
 
-/* SDK 类型别名 (原 se_app.h / stm32f10x.h 提供) */
 typedef uint8_t  u8;
 typedef uint16_t u16;
 
-/*
- * FMSE 安全芯片 APDU 命令层 (移植自复旦微电子 SDK)
- *
- * 架构:
- * +--------------+
- * |  APP Layer   |  ← bsp_crypto.c (本项目业务层)
- * +--------------+
- * | CA Cmd Layer |  ← se_cmd.c (本文件, APDU 命令构造)
- * +--------------+
- * |Protocol Layer|  ← fmse_i2c.c (I2C 帧封装/轮询)
- * +--------------+
- * | Driver Layer |  ← fmse_port.c → bsp_i2c.c (软件 I2C)
- * +--------------+
- *
- * 重要说明:
- *   本层仅负责构造 APDU 命令并通过协议层发送给 FMSE 芯片。
- *   真正的加密运算 (3DES/AES/RSA/SM2 等) 由 FMSE 芯片内部完成,
- *   芯片固件由复旦微电子官方预烧录, MCU 侧仅发送指令和接收结果。
- *   其中 des.c 的 3DES 仅用于 MCU 侧的认证报文构造和 session_key 生成,
- *   数据加密本身完全由 SE 芯片完成。
- */
+//APDU 命令层
 
-/* 全局变量 */
+
 static StApduPack  gfm_SeCmdHand;
 static StSeFunc   *pgfm_SeFunc = NULL;
 static uint32_t auth_cnt = 0;
@@ -892,4 +871,3 @@ uint16_t set_se_otp_status( uint16_t para, uint16_t inlen, uint8_t *inbuf, uint8
     return (SW);
 }
 
-/***********************EOF********************************/

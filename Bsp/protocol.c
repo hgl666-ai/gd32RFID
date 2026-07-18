@@ -1,26 +1,13 @@
 #include "protocol.h"
 #include <string.h>
 
-/*
- * 协议解析状态机模块:
- *   - 采用逐字节状态机解析，适合中断+主循环架构
- *   - 每收到一个字节调用 protocol_parse_byte() 推入状态机
- *   - 状态机自动完成帧头识别、数据接收、CRC校验
- *   - 解析成功后通过 protocol_get_parsed_frame() 获取帧数据
- */
 
-/* 解析状态机上下文 */
+
 static parse_state_enum s_parse_state = PARSE_WAIT_HEADER_0;
 static parsed_frame_t   s_parsed_frame;
 static uint8_t          s_data_index = 0;  /* 当前数据域接收计数 */
 
-/**
- * @brief  计算 CRC16-Modbus 校验值
- * @param  pData: 需要校验的数据指针
- * @param  len:   数据长度
- * @retval 计算得到的 16 位 CRC 校验码
- * @note   多项式 0x8005 (反序为 0xA001), 初始值 0xFFFF, 结果不异或
- */
+
 uint16_t Calculate_CRC16_Modbus(uint8_t *pData, uint16_t len) {
     uint16_t crc = 0xFFFF; /* 初始预置值 */
 
@@ -49,31 +36,22 @@ uint16_t Calculate_CRC16_Modbus(uint8_t *pData, uint16_t len) {
 uint16_t Pack_Data_Frame(uint8_t cmd, uint8_t *pData, uint8_t dataLen, uint8_t *outBuffer) {
     uint16_t offset = 0;
 
-    /* 1. 填充帧头 HEADER (0xA5, 0x5A) */
     outBuffer[offset++] = 0xA5;
     outBuffer[offset++] = 0x5A;
-
-    /* 2. 填充命令码 CMD */
     outBuffer[offset++] = cmd;
-
-    /* 3. 填充数据长度 LENGH */
     outBuffer[offset++] = dataLen;
 
-    /* 4. 填充有效数据 DATA */
     if (pData != NULL && dataLen > 0) {
         for(uint8_t i = 0; i < dataLen; i++) {
             outBuffer[offset++] = pData[i];
         }
     }
 
-    /* 5. 计算当前包（Header+CMD+Length+Data）的 CRC16 */
     uint16_t crc16_val = Calculate_CRC16_Modbus(outBuffer, offset);
 
-    /* 6. 追加 CRC16 校验码 (大端格式：高字节在前，低字节在后) */
     outBuffer[offset++] = (uint8_t)(crc16_val >> 8);   /* 高 8 位 */
     outBuffer[offset++] = (uint8_t)(crc16_val & 0xFF); /* 低 8 位 */
 
-    /* 返回最终的总长度 */
     return offset;
 }
 
@@ -99,14 +77,14 @@ parse_result_enum protocol_parse_byte(uint8_t byte)
     parse_result_enum result = PARSE_RESULT_WAITING;
 
     switch (s_parse_state) {
-    /* ---- 等待帧头第1字节 0xA5 ---- */
     case PARSE_WAIT_HEADER_0:
         if (byte == FRAME_HEADER_0) {
             s_parse_state = PARSE_WAIT_HEADER_1;
+        } else {
+            result = PARSE_RESULT_FRAME_ERR;
         }
         break;
 
-    /* ---- 等待帧头第2字节 0x5A ---- */
     case PARSE_WAIT_HEADER_1:
         if (byte == FRAME_HEADER_1) {
             s_parse_state = PARSE_WAIT_CMD;
@@ -119,17 +97,14 @@ parse_result_enum protocol_parse_byte(uint8_t byte)
         }
         break;
 
-    /* ---- 等待命令码 ---- */
     case PARSE_WAIT_CMD:
         s_parsed_frame.cmd = byte;
         s_parse_state = PARSE_WAIT_LENGTH;
         break;
 
-    /* ---- 等待数据长度 ---- */
     case PARSE_WAIT_LENGTH:
         s_parsed_frame.length = byte;
         if (byte == 0) {
-            /* 无数据域，直接等待 CRC */
             s_parse_state = PARSE_WAIT_CRC_H;
         } else if (byte > (MAX_FRAME_LEN - FRAME_MIN_SIZE)) {
             /* 数据长度异常，超出最大允许值 */
@@ -141,7 +116,6 @@ parse_result_enum protocol_parse_byte(uint8_t byte)
         }
         break;
 
-    /* ---- 等待数据内容 ---- */
     case PARSE_WAIT_DATA:
         s_parsed_frame.data[s_data_index++] = byte;
         if (s_data_index >= s_parsed_frame.length) {
@@ -149,17 +123,14 @@ parse_result_enum protocol_parse_byte(uint8_t byte)
         }
         break;
 
-    /* ---- 等待 CRC 高字节 ---- */
     case PARSE_WAIT_CRC_H:
         s_parsed_frame.crc16 = (uint16_t)byte << 8;
         s_parse_state = PARSE_WAIT_CRC_L;
         break;
 
-    /* ---- 等待 CRC 低字节 ---- */
     case PARSE_WAIT_CRC_L:
         s_parsed_frame.crc16 |= (uint16_t)byte;
 
-        /* 一帧接收完成，校验 CRC */
         if (protocol_verify_crc(&s_parsed_frame)) {
             result = PARSE_RESULT_OK;
         } else {
