@@ -28,4 +28,19 @@
     #define DBG_PRINTF(fmt, ...)   ((void)0)
 #endif
 
+/*
+ * 加密模式开关
+ *
+ *   CRYPTO_PASSTHROUGH = 1  → 调试模式 (默认): 跳过 SE 加密, 明文直出
+ *   CRYPTO_PASSTHROUGH = 0  → 生产模式: 必须通过 SE 认证并加密
+ *
+ * 切换步骤:
+ *   1. 修改下面这个宏值
+ *   2. 重新编译烧录
+ *
+ * 调试时建议保持 CRYPTO_PASSTHROUGH=1, 避免因 SE 离线导致整条链路不通;
+ * 正式交付前改为 0 并测试 SE 加密链路是否正常。
+ */
+#define CRYPTO_PASSTHROUGH   0
+
 #endif /* __DEBUG_CONFIG_H */

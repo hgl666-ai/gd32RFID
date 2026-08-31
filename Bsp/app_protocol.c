@@ -59,8 +59,17 @@ void app_protocol_init(void)
 
     bsp_watchdog_feed();
     /* 加密芯片初始化 (失败则降级透传, 不阻塞, 静默不打印) */
-    crypto_chip_init();
+    uint8_t se_online = crypto_chip_init();
     bsp_watchdog_feed();
+
+    /* 启动摘要: 一行式, 不刷屏
+     * 示例:
+     *   [SYS] Ready | Crypto=PASSTHROUGH | SE=OFFLINE
+     *   [SYS] Ready | Crypto=ENCRYPT     | SE=ONLINE
+     */
+    DBG_PRINTF("[SYS] Ready | Crypto=%s | SE=%s\r\n",
+               CRYPTO_PASSTHROUGH ? "PASSTHROUGH" : "ENCRYPT",
+               se_online ? "ONLINE" : "OFFLINE");
 }
 
 
@@ -230,6 +239,11 @@ void app_rfid_poll_task(void)
     uint8_t enc_buf[CRYPTO_CIPHER_MAX_LEN];
     uint8_t enc_len = 0;
     if (!crypto_chip_encrypt(tag_raw, TAG_DATA_LEN, enc_buf, &enc_len)) {
+        /* 加密失败: 打印一行告警 (不刷屏, 仅在刷卡瞬间触发一次)
+         * 原因由 crypto_chip_encrypt 内部打印 (如 SE 未认证/写失败/读失败)
+         */
+        DBG_PRINTF("[RFID] encrypt failed, upload skipped (SE=%s)\r\n",
+                   crypto_chip_ping() ? "AUTH" : "NOAUTH");
         return;
     }
 
