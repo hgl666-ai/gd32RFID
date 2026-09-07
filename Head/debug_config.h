@@ -2,45 +2,48 @@
 #define __DEBUG_CONFIG_H
 
 /*
- * 调试输出总开关
+ * ================================================================
+ *  全局模式配置 — 本文件是唯一的配置源 (single source of truth)
  *
- * 使用方法:
- *   - 调试版本(给甲方排查问题): DEBUG_ENABLE = 1  (打印协议命令收发+CRC对比)
- *   - 正式发布版本:             DEBUG_ENABLE = 0  (彻底关闭, 串口只跑协议数据)
- *
- * 调试版本输出说明 (DEBUG_ENABLE=1):
- *   [SYS]  系统就绪
- *   [SE]   加密芯片认证状态
- *   [RX] OK CMD:XX LEN:XX DATA:XX.. CRC:XXXX      收到正确帧
- *   [RX] CRC ERR! ...RECV_CRC:XXXX CALC_CRC:XXXX   CRC错误(对比两个CRC值)
- *   [RX] LEN ERR                                   长度异常
- *   [CMD]  命令分发(QueryUID/WriteKey/Unknown)
- *   [KEY]  KEY写入结果
- *   [TX]   发送的应答帧完整HEX内容
- *   RFID轮询完全静默, 不刷屏
+ *  调试版 / 生产版 只需修改下面两个宏即可全局生效,
+ *  无需改动任何其他文件 (bsp_crypto.h 不再自带默认值)。
+ * ================================================================
  */
-#define DEBUG_ENABLE    0
+
+/*----------------------------------------------------------------
+ * 宏1: DEBUG_ENABLE — 串口调试输出总开关
+ *
+ *   1 = 调试/取证版:
+ *       - 上电打印: [SYS] Ready | Crypto=... | SE=ONLINE/OFFLINE
+ *       - SE 认证细节: ATR 长度 / 认证 SW 码
+ *       - 刷卡流程各失败点一次性诊断信息 (限频, 不刷屏)
+ *       注意: 调试信息与协议帧共用 USART0, 仅开发取证用
+ *
+ *   0 = 生产版:
+ *       - 串口只传输纯二进制协议帧, 零调试输出
+ *       - DBG_PRINTF 编译为空, 0 开销 0 污染
+ *----------------------------------------------------------------*/
+#define DEBUG_ENABLE    1
+
+/*----------------------------------------------------------------
+ * 宏2: CRYPTO_PASSTHROUGH — 加密模式开关
+ *
+ *   1 = 透传调试:
+ *       - 跳过 SE 加密, 40 字节明文直接上传 (不依赖加密芯片)
+ *       - 用于无 SE / SE 未烧录时的链路自测
+ *
+ *   0 = 生产加密:
+ *       - 必须 SE 双向认证成功, 明文经 SE 加密后上传
+ *       - 认证失败时拒绝上传 (并周期性重试认证)
+ *----------------------------------------------------------------*/
+#define CRYPTO_PASSTHROUGH   0
 
 #if DEBUG_ENABLE
     #include <stdio.h>
-    #define DBG_PRINTF(fmt, ...)   printf(fmt, ##__VA_ARGS__)
+    /* 所有调用点均至少携带格式串, 直接用 __VA_ARGS__ 转发, 无需 ## 粘接 */
+    #define DBG_PRINTF(...)        printf(__VA_ARGS__)
 #else
-    #define DBG_PRINTF(fmt, ...)   ((void)0)
+    #define DBG_PRINTF(...)        ((void)0)
 #endif
-
-/*
- * 加密模式开关
- *
- *   CRYPTO_PASSTHROUGH = 1  → 调试模式 (默认): 跳过 SE 加密, 明文直出
- *   CRYPTO_PASSTHROUGH = 0  → 生产模式: 必须通过 SE 认证并加密
- *
- * 切换步骤:
- *   1. 修改下面这个宏值
- *   2. 重新编译烧录
- *
- * 调试时建议保持 CRYPTO_PASSTHROUGH=1, 避免因 SE 离线导致整条链路不通;
- * 正式交付前改为 0 并测试 SE 加密链路是否正常。
- */
-#define CRYPTO_PASSTHROUGH   0
 
 #endif /* __DEBUG_CONFIG_H */

@@ -5,24 +5,19 @@
 
 
 /*
- * 加密模式开关 (在 debug_config.h 或此处定义)
+ * 加密模式开关 CRYPTO_PASSTHROUGH 统一定义在 Head/debug_config.h 中
+ * (本文件不再自带默认值, 避免宏双重定义冲突)。
  *
- *   CRYPTO_PASSTHROUGH = 1  → 调试模式: 强制透传, 不走 SE 加密, 明文直出
- *   CRYPTO_PASSTHROUGH = 0  → 生产模式: 必须通过 SE 认证并加密, 失败则返回错误
+ *   CRYPTO_PASSTHROUGH = 1  → 透传调试: 跳过 SE 加密, 明文直出
+ *   CRYPTO_PASSTHROUGH = 0  → 生产加密: 必须通过 SE 认证并加密, 失败则返回错误
  *
- * 切换方式:
- *   方式1: 在 debug_config.h 中 #define CRYPTO_PASSTHROUGH 1  (推荐, 与 DEBUG_ENABLE 统一管理)
- *   方式2: 在本文件中直接修改 #define CRYPTO_PASSTHROUGH 1
- *   修改后重新编译烧录即可
+ * 使用本头文件前请先包含 debug_config.h 获取宏定义。
  *
  * 前提假设 (待 SE 侧最终确认):
  *   1. SE 收到 write_se_data 写入的明文后会自动执行加密
  *   2. 加密后密文长度 == 明文长度 (无 padding / 无 IV 附加)
  *   若上述假设不成立, 需要改用 DataEnDecrypt 指令并调整长度处理
  */
-#ifndef CRYPTO_PASSTHROUGH
-#define CRYPTO_PASSTHROUGH   1   /* 默认调试模式, 便于出厂自测; 正式交付改为 0 */
-#endif
 
 /* 加密结果最大长度 (预留, 根据实际加密芯片调整) */
 #define CRYPTO_CIPHER_MAX_LEN  64U

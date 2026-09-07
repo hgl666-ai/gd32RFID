@@ -1,0 +1,40 @@
+{
+  "version": 4,
+  "sessionHash": "70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6",
+  "updatedAt": 1788752245738,
+  "draft": {
+    "draftId": "4YQDfAVuvTEX1icpXK1lQSxd",
+    "createdAt": 1788752245696,
+    "roots": [
+      {
+        "rootId": "nJWD_VC1A_ZmkooCIl5pWFda",
+        "clientKey": "02c97bb9-cad5-4ed4-bbb6-74dbb6af4c75",
+        "name": "GD32E230系列datasheet.PDF",
+        "kind": "file",
+        "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260907T033725696Z-nJWD_VC1A_ZmkooCIl5pWFda-GD32E230系列datasheet.PDF",
+        "fileCount": 1,
+        "totalSize": 2556377,
+        "createdAt": 1788752245692,
+        "aliases": [],
+        "entries": [
+          {
+            "entryId": "0bU--XJ6dza6wSMUWtGhWnv0",
+            "relativePath": "",
+            "safeRelativePath": "",
+            "name": "GD32E230系列datasheet.PDF",
+            "size": 2556377,
+            "mime": "application/pdf",
+            "lastModified": 1788746911119,
+            "received": 2556377,
+            "status": "ready",
+            "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260907T033725696Z-nJWD_VC1A_ZmkooCIl5pWFda-GD32E230系列datasheet.PDF",
+            "fileDev": "2774076527",
+            "fileIno": "2251799813861666"
+          }
+        ]
+      }
+    ]
+  },
+  "pendingClaims": [],
+  "published": []
+}

@@ -1,4 +1,6 @@
-./objects/app_protocol.o: Bsp\app_protocol.c Head\app_protocol.h \
+./objects/app_protocol.o: Bsp\app_protocol.c Head\debug_config.h \
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  Head\app_protocol.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdint.h \
   Head\protocol.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -16,8 +18,6 @@
   Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h Head\gd32e23x_rtc.h \
   Head\gd32e23x_spi.h Head\gd32e23x_timer.h Head\gd32e23x_usart.h \
   Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
-  Head\bsp_usart.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h Head\bsp_uid.h \
-  Head\bsp_flash.h Head\bsp_fm17622.h Head\bsp_systick.h \
-  Head\bsp_crypto.h Head\bsp_watchdog.h Head\debug_config.h \
+  Head\bsp_usart.h Head\bsp_uid.h Head\bsp_flash.h Head\bsp_fm17622.h \
+  Head\bsp_systick.h Head\bsp_crypto.h Head\bsp_watchdog.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h

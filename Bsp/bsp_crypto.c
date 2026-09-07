@@ -1,10 +1,10 @@
+#include "debug_config.h"
 #include "bsp_crypto.h"
 #include "bsp_usart.h"
 #include "se_cmd.h"
 #include "fmse_i2c.h"
 #include "fmse_port.h"
 #include <string.h>
-#include "debug_config.h"
 
 /*
  * 加密模块说明
@@ -29,7 +29,7 @@ static uint8_t s_se_authenticated = 0;
 
 uint8_t crypto_chip_init(void)
 {
-    uint8_t atr_buf[32];
+    uint8_t atr_buf[64];   /* 防御加固: 与 fm_i2c_recv_frame 的 64B 上限一致 */
     uint16_t atr_len = 0;
     uint8_t rbuf[32];
     uint16_t rlen = 0;
@@ -51,6 +51,7 @@ uint8_t crypto_chip_init(void)
         DBG_PRINTF("[SE] OFFLINE (ATR timeout, check wiring/address)\r\n");
         return 0;
     }
+    DBG_PRINTF("[SE] ATR OK len=%u\r\n", atr_len);
 
     /* 双向认证 */
     uint16_t sw = mcu_l013_mutual_auth(rbuf, &rlen);
@@ -146,7 +147,16 @@ uint8_t crypto_chip_encrypt(const uint8_t *pPlain,  uint8_t  plain_len,
     }
 
     *pCipher_len = (uint8_t)cipher_len16;
-    /* 成功不打印, 避免刷卡时刷屏 */
+    /*
+     * 取证用: 每次新卡加密成功打印一行 (每张卡只打一次, 不刷屏)。
+     * 同时打印明文/密文前8字节对比: 两者相同=SE未做变换(透传存取),
+     * 两者不同=SE确实对数据做了加密变换。
+     */
+    DBG_PRINTF("[SE] OK %uB->%uB P:", plain_len, cipher_len16);
+    for (uint8_t i = 0; i < 8; i++) DBG_PRINTF(" %02X", pPlain[i]);
+    DBG_PRINTF(" C:");
+    for (uint8_t i = 0; i < 8; i++) DBG_PRINTF(" %02X", pCipher[i]);
+    DBG_PRINTF("\r\n");
     return 1;
 #endif
 }

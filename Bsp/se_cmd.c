@@ -445,7 +445,12 @@ uint16_t se_auth1( uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen
     {
         result = pgfm_SeFunc->fm_apdu_transceive( (uint8_t *) &gfm_SeCmdHand, slen, rbuf, rlen, interval, timeout );
         if ( !result )
-            SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+        {
+            if ( *rlen >= 2 )
+                SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+            else
+                SW = IF_ERR_LENGTH;   /* 防御加固: 响应不含 SW, 防下溢 */
+        }
         else
             SW = fm_chk_result( result );
     }
@@ -474,7 +479,12 @@ uint16_t se_auth2( uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen
     {
         result = pgfm_SeFunc->fm_apdu_transceive( (uint8_t *) &gfm_SeCmdHand, slen, rbuf, rlen, interval, timeout );
         if ( !result )
-            SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+        {
+            if ( *rlen >= 2 )
+                SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+            else
+                SW = IF_ERR_LENGTH;   /* 防御加固: 响应不含 SW, 防下溢 */
+        }
         else
             SW = fm_chk_result( result );
     }
@@ -489,7 +499,7 @@ uint16_t mcu_l013_mutual_auth( uint8_t *rbuf, uint16_t *rlen )
     uint16_t sw;
     uint8_t mcu_rnd[16];
     uint8_t i;
-    uint8_t recv_buf[32];
+    uint8_t recv_buf[64];   /* 防御加固: 与 fm_i2c_recv_frame 的 64B 上限一致 */
     uint16_t recv_len;
     uint8_t tmpkey[16];
 
@@ -654,7 +664,12 @@ uint16_t write_se_data( uint16_t para, uint16_t inlen, uint8_t *inbuf, uint8_t *
     {
         result = pgfm_SeFunc->fm_apdu_transceive( (uint8_t *)&gfm_SeCmdHand, slen, rbuf, rlen, interval, timeout );
         if ( !result )
-            SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+        {
+            if ( *rlen >= 2 )
+                SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+            else
+                SW = IF_ERR_LENGTH;   /* 防御加固: 响应不含 SW, 防下溢 */
+        }
         else
             SW = fm_chk_result( result );
     }
@@ -703,7 +718,12 @@ uint16_t get_se_data( uint16_t para, uint16_t inlen, uint8_t *inbuf, uint8_t *rb
     {
         result = pgfm_SeFunc->fm_apdu_transceive( (uint8_t *) &gfm_SeCmdHand, slen, apdu_rbuf, &apdu_rlen, interval, timeout );
         if ( !result )
-            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+        {
+            if ( apdu_rlen >= 2 )
+                SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+            else
+                SW = IF_ERR_LENGTH;   /* 防御加固: 响应不含 SW, 防下溢 */
+        }
         else
             SW = fm_chk_result( result );
     }
@@ -712,6 +732,10 @@ uint16_t get_se_data( uint16_t para, uint16_t inlen, uint8_t *inbuf, uint8_t *rb
         return SW;
 
     if(apdu_rlen-2 > sizeof(apdu_plain))
+        return IF_ERR_LENGTH;
+
+    /* 防御加固: SE 响应数据域必须为 3DES 分组对齐 (8 的倍数) */
+    if((apdu_rlen - 2) % 8)
         return IF_ERR_LENGTH;
 
     des3_ecb_decrypt(apdu_plain, apdu_rbuf, apdu_rlen-2, session_key, 16);

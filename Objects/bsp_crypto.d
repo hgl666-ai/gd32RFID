@@ -1,4 +1,6 @@
-./objects/bsp_crypto.o: Bsp\bsp_crypto.c Head\bsp_crypto.h \
+./objects/bsp_crypto.o: Bsp\bsp_crypto.c Head\debug_config.h \
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  Head\bsp_crypto.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdint.h \
   Head\bsp_usart.h Head\gd32e23x.h \
   D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h \
@@ -14,7 +16,5 @@
   Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h Head\gd32e23x_rtc.h \
   Head\gd32e23x_spi.h Head\gd32e23x_timer.h Head\gd32e23x_usart.h \
   Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h Head\se_cmd.h \
-  Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h \
-  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h \
-  Head\debug_config.h
+  Head\se_cmd.h Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h \
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h

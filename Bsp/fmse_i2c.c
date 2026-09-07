@@ -10,6 +10,14 @@
 #define FRAME_DELAY_I2C     5   /* ms */
 #endif
 
+/*
+ * 防御加固: 接收缓冲区容量上限。
+ * 本项目的调用方缓冲最大为 64 字节 (apdu_rbuf[64]/apdu_plain[64]/atr_buf[64]),
+ * 而 SDK 帧协议的 I2C_MAX_LEN=1024 是为大缓冲(300B)宿主设计的。
+ * 若 SE 返回超长帧, 直接判长度错误并释放总线, 防止栈溢出。
+ */
+#define FMSE_RECV_BUF_MAX   64U
+
 static uint8_t gfm_I2CAddr;
 static StSeI2CDriver *pgfm_I2CDrv = NULL;
 
@@ -170,6 +178,14 @@ uint8_t fm_i2c_recv_frame(uint8_t *rbuf, uint16_t *rlen)
 
     /* 计算数据域长度 (总长度减去 nad + sta + bcc) */
     *rlen = recvLen - 3;
+
+    /* 防御加固: 数据域长度超过调用方缓冲区上限时拒绝, 防止栈溢出 */
+    if (*rlen > FMSE_RECV_BUF_MAX)
+    {
+        *rlen = 0;
+        pgfm_I2CDrv->fm_i2c_stop();
+        return (13);
+    }
 
     /* 接收数据域 */
     for (i = 0; i < *rlen; i++)

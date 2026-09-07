@@ -1,3 +1,4 @@
+#include "debug_config.h"
 #include "app_protocol.h"
 #include "bsp_usart.h"
 #include "bsp_uid.h"
@@ -6,7 +7,6 @@
 #include "bsp_systick.h"
 #include "bsp_crypto.h"
 #include "bsp_watchdog.h"
-#include "debug_config.h"
 #include <string.h>
 
 /*
@@ -47,6 +47,12 @@ uint8_t g_fm17622_online = 0;
 /* MIFARE 密钥长度 */
 #define MIFARE_KEY_LEN  6U
 
+/* 取证用: 每个"有卡周期"内早期阶段(Anticoll/Select)失败最多打印次数, 防止刷屏 */
+#define DBG_FAIL_PRINT_MAX  3U
+
+/* 取证用: 连续非法字节(UART噪声)最多打印次数, 收到合法帧后复位, 防止刷屏阻塞收发 */
+#define DBG_INVALID_PRINT_MAX  3U
+
 /**
  * @brief  应用层协议处理初始化
  */
@@ -60,16 +66,18 @@ void app_protocol_init(void)
     bsp_watchdog_feed();
     /* 加密芯片初始化 (失败则降级透传, 不阻塞, 静默不打印) */
     uint8_t se_online = crypto_chip_init();
+    (void)se_online;   /* DEBUG_ENABLE=0 时避免 unused 警告 */
     bsp_watchdog_feed();
 
     /* 启动摘要: 一行式, 不刷屏
      * 示例:
-     *   [SYS] Ready | Crypto=PASSTHROUGH | SE=OFFLINE
-     *   [SYS] Ready | Crypto=ENCRYPT     | SE=ONLINE
+     *   [SYS] Ready | Crypto=PASSTHROUGH | SE=OFFLINE | KEY=EMPTY
+     *   [SYS] Ready | Crypto=ENCRYPT     | SE=ONLINE  | KEY=STORED
      */
-    DBG_PRINTF("[SYS] Ready | Crypto=%s | SE=%s\r\n",
+    DBG_PRINTF("[SYS] Ready | Crypto=%s | SE=%s | KEY=%s\r\n",
                CRYPTO_PASSTHROUGH ? "PASSTHROUGH" : "ENCRYPT",
-               se_online ? "ONLINE" : "OFFLINE");
+               se_online ? "ONLINE" : "OFFLINE",
+               flash_key_is_stored() ? "STORED" : "EMPTY");
 }
 
 
@@ -165,11 +173,13 @@ void app_process_frame(const parsed_frame_t *pFrame)
 /**
  * @brief  RFID 标签轮询任务
  * @note   检测流程: RequestA -> Anticoll -> Select -> Auth -> ReadBlocks -> Encrypt -> Upload
- *         调试版本: 完全静默, 不打印任何信息, 避免刷屏干扰协议命令调试
+ *         取证版: 各失败点打印一次性/限频诊断信息; 生产版(DEBUG_ENABLE=0)完全静默
  */
 void app_rfid_poll_task(void)
 {
     static uint32_t last_poll = 0;
+    static uint32_t last_reauth = 0;
+    static uint8_t  s_dbg_fail_count = 0;   /* 本"有卡周期"内 Anticoll/Select 失败打印计数 */
     uint16_t card_type = 0;
     uint8_t  card_uid[CARD_UID_MAX_LEN];
     uint8_t  uid_len = 0;
@@ -178,26 +188,52 @@ void app_rfid_poll_task(void)
     if ((g_sys_tick_ms - last_poll) < RFID_POLL_INTERVAL_MS) return;
     last_poll = g_sys_tick_ms;
 
-    /* FM17622离线时跳过RFID轮询, 避免I2C超时阻塞串口命令响应 */
-    if (!g_fm17622_online) return;
+    /*
+     * 生产加密模式: SE 未认证时周期性重试认证 (每 5s 一次)
+     * 原实现只在开机认证一次, 失败后永远拒绝上传;
+     * SE 上电慢/瞬时错误时系统可自恢复。内部轮询有喂狗。
+     */
+#if !CRYPTO_PASSTHROUGH
+    if (!crypto_chip_ping() && (g_sys_tick_ms - last_reauth) >= 5000U) {
+        last_reauth = g_sys_tick_ms;
+        DBG_PRINTF("[SE] retry auth...\r\n");
+        crypto_chip_init();
+    }
+#endif
+
+    /* FM17622离线时跳过RFID轮询 (仅打印一次, 避免刷屏) */
+    if (!g_fm17622_online) {
+        static uint8_t s_dbg_fm_offline_printed = 0;
+        if (!s_dbg_fm_offline_printed) {
+            s_dbg_fm_offline_printed = 1;
+            DBG_PRINTF("[RFID] FM17622 OFFLINE, poll skipped\r\n");
+        }
+        return;
+    }
 
     /*  发送 REQA 寻卡指令 */
     if (!FM17622_RequestA(&card_type)) {
         if (s_card_present) {
             s_card_present = 0;
             s_last_card_uid_len = 0;
+            DBG_PRINTF("[RFID] card removed\r\n");
         }
+        s_dbg_fail_count = 0;   /* 无卡: 重置失败打印计数 */
         return;
     }
     bsp_watchdog_feed();
 
     /*  防冲突，获取 UID */
     if (!FM17622_Anticoll(card_uid, &uid_len)) {
+        if (s_dbg_fail_count++ < DBG_FAIL_PRINT_MAX)
+            DBG_PRINTF("[RFID] Anticoll FAIL\r\n");
         return;
     }
 
     /*  选卡 */
     if (!FM17622_Select(card_uid, uid_len)) {
+        if (s_dbg_fail_count++ < DBG_FAIL_PRINT_MAX)
+            DBG_PRINTF("[RFID] Select FAIL\r\n");
         return;
     }
 
@@ -213,20 +249,26 @@ void app_rfid_poll_task(void)
         if (same) return;
     }
 
-    /*  更新卡片状态 */
+    /*  更新卡片状态 (新卡: 打印一次 UID, 重置失败计数) */
     s_card_present = 1;
     s_last_card_uid_len = uid_len;
     memcpy(s_last_card_uid, card_uid, uid_len);
+    s_dbg_fail_count = 0;
+    DBG_PRINTF("[RFID] new card UID(%u):", uid_len);
+    for (uint8_t i = 0; i < uid_len; i++) DBG_PRINTF(" %02X", card_uid[i]);
+    DBG_PRINTF("\r\n");
 
     /*  读取 FLASH 中存储的 KEY */
     uint8_t key_buf[FLASH_KEY_LEN];
     if (!flash_key_is_stored() || flash_key_read(key_buf) != FLASH_OP_OK) {
+        DBG_PRINTF("[RFID] KEY not stored, skip (need protocol-02 write)\r\n");
         return;
     }
 
     /*  认证 + 读取标签数据 */
     tag_data_t tag_data;
     if (!FM17622_ReadTagData(&tag_data, key_buf, card_uid)) {
+        DBG_PRINTF("[RFID] ReadTagData FAIL (MIFARE auth/read error, KEY mismatch?)\r\n");
         return;
     }
     bsp_watchdog_feed();
@@ -258,12 +300,17 @@ void app_rfid_poll_task(void)
  */
 void app_uart_rx_task(void)
 {
+    /* 限频计数: 连续非法字节最多打印 DBG_INVALID_PRINT_MAX 条, 收到合法帧后复位。
+     * 防止RX线上有噪声/垃圾数据时逐字节打印刷屏, 阻塞命令收发 (历史教训)。 */
+    static uint8_t s_dbg_invalid_prints = 0;
+
     while (uart_rx_available() > 0) {
         uint8_t byte = uart_rx_read_byte();
 
         parse_result_enum result = protocol_parse_byte(byte);
 
         if (result == PARSE_RESULT_OK) {
+            s_dbg_invalid_prints = 0;   /* 合法帧到达, 复位限频计数 */
             const parsed_frame_t *pFrame = protocol_get_parsed_frame();
 
             /* 打印收到的完整帧: CMD + LEN + DATA + CRC */
@@ -279,6 +326,7 @@ void app_uart_rx_task(void)
             app_process_frame(pFrame);
 
         } else if (result == PARSE_RESULT_CRC_ERR) {
+#if DEBUG_ENABLE
             /*
              * CRC校验失败: 打印收到的CRC和正确CRC的对比
              * 这是甲方最可能出错的地方 (CRC算法或字节序不对)
@@ -305,11 +353,13 @@ void app_uart_rx_task(void)
                 DBG_PRINTF(" %02X", pFrame->data[i]);
             }
             DBG_PRINTF(" %02X %02X\r\n", (uint8_t)(calc_crc >> 8), (uint8_t)(calc_crc & 0xFF));
-
+#endif /* DEBUG_ENABLE */
         } else if (result == PARSE_RESULT_LEN_ERR) {
             DBG_PRINTF("[RX] LEN ERR (LENGTH > 250, frame rejected)\r\n");
         } else if (result == PARSE_RESULT_FRAME_ERR) {
-            DBG_PRINTF("[RX] Invalid byte 0x%02X (ignored, waiting for A5 5A)\r\n", byte);
+            /* 限频: 每收到一帧合法帧之前最多打印 3 条非法字节提示, 防刷屏 */
+            if (s_dbg_invalid_prints++ < DBG_INVALID_PRINT_MAX)
+                DBG_PRINTF("[RX] Invalid byte 0x%02X (ignored, waiting for A5 5A)\r\n", byte);
         }
     }
 }
