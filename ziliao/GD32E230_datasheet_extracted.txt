@@ -1,0 +1,12130 @@
+GigaDevice Semiconductor Inc.
+GD32E230xx
+ARM® Cortex®-M23 32-bit MCU
+
+Datasheet
+
+GD32E230xx Datasheet
+
+Table of Contents
+Table of Contents ........................................................................................................... 1
+List of Figures ................................................................................................................ 4
+List of Tables .................................................................................................................. 5
+1
+
+General description ................................................................................................. 7
+
+2
+
+Device overview ....................................................................................................... 8
+
+3
+
+2.1
+
+Device information ...................................................................................................... 8
+
+2.2
+
+Block diagram ............................................................................................................ 10
+
+2.3
+
+Pinouts and pin assignment ..................................................................................... 11
+
+2.4
+
+Memory map .............................................................................................................. 14
+
+2.5
+
+Clock tree ................................................................................................................... 16
+
+2.6
+
+Pin definitions ............................................................................................................ 17
+
+2.6.1
+
+GD32E230Cx LQFP48 pin definitions .................................................................................. 17
+
+2.6.2
+
+GD32E230Kx LQFP32 pin definitions .................................................................................. 20
+
+2.6.3
+
+GD32E230Kx QFN32 pin definitions .................................................................................... 22
+
+2.6.4
+
+GD32E230Gx QFN28 pin definitions .................................................................................... 24
+
+2.6.5
+
+GD32E230Fx TSSOP20 pin definitions ................................................................................ 27
+
+2.6.6
+
+GD32E230Fx LGA20 pin definitions ..................................................................................... 28
+
+2.6.7
+
+GD32E230xx pin alternate functions .................................................................................... 31
+
+Functional description .......................................................................................... 34
+3.1
+
+ARM® Cortex®-M23 core ............................................................................................ 34
+
+3.2
+
+Embedded memory ................................................................................................... 34
+
+3.3
+
+Clock, reset and supply management ...................................................................... 34
+
+3.4
+
+Boot modes ................................................................................................................ 35
+
+3.5
+
+Power saving modes ................................................................................................. 35
+
+3.6
+
+Analog to digital converter (ADC) ............................................................................ 36
+
+3.7
+
+DMA ............................................................................................................................ 37
+
+3.8
+
+General-purpose inputs/outputs (GPIOs) ................................................................ 37
+
+3.9
+
+Timers and PWM generation..................................................................................... 37
+
+3.10
+
+Real time clock (RTC) ............................................................................................ 38
+
+3.11
+
+Inter-integrated circuit (I2C) .................................................................................. 39
+
+3.12
+
+Serial peripheral interface (SPI) ............................................................................ 39
+1
+
+GD32E230xx Datasheet
+
+4
+
+5
+
+3.13
+
+Universal synchronous asynchronous receiver transmitter (USART) ............... 40
+
+3.14
+
+Inter-IC sound (I2S) ................................................................................................ 40
+
+3.15
+
+Comparators (CMP)................................................................................................ 40
+
+3.16
+
+Debug mode ........................................................................................................... 40
+
+3.17
+
+Package and operation temperature ..................................................................... 41
+
+Electrical characteristics ....................................................................................... 42
+4.1
+
+Absolute maximum ratings ....................................................................................... 42
+
+4.2
+
+Operating conditions characteristics ....................................................................... 42
+
+4.3
+
+Power consumption .................................................................................................. 44
+
+4.4
+
+EMC characteristics .................................................................................................. 49
+
+4.5
+
+Power supply supervisor characteristics ................................................................ 51
+
+4.6
+
+Electrical sensitivity .................................................................................................. 51
+
+4.7
+
+External clock characteristics .................................................................................. 52
+
+4.8
+
+Internal clock characteristics ................................................................................... 54
+
+4.9
+
+PLL characteristics.................................................................................................... 56
+
+4.10
+
+Memory characteristics ......................................................................................... 56
+
+4.11
+
+NRST pin characteristics ....................................................................................... 56
+
+4.12
+
+GPIO characteristics .............................................................................................. 57
+
+4.13
+
+ADC characteristics ............................................................................................... 58
+
+4.14
+
+Temperature sensor characteristics ..................................................................... 60
+
+4.15
+
+Comparators characteristics ................................................................................. 60
+
+4.16
+
+TIMER characteristics ............................................................................................ 61
+
+4.17
+
+I2C characteristics ................................................................................................. 61
+
+4.18
+
+SPI characteristics ................................................................................................. 62
+
+4.19
+
+I2S characteristics.................................................................................................. 63
+
+4.20
+
+USART characteristics ........................................................................................... 63
+
+4.21
+
+WDGT characteristics ............................................................................................ 64
+
+4.22
+
+Parameter conditions............................................................................................. 64
+
+Package information.............................................................................................. 65
+5.1
+
+LQFP48 package outline dimensions....................................................................... 65
+
+5.2
+
+LQFP32 package outline dimensions....................................................................... 67
+
+5.3
+
+QFN32 package outline dimensions ........................................................................ 69
+2
+
+GD32E230xx Datasheet
+5.4
+
+QFN28 package outline dimensions ........................................................................ 70
+
+5.5
+
+TSSOP20 package outline dimensions .................................................................... 71
+
+5.6
+
+LGA20 package outline dimensions ........................................................................ 72
+
+5.7
+
+Thermal characteristics ............................................................................................ 73
+
+6
+
+Ordering information ............................................................................................. 75
+
+7
+
+Revision history ..................................................................................................... 76
+
+3
+
+GD32E230xx Datasheet
+
+List of Figures
+Figure 2-1. GD32E230xx block diagram .................................................................................................. 10
+Figure 2-2. GD32E230Cx LQFP48 pinouts ............................................................................................... 11
+Figure 2-3. GD32E230Kx LQFP32 pinouts ............................................................................................... 11
+Figure 2-4. GD32E230Kx QFN32 pinouts ................................................................................................ 12
+Figure 2-5. GD32E230Gx QFN28 pinouts ................................................................................................ 12
+Figure 2-6. GD32E230Fx TSSOP20 pinouts ............................................................................................ 12
+Figure 2-7. GD32E230Fx LGA20 pinouts ................................................................................................. 13
+Figure 2-8. GD32E230xx clock tree .......................................................................................................... 16
+Figure 4-1. Recommended power supply decoupling capacitors(1) (2) ................................................. 42
+Figure 4-2. Typical supply current consumption in Run mode ............................................................ 48
+Figure 4-3. Typical supply current consumption in Sleep mode .......................................................... 48
+Figure 4-4. Recommended external NRST pin circuit............................................................................ 57
+Figure 4-5. I/O port AC characteristics definition ................................................................................... 58
+Figure 5-1. LQFP48 package outline ....................................................................................................... 65
+Figure 5-2. LQFP32 package outline ....................................................................................................... 67
+Figure 5-3. QFN32 package outline ......................................................................................................... 69
+Figure 5-4. QFN28 package outline ......................................................................................................... 70
+Figure 5-5. TSSOP20 package outline ..................................................................................................... 71
+Figure 5-6. LGA20 package outline ......................................................................................................... 72
+
+4
+
+GD32E230xx Datasheet
+
+List of Tables
+Table 2-1. GD32E230xx devices features and peripheral list .................................................................. 8
+Table 2-2. GD32E230xx devices features and peripheral list (continued) ............................................. 9
+Table 2-3. GD32E230xx memory map ...................................................................................................... 14
+Table 2-4. GD32E230Cx LQFP48 pin definitions .................................................................................... 17
+Table 2-5. GD32E230Kx LQFP32 pin definitions .................................................................................... 20
+Table 2-6. GD32E230Kx QFN32 pin definitions ...................................................................................... 22
+Table 2-7. GD32E230Gx QFN28 pin definitions ...................................................................................... 24
+Table 2-8. GD32E230Fx TSSOP20 pin definitions .................................................................................. 27
+Table 2-9. GD32E230Fx LGA20 pin definitions ....................................................................................... 28
+Table 2-10. Port A alternate functions summary .................................................................................... 31
+Table 2-11. Port B alternate functions summary .................................................................................... 32
+Table 2-12. Port F alternate functions summary .................................................................................... 32
+Table 4-1. Absolute maximum ratings (1)(4) .............................................................................................. 42
+Table 4-2. DC operating conditions ......................................................................................................... 42
+Table 4-3. Clock frequency(1) .................................................................................................................... 43
+Table 4-4. Operating conditions at Power up/ Power down(1) ............................................................... 43
+Table 4-5. Start-up timings of Operating conditions (1) ........................................................................... 43
+Table 4-6. Power saving mode wakeup timings characteristics(1) (2) .................................................... 43
+Table 4-7. Power consumption characteristics (2)(3)(4) ............................................................................. 44
+Table 4-8. Peripheral current consumption characteristics(1) ............................................................... 49
+Table 4-9. EMS characteristics(1) .............................................................................................................. 50
+Table 4-10. Power supply supervisor characteristics (1) ........................................................................ 51
+Table 4-11. ESD characteristics (1) ........................................................................................................... 52
+Table 4-12. Static latch-up characteristics(1) ........................................................................................... 52
+Table 4-13. High speed external clock (HXTAL) generated from a crystal/ceramic characteristics . 52
+Table 4-14. High speed external user clock characteristics (HXTAL in bypass mode) ...................... 53
+Table 4-15. Low speed external clock (LXTAL) generated from a crystal/ceramic characteristics .. 53
+Table 4-16. Low speed external user clock characteristics (LXTAL in bypass mode) ....................... 54
+Table 4-17. High speed internal clock (IRC8M) characteristics ............................................................ 54
+Table 4-18. Low speed internal clock (IRC40K) characteristics ........................................................... 55
+Table 4-19. High speed internal clock (IRC28M) characteristics .......................................................... 55
+Table 4-20. PLL characteristics ................................................................................................................ 56
+Table 4-21. Flash memory characteristics .............................................................................................. 56
+Table 4-22. NRST pin characteristics ....................................................................................................... 56
+Table 4-23. I/O port DC characteristics(1) (3) ............................................................................................. 57
+Table 4-24. I/O port AC characteristics(1) (2) ............................................................................................. 58
+Table 4-25. ADC characteristics ............................................................................................................... 58
+Table 4-26. ADC RAIN max for fADC = 28 MHz(1) ......................................................................................... 59
+Table 4-27. Temperature sensor characteristics .................................................................................... 60
+Table 4-28. CMP characteristics(1) ............................................................................................................ 60
+5
+
+GD32E230xx Datasheet
+Table 4-29. TIMER characteristics (1) ........................................................................................................ 61
+Table 4-30. I2C characteristics (1)(2)(3)........................................................................................................ 61
+Table 4-31. Standard SPI characteristics(1) ............................................................................................. 62
+Table 4-32. I2S characteristics(1)............................................................................................................... 63
+Table 4-33. USART characteristics (1)....................................................................................................... 63
+Table 4-34. FWDGT min/max timeout period at 40 kHz (IRC40K)(1) ...................................................... 64
+Table 4-35. WWDGT min-max timeout value at 72 MHz (fPCLK1)(1) .......................................................... 64
+Table 5-1. LQFP48 package dimensions ................................................................................................. 66
+Table 5-2. LQFP32 package dimensions ................................................................................................. 68
+Table 5-3. QFN32 package dimensions ................................................................................................... 69
+Table 5-4. QFN28 package dimensions ................................................................................................... 70
+Table 5-5. TSSOP20 package dimensions .............................................................................................. 71
+Table 5-6. LGA20 package dimensions ................................................................................................... 72
+Table 5-7. Package thermal characteristics(1) ......................................................................................... 73
+Table 6-1. Part ordering code for GD32E230xx devices ........................................................................ 75
+Table 7-1. Revision history ....................................................................................................................... 76
+
+6
+
+GD32E230xx Datasheet
+
+1
+
+General description
+The GD32E230xx device belongs to the value line of GD32 MCU family. It is a new 32-bit
+general-purpose microcontroller based on the ARM® Cortex®-M23 core. The Cortex-M23
+processor is an energy-efficient processor with a very low gate count. It is intended to be used
+for microcontroller and deeply embedded applications that require an area-optimized
+processor. The processor delivers high energy efficiency through a small but powerful
+instruction set and extensively optimized design, providing high-end processing hardware
+including a single-cycle multiplier and a 17-cycle divider.
+The GD32E230xx device incorporates the ARM® Cortex®-M23 32-bit processor core
+operating at up to 72 MHz frequency with Flash accesses 0~2 wait states to obtain maximum
+efficiency. It provides up to 64 KB embedded Flash memory and up to 8 KB SRAM memory.
+An extensive range of enhanced I/Os and peripherals connected to two APB buses. The
+devices offer one 12-bit ADC and one comparator, up to five general 16-bit timers, a basic
+timer, a PWM advanced timer, as well as standard and advanced communication interfaces:
+up to two SPIs, two I2Cs, two USARTs, and an I2S.
+The device operates from a 1.8 to 3.6 V power supply and available in –40 to +85 °C
+temperature range. Several power saving modes provide the flexibility for maximum
+optimization between wakeup latency and power consumption, an especially important
+consideration in low power applications.
+The above features make the GD32E230xx devices suitable for a wide range of applications,
+especially in areas such as industrial control, motor drives, user interface, power monitor and
+alarm systems, consumer and handheld equipment, gaming and GPS, E-bike and so on.
+
+7
+
+GD32E230xx Datasheet
+
+2
+
+Device overview
+
+2.1
+
+Device information
+Table 2-1. GD32E230xx devices features and peripheral list
+Part Number
+
+GD32E230xx
+
+K4U6 K6U6 K8U6 K4T6 K6T6 K8T6 C4T6 C6T6 C8T6
+16
+
+32
+
+64
+
+16
+
+32
+
+64
+
+16
+
+32
+
+64
+
+SRAM (KB)
+
+4
+
+6
+
+8
+
+4
+
+6
+
+8
+
+4
+
+6
+
+8
+
+ADC
+
+Connectivity
+
+Timers
+
+FLASH (KB)
+General
+
+4
+
+4
+
+5
+
+4
+
+4
+
+5
+
+4
+
+4
+
+5
+
+timer(16-bit)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13-16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13-16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13-16)
+
+Advanced
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+timer(16-bit)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+SysTick
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+Basic
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+timer(16-bit)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+Watchdog
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+RTC
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+2
+
+2
+
+1
+
+2
+
+2
+
+1
+
+2
+
+2
+
+(0)
+
+(0-1)
+
+(0-1)
+
+(0)
+
+(0-1)
+
+(0-1)
+
+(0)
+
+(0-1)
+
+(0-1)
+
+1
+
+1
+
+2
+
+1
+
+1
+
+2
+
+1
+
+1
+
+2
+
+(0)
+
+(0)
+
+(0-1)
+
+(0)
+
+(0)
+
+(0-1)
+
+(0)
+
+(0)
+
+(0-1)
+
+1/1
+
+1/1
+
+2/1
+
+1/1
+
+1/1
+
+2/1
+
+1/1
+
+1/1
+
+2/1
+
+(0)/(0)
+
+(0)/(0)
+
+(0-1)/(0)
+
+(0)/(0)
+
+(0)/(0)
+
+(0-1)/(0)
+
+(0)/(0)
+
+(0)/(0)
+
+(0-1)/(0)
+
+GPIO
+
+27
+
+27
+
+27
+
+25
+
+25
+
+25
+
+39
+
+39
+
+39
+
+CMP
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+EXTI
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+Units
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+10
+
+10
+
+10
+
+10
+
+10
+
+10
+
+10
+
+10
+
+10
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+USART
+
+I2C
+
+SPI/I2S
+
+Channels
+(External)
+Channels
+(Internal)
+
+Package
+
+QFN32
+
+LQFP32
+
+LQFP48
+
+8
+
+GD32E230xx Datasheet
+Table 2-2. GD32E230xx devices features and peripheral list (continued)
+GD32E230xx
+
+Part Number
+
+F4V6 F6V6 F8V6
+
+F4P6
+
+F6P6 F8P6 G4U6 G6U6 G8U6
+
+16
+
+32
+
+64
+
+16
+
+32
+
+64
+
+16
+
+32
+
+64
+
+SRAM (KB)
+
+4
+
+6
+
+8
+
+4
+
+6
+
+8
+
+4
+
+6
+
+8
+
+ADC
+
+Connectivity
+
+Timers
+
+FLASH (KB)
+
+General
+
+4
+
+4
+
+4
+
+4
+
+4
+
+4
+
+4
+
+4
+
+5
+
+timer(16-bit)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13,15,16)
+
+(2,13-16)
+
+Advanced
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+timer(16-bit)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+(0)
+
+SysTick
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+Basic
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+timer(16-bit)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+(5)
+
+Watchdog
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+RTC
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+2
+
+2
+
+1
+
+2
+
+2
+
+1
+
+2
+
+2
+
+(0)
+
+(0-1)
+
+(0-1)
+
+(0)
+
+(0-1)
+
+(0-1)
+
+(0)
+
+(0-1)
+
+(0-1)
+
+1
+
+1
+
+2
+
+1
+
+1
+
+2
+
+1
+
+1
+
+2
+
+(0)
+
+(0)
+
+(0-1)
+
+(0)
+
+(0)
+
+(0-1)
+
+(0)
+
+(0)
+
+(0-1)
+
+1/1
+
+1/1
+
+2/1
+
+1/1
+
+1/1
+
+2/1
+
+1/1
+
+1/1
+
+2/1
+
+(0)/(0)
+
+(0)/(0)
+
+(0-1)/(0)
+
+(0)/(0)
+
+(0)/(0)
+
+(0-1)/(0)
+
+(0)/(0)
+
+(0)/(0)
+
+(0-1)/(0)
+
+GPIO
+
+15
+
+15
+
+15
+
+15
+
+15
+
+15
+
+23
+
+23
+
+23
+
+CMP
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+EXTI
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+16
+
+Units
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+1
+
+9
+
+9
+
+9
+
+9
+
+9
+
+9
+
+10
+
+10
+
+10
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+2
+
+USART
+
+I2C
+
+SPI/I2S
+
+Channels
+(External)
+Channels
+(Internal)
+
+Package
+
+LGA20
+
+TSSOP20
+
+QFN28
+
+9
+
+GD32E230xx Datasheet
+2.2
+
+Block diagram
+Figure 2-1. GD32E230xx block diagram
+
+LDO
+1.2V
+
+TPIU
+
+SW
+AHB2: Fma x = 72MHz
+
+AHB Matrix
+
+AHB BUS
+
+ARM Cortex-M23
+Processor
+Fmax: 72MHz
+
+NVIC
+
+GPIO Ports
+A, B, C, F
+
+SRAM
+Controller
+
+SRAM
+
+Flash
+Memory
+Controller
+
+Flash
+Memory
+
+POR/PDR
+
+LVD
+PLL
+
+GP DMA
+5chs
+
+Fmax: 72MHz
+
+HXTAL
+4-32MHz
+
+AHB1: Fma x = 72MHz
+
+AHB to APB
+Bridge 2
+
+CRC
+
+AHB to APB
+Bridge 1
+
+IRC8M
+8MHz
+RST/CLK
+Controller
+
+IRC40K
+40KHz
+
+Powered by LDO (1.2V)
+
+PMU
+
+EXTI
+
+FWDGT
+12-bit
+SAR ADC
+
+IRC28M
+28MHz
+
+Powered by V DD/VDDA
+
+ADC
+WWDGT
+RTC
+
+USART0
+
+I2C0
+
+SPI0/I2S0
+
+TIMER0
+
+APB1: Fmax = 72MHz
+
+CMP
+
+APB2: Fmax = 72MHz
+
+SYS Config
+CMP
+
+I2C1
+USART1
+SPI1
+
+TIMER5
+
+TIMER14
+TIMER2
+TIMER15
+TIMER13
+TIMER16
+
+10
+
+GD32E230xx Datasheet
+2.3
+
+Pinouts and pin assignment
+Figure 2-2. GD32E230Cx LQFP48 pinouts
+PA14
+
+PA15
+
+PB3
+
+PB4
+
+PB5
+
+PB6
+
+PB7
+
+BOOT0
+
+PB8
+
+PB9
+
+VSS
+
+VDD
+
+48 47 46 45 44 43 42 41 40 39 38 37
+VDD
+
+1
+
+36
+
+PF7
+
+PC13
+
+2
+
+35
+
+PF6
+
+PC14-OSC32IN
+
+3
+
+34
+
+PA13
+
+PC15-OSC32OUT
+PF0-OSCIN
+
+4
+
+33
+
+PA12
+
+32
+
+PA11
+
+PF1-OSCOUT
+NRST
+VSSA
+
+6
+
+31
+
+PA10
+
+30
+
+PA9
+
+8
+
+29
+
+VDDA
+
+9
+
+28
+
+PA8
+PB15
+
+PA0
+
+10
+
+27
+
+PB14
+
+PA1
+PA2
+
+11
+
+26
+
+PB13
+
+25
+
+PB12
+
+5
+
+GigaDevice GD32E230Cx
+LQFP48
+
+7
+
+12
+13 14 15 16 17 18 19 20 21 22 23 24
+
+PA15
+
+VDD
+
+PB11
+
+PB3
+
+VSS
+
+PB10
+
+PB2
+
+PB1
+
+PB0
+
+PA7
+
+PA6
+
+PA5
+
+PA4
+
+PA3
+
+Figure 2-3. GD32E230Kx LQFP32 pinouts
+
+PB4
+
+PB5
+
+PB6
+
+PB7
+
+BOOT0
+
+Vss
+
+32 31 30 29 28 27 26 25
+VDD
+
+1
+
+24
+
+PA14
+
+PF0-OSCIN
+
+2
+
+23
+
+PA13
+
+PF1-OSCOUT
+
+3
+
+PA12
+
+NRST
+VDDA
+
+4
+5
+
+22
+GigaDevice GD32E230Kx 21
+LQFP32
+20
+
+PA0
+
+6
+
+19
+
+PA9
+
+PA1
+PA2
+
+7
+
+18
+
+PA8
+
+8
+
+17
+
+VDD
+
+PA11
+PA10
+
+9 10 11 12 13 14 15 16
+VSS
+
+PB1
+
+PB0
+
+PA7
+
+PA6
+
+PA5
+
+PA4
+
+PA3
+
+11
+
+GD32E230xx Datasheet
+Figure 2-4. GD32E230Kx QFN32 pinouts
+
+5
+
+PA1
+
+7
+
+PA2
+
+8
+
+PA15
+PB3
+
+VDDA
+PA0
+
+PB4
+
+OSCOUT/PF1
+NRST
+
+PB5
+
+2
+3
+
+PB6
+
+OSCIN/PF0
+
+PB7
+
+BOOT0
+
+PB8
+1
+
+VDD
+
+32 31 30 29 28 27 26 25
+24
+
+PA14
+
+23
+
+PA13
+
+22
+
+PA12
+
+21
+
+PA11
+
+20
+
+PA10
+
+19
+
+PA9
+
+18
+
+PA8
+
+17
+
+VDD
+
+GigaDevice
+GD32E230Kx
+QFN32
+
+4
+
+6
+VSS, VSSA
+
+9 10 11 12 13 14 15 16
+
+PB2
+
+PB1
+
+PB0
+
+PA7
+
+PA6
+PA5
+
+PA4
+
+PA3
+
+Figure 2-5. GD32E230Gx QFN28 pinouts
+PA14
+PA15
+
+PB3
+
+PB4
+
+PB5
+PB6
+
+PB7
+
+28 27 26 25 24 23 22
+1
+21
+
+PA13
+
+OSCIN/PF0
+
+2
+
+PA10(PA12)
+
+OSCOUT/PF1
+NRST
+
+3
+
+VDDA
+PA0
+
+5
+
+PA1
+
+7
+
+BOOT0
+
+20
+GigaDevice
+GD32E230Gx
+QFN28
+
+4
+
+6
+8 9 10 11 12 13 14
+
+19
+
+PA9(PA11)
+
+18
+
+PA8
+
+17
+
+VDD
+
+16
+
+VSS
+PB1
+
+15
+
+PB0
+
+PA6
+
+PA7
+
+PA5
+PA4
+
+PA3
+
+PA2
+
+Figure 2-6. GD32E230Fx TSSOP20 pinouts
+PA14
+
+BOOT0
+
+1
+
+20
+
+OSCIN/PF0
+
+2
+
+19
+
+PA13
+
+OSCOUT/PF1
+
+3
+
+18
+
+PA10(PA12)
+
+NRST
+
+4
+
+17
+
+PA9(PA11)
+
+VDDA
+
+5
+
+PA0
+
+6
+
+GigaDevice
+16
+GD32E230Fx
+TSSOP20 15
+
+PA1
+
+7
+
+14
+
+PB1
+
+PA2
+
+8
+
+13
+
+PA7
+
+PA3
+
+9
+
+12
+
+PA6
+
+PA4
+
+10
+
+11
+
+PA5
+
+VDD
+Vss
+
+12
+
+GD32E230xx Datasheet
+Figure 2-7. GD32E230Fx LGA20 pinouts
+
+PA13
+PA14
+
+BOOT0
+
+OSCIN/PF0
+
+OSCOUT/PF1
+
+20 19 18 17 16
+
+NRST
+
+1
+
+VDDA
+PA0
+PA1
+
+2
+
+PA2
+
+15
+
+PA10(PA12)
+
+GigaDevice 14
+3 GD32E230Fx 13
+4
+LGA20
+12
+5
+11
+
+PA9(PA11)
+VSS
+PB1
+
+PA3
+
+PA6
+PA5
+
+9 10
+PA7
+
+8
+
+PA4
+
+6 7
+
+VDD
+
+13
+
+GD32E230xx Datasheet
+2.4
+
+Memory map
+Table 2-3. GD32E230xx memory map
+Pre-defined
+
+ADDRESS
+
+Peripherals
+
+0xE000 0000 - 0xE00F FFFF
+
+Cortex M23 internal peripherals
+
+External Device
+
+0xA000 0000 - 0xDFFF FFFF
+
+Reserved
+
+External RAM
+
+0x60000000 - 0x9FFFFFFF
+
+Reserved
+
+0x5004 0000 - 0x5FFF FFFF
+
+Reserved
+
+0x5000 0000 - 0x5003 FFFF
+
+Reserved
+
+0x4800 1800 - 0x4FFF FFFF
+
+Reserved
+
+0x4800 1400 - 0x4800 17FF
+
+GPIOF
+
+0x4800 1000 - 0x4800 13FF
+
+Reserved
+
+0x4800 0C00 - 0x4800 0FFF
+
+Reserved
+
+0x4800 0800 - 0x4800 0BFF
+
+GPIOC
+
+0x4800 0400 - 0x4800 07FF
+
+GPIOB
+
+0x4800 0000 - 0x4800 03FF
+
+GPIOA
+
+0x4002 4400 - 0x47FF FFFF
+
+Reserved
+
+0x4002 4000 - 0x4002 43FF
+
+Reserved
+
+0x4002 3400 - 0x4002 3FFF
+
+Reserved
+
+0x4002 3000 - 0x4002 33FF
+
+CRC
+
+0x4002 2400 - 0x4002 2FFF
+
+Reserved
+
+0x4002 2000 - 0x4002 23FF
+
+FMC
+
+0x4002 1400 - 0x4002 1FFF
+
+Reserved
+
+0x4002 1000 - 0x4002 13FF
+
+RCU
+
+0x4002 0400 - 0x4002 0FFF
+
+Reserved
+
+0x4002 0000 - 0x4002 03FF
+
+DMA
+
+0x4001 8000 - 0x4001 FFFF
+
+Reserved
+
+0x4001 5C00 - 0x4001 7FFF
+
+Reserved
+
+0x4001 5800 - 0x4001 5BFF
+
+DBG
+
+0x4001 4C00 - 0x4001 57FF
+
+Reserved
+
+0x4001 4800 - 0x4001 4BFF
+
+TIMER16
+
+0x4001 4400 - 0x4001 47FF
+
+TIMER15
+
+0x4001 4000 - 0x4001 43FF
+
+TIMER14
+
+0x4001 3C00 - 0x4001 3FFF
+
+Reserved
+
+0x4001 3800 - 0x4001 3BFF
+
+USART0
+
+0x4001 3400 - 0x4001 37FF
+
+Reserved
+
+0x4001 3000 - 0x4001 33FF
+
+SPI0/I2S0
+
+0x4001 2C00 - 0x4001 2FFF
+
+TIMER0
+
+0x4001 2800 - 0x4001 2BFF
+
+Reserved
+
+0x4001 2400 - 0x4001 27FF
+
+ADC
+
+0x4001 0800 - 0x4001 23FF
+
+Reserved
+
+Regions
+
+Bus
+
+AHB1
+
+AHB2
+
+AHB1
+
+Peripherals
+
+APB2
+
+14
+
+GD32E230xx Datasheet
+Pre-defined
+Regions
+
+Bus
+
+APB1
+
+SRAM
+
+Code
+
+ADDRESS
+
+Peripherals
+
+0x4001 0400 - 0x4001 07FF
+
+EXTI
+
+0x4001 0000 - 0x4001 03FF
+
+SYSCFG + CMP
+
+0x4000 CC00 - 0x4000 FFFF
+
+Reserved
+
+0x4000 C800 - 0x4000 CBFF
+
+Reserved
+
+0x4000 C400 - 0x4000 C7FF
+
+Reserved
+
+0x4000 C000 - 0x4000 C3FF
+
+Reserved
+
+0x4000 8000 - 0x4000 BFFF
+
+Reserved
+
+0x4000 7C00 - 0x4000 7FFF
+
+Reserved
+
+0x4000 7800 - 0x4000 7BFF
+
+Reserved
+
+0x4000 7400 - 0x4000 77FF
+
+Reserved
+
+0x4000 7000 - 0x4000 73FF
+
+PMU
+
+0x4000 6400 - 0x4000 6FFF
+
+Reserved
+
+0x4000 6000 - 0x4000 63FF
+
+Reserved
+
+0x4000 5C00 - 0x4000 5FFF
+
+Reserved
+
+0x4000 5800 - 0x4000 5BFF
+
+I2C1
+
+0x4000 5400 - 0x4000 57FF
+
+I2C0
+
+0x4000 4800 - 0x4000 53FF
+
+Reserved
+
+0x4000 4400 - 0x4000 47FF
+
+USART1
+
+0x4000 4000 - 0x4000 43FF
+
+Reserved
+
+0x4000 3C00 - 0x4000 3FFF
+
+Reserved
+
+0x4000 3800 - 0x4000 3BFF
+
+SPI1
+
+0x4000 3400 - 0x4000 37FF
+
+Reserved
+
+0x4000 3000 - 0x4000 33FF
+
+FWDGT
+
+0x4000 2C00 - 0x4000 2FFF
+
+WWDGT
+
+0x4000 2800 - 0x4000 2BFF
+
+RTC
+
+0x4000 2400 - 0x4000 27FF
+
+Reserved
+
+0x4000 2000 - 0x4000 23FF
+
+TIMER13
+
+0x4000 1400 - 0x4000 1FFF
+
+Reserved
+
+0x4000 1000 - 0x4000 13FF
+
+TIMER5
+
+0x4000 0800 - 0x4000 0FFF
+
+Reserved
+
+0x4000 0400 - 0x4000 07FF
+
+TIMER2
+
+0x4000 0000 - 0x4000 03FF
+
+Reserved
+
+0x2000 2000 - 0x3FFF FFFF
+
+Reserved
+
+0x2000 0000 - 0x2000 1FFF
+
+SRAM
+
+0x1FFF F810 - 0x1FFF FFFF
+
+Reserved
+
+0x1FFF F800 - 0x1FFF F80F
+
+Option bytes
+
+0x1FFF EC00 - 0x1FFF F7FF
+
+System memory
+
+0x0801 0000 - 0x1FFF EBFF
+
+Reserved
+
+0x0800 0000 - 0x0800 FFFF
+
+Main Flash memory
+
+0x0001 0000 - 0x07FF FFFF
+
+Reserved
+15
+
+GD32E230xx Datasheet
+Pre-defined
+
+Bus
+
+Regions
+
+ADDRESS
+
+Peripherals
+Aliased to Flash or
+
+0x00000000 - 0x0000FFFF
+
+2.5
+
+system memory
+
+Clock tree
+Figure 2-8. GD32E230xx clock tree
+FMC
+
+CK_I2S
+(to I2S)
+CK_FMC
+
+SCS[1:0]
+
+FMC enable
+(by hardware)
+
+(to FMC)
+
+AHB enable
+
+(to AHB bus,Cortex-M23,SRAM,DMA)
+
+HCLK
+
+CK_IRC8M
+00
+8 MHz
+IRC8M
+
+/2
+
+0
+
+PLL
+
+CK_PLL
+
+1
+
+10
+
+CK_SYS
+72 MHz max
+
+AHB
+Prescaler
+÷1,2...512
+
+CK_CST
+
+CK_AHB
+
+÷8
+
+72 MHz max
+
+(to Cortex-M23 SysTick)
+
+FCLK
+PLLSEL
+
+01
+
+PLLEN
+
+(free running clock)
+
+PREDV
+4-32 MHz
+HXTAL
+
+Clock
+Monitor
+
+÷1,2.
+..16
+
+TIMER2,5,13
+÷[apb1
+prescaler/2]
+
+CK_TIMERx
+TIMERx
+enable
+
+to TIMER2,5,13
+
+CK_HXTAL
+
+/32
+
+APB1
+Prescaler
+÷1,2,4,8,16
+
+11
+
+CK_APB1
+PCLK1
+72 MHz max
+
+to APB1 peripherals
+
+Peripheral enable
+32.768 KHz
+LXTAL
+
+CK_RTC
+
+01
+
+(to RTC)
+10
+
+40 KHz
+IRC40K
+
+RTCSRC[1:0]
+
+CK_FWDGT
+(to FWDGT)
+
+TIMER0,14,1
+5,16
+÷[apb2
+prescaler/2]
+
+TIMERx
+enable
+
+APB2
+Prescaler
+÷1,2,4,8,16
+
+72 MHz max
+
+CK_TIMERx
+
+CK_APB2
+PCLK2
+
+÷1,2,4...128
+
+CKOUTDIV
+
+to APB2 peripherals
+
+Peripheral enable
+
+CKOUTSEL
+
+CK_OUT
+
+to TIMER0,14,15,16
+
+0
+CK_IRC28M
+CK_IRC40K
+CK_ LXTAL
+CK_SYS
+CK_IRC8M
+CK_HXTAL
+/1,2
+CK_PLL
+
+CK_ IRC8M
+
+11
+
+CK_L XTAL
+
+10
+
+CK_ SYS
+
+01
+
+CK_ USART0
+
+to USART0
+
+00
+USART0SEL[1:0]
+28 MHz
+IRC28M
+
+÷1,2
+
+0
+
+CK_ ADC to ADC
+
+1
+
+28 MHz max
+
+ADCSEL
+ADC
+Prescaler
+÷2,4,6,8
+
+ADC
+Prescaler
+÷3,5,7, 9
+
+Note:
+If the APB prescaler is 1, the timer clock frequencies are set to AHB frequency divide by 1.
+Otherwise, they are set to the AHB frequency divide by half of APB prescaler.
+Legend:
+HXTAL: High speed crystal oscillator
+LXTAL: Low speed crystal oscillator
+IRC8M: Internal 8M RC oscillator
+IRC40K: Internal 40K RC oscillator
+IRC28M: Internal 28M RC oscillator
+
+16
+
+GD32E230xx Datasheet
+2.6
+
+Pin definitions
+
+2.6.1
+
+GD32E230Cx LQFP48 pin definitions
+Table 2-4. GD32E230Cx LQFP48 pin definitions
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Pin Name
+
+Pins
+
+VDD
+
+1
+
+P
+
+2
+
+I/O
+
+3
+
+I/O
+
+4
+
+I/O
+
+Default: VDD
+
+PC13TAMPER-
+
+Default: PC13
+Additional: RTC_TAMP0, RTC_TS, RTC_OUT, WKUP1
+
+RTC
+PC14OSC32IN
+PC15OSC32OUT
+
+Functions description
+
+Default: PC14
+Additional: OSC32IN
+Default: PC15
+Additional: OSC32OUT
+Default: PF0
+
+PF0-OSCIN
+
+5
+
+I/O
+
+5VT
+
+Alternate: I2C0_SDA
+Additional: OSCIN
+
+PF1OSCOUT
+
+Default: PF1
+6
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL
+Additional: OSCOUT
+
+NRST
+
+7
+
+I/O
+
+Default: NRST
+
+VSSA
+
+8
+
+P
+
+Default: VSSA
+
+VDDA
+
+9
+
+P
+
+Default: VDDA
+Default: PA0
+
+PA0-WKUP
+
+10
+
+I/O
+
+Alternate: USART0_CTS(3), USART1_CTS(4), CMP_OUT,
+I2C1_SCL(5)
+Additional: ADC_IN0, CMP_IM6, RTC_TAMP1, WKUP0
+Default: PA1
+
+PA1
+
+11
+
+I/O
+
+Alternate: USART0_RTS(3), USART1_RTS(4),
+I2C1_SDA(5), EVENTOUT, TIMER14_CH0_ON(5)
+Additional: ADC_IN1, CMP_IP
+Default: PA2
+
+PA2
+
+12
+
+I/O
+
+Alternate: USART0_TX(3), USART1_TX(4),
+TIMER14_CH0(5)
+Additional: ADC_IN2, CMP_IM7
+Default: PA3
+
+PA3
+
+13
+
+I/O
+
+Alternate: USART0_RX(3), USART1_RX(4),
+TIMER14_CH1(5)
+Additional: ADC_IN3
+Default: PA4
+
+PA4
+
+14
+
+I/O
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_CK(3),
+USART1_CK(4), TIMER13_CH0, SPI1_NSS(5)
+Additional: ADC_IN4, CMP_IM4
+17
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Default: PA5
+
+PA5
+
+15
+
+Alternate: SPI0_SCK, I2S0_CK
+
+I/O
+
+Additional: ADC_IN5, CMP_IM5
+Default: PA6
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+PA6
+
+16
+
+TIMER0_BRKIN, TIMER15_CH0, EVENTOUT,
+
+I/O
+
+CMP_OUT
+Additional: ADC_IN6
+Default: PA7
+Alternate: SPI0_MOSI, I2S0_SD, TIMER2_CH1,
+PA7
+
+17
+
+TIMER13_CH0, TIMER0_CH0_ON, TIMER16_CH0,
+
+I/O
+
+EVENTOUT
+Additional: ADC_IN7
+Default: PB0
+PB0
+
+18
+
+Alternate: TIMER2_CH2, TIMER0_CH1_ON,
+
+I/O
+
+USART1_RX(4), EVENTOUT
+Additional: ADC_IN8
+Default: PB1
+
+PB1
+
+19
+
+Alternate: TIMER2_CH3, TIMER13_CH0,
+
+I/O
+
+TIMER0_CH2_ON, SPI1_SCK(5)
+Additional: ADC_IN9
+
+PB2
+
+20
+
+I/O
+
+5VT
+
+Default: PB2
+Alternate: TIMER2_ETI
+Default: PB10
+
+PB10
+
+21
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL(3),I2C1_SCL(5), SPI1_IO2(5),
+SPI1_SCK(5)
+Default: PB11
+
+PB11
+
+22
+
+I/O
+
+5VT
+
+Alternate: I2C0_SDA(3),I2C1_SDA(5), EVENTOUT,
+SPI1_IO3(5)
+
+VSS
+
+23
+
+P
+
+Default: VSS
+
+VDD
+
+24
+
+P
+
+Default: VDD
+Default: PB12
+
+PB12
+
+25
+
+I/O
+
+5VT
+
+Alternate: SPI0_NSS(3), SPI1_NSS(5), TIMER0_BRKIN,
+I2C1_SMBA(5), EVENTOUT
+Default: PB13
+
+PB13
+
+26
+
+I/O
+
+5VT
+
+Alternate: SPI0_SCK(3), SPI1_SCK(5), TIMER0_CH0_ON,
+I2C1_TXFRAME(5), I2C1_SCL(5)
+Default: PB14
+
+PB14
+
+27
+
+I/O
+
+5VT
+
+Alternate: SPI0_MISO(3), SPI1_MISO(5),
+TIMER0_CH1_ON, TIMER14_CH0(5), I2C1_SDA(5)
+Default: PB15
+Alternate: SPI0_MOSI(3), SPI1_MOSI(5),
+
+PB15
+
+28
+
+I/O
+
+5VT
+
+TIMER0_CH2_ON, TIMER14_CH0_ON(5),
+TIMER14_CH1(5)
+Additional: RTC_REFIN, WKUP6
+18
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Default: PA8
+
+PA8
+
+29
+
+I/O
+
+5VT
+
+Alternate: USART0_CK, TIMER0_CH0, CK_OUT,
+USART1_TX(4), EVENTOUT
+Default: PA9
+
+PA9
+
+30
+
+I/O
+
+5VT
+
+Alternate: USART0_TX, TIMER0_CH1,
+TIMER14_BRKIN(5), I2C0_SCL, CK_OUT
+Default: PA10
+
+PA10
+
+31
+
+I/O
+
+5VT
+
+Alternate: USART0_RX, TIMER0_CH2,
+TIMER16_BRKIN, I2C0_SDA
+Default: PA11
+
+PA11
+
+32
+
+I/O
+
+5VT
+
+Alternate: USART0_CTS, TIMER0_CH3, CMP_OUT,
+EVENTOUT, SPI1_IO2(5), I2C0_SMBA, I2C1_SCL(5)
+Default: PA12
+
+PA12
+
+33
+
+I/O
+
+5VT
+
+Alternate: USART0_RTS, TIMER0_ETI, EVENTOUT,
+SPI1_IO3(5), I2C0_TXFRAME, I2C1_SDA(5)
+
+PA13
+
+34
+
+I/O
+
+5VT
+
+PF6
+
+35
+
+I/O
+
+5VT
+
+PF7
+
+36
+
+I/O
+
+5VT
+
+PA14
+
+37
+
+I/O
+
+5VT
+
+Default: PA13/SWDIO
+Alternate: SWDIO, IFRP_OUT, SPI1_MISO(5)
+Default: PF6
+Alternate: I2C0_SCL(3), I2C1_SCL(5)
+Default: PF7
+Alternate: I2C0_SDA(3), I2C1_SDA(5)
+Default: PA14/SWCLK
+Alternate: USART0_TX(3), USART1_TX(4), SWCLK,
+SPI1_MOSI(5)
+Default: PA15
+
+PA15
+
+38
+
+I/O
+
+5VT
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_RX(3),
+USART1_RX(4), SPI1_NSS(5), EVENTOUT
+
+PB3
+
+39
+
+I/O
+
+5VT
+
+PB4
+
+40
+
+I/O
+
+5VT
+
+Default: PB3
+Alternate: SPI0_SCK, I2S0_CK, EVENTOUT
+Default: PB4
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+EVENTOUT, I2C0_TXFRAME, TIMER16_BRKIN
+Default: PB5
+
+PB5
+
+41
+
+I/O
+
+5VT
+
+Alternate: SPI0_MOSI,I2S0_SD, I2C0_SMBA,
+TIMER15_BRKIN, TIMER2_CH1
+Additional: WKUP5
+
+PB6
+
+42
+
+I/O
+
+5VT
+
+PB7
+
+43
+
+I/O
+
+5VT
+
+BOOT0
+
+44
+
+I
+
+PB8
+
+45
+
+I/O
+
+5VT
+
+PB9
+
+46
+
+I/O
+
+5VT
+
+Default: PB6
+Alternate: I2C0_SCL, USART0_TX, TIMER15_CH0_ON
+Default: PB7
+Alternate:I2C0_SDA, USART0_RX,TIMER16_CH0_ON
+Default: BOOT0
+Default: PB8
+Alternate: I2C0_SCL, TIMER15_CH0
+Default: PB9
+Alternate: I2C0_SDA, IFRP_OUT, TIMER16_CH0,
+19
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+EVENTOUT, I2S0_MCK, SPI1_NSS(5)
+
+VSS
+
+47
+
+P
+
+Default: VSS
+
+VDD
+
+48
+
+P
+
+Default: VDD
+
+Notes:
+(1) Type: I = input, O = output, P = power.
+(2) I/O Level: 5VT = 5 V tolerant.
+(3) Functions are available on GD32E230C4 devices only.
+(4) Functions are available on GD32E230C8/6 devices.
+(5) Functions are available on GD32E230C8 devices only.
+
+2.6.2
+
+GD32E230Kx LQFP32 pin definitions
+Table 2-5. GD32E230Kx LQFP32 pin definitions
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Pin Name
+
+Pins
+
+VDD
+
+1
+
+P
+
+PF0-OSCIN
+
+2
+
+I/O
+
+Functions description
+Default: VDD
+Default: PF0
+
+5VT
+
+Alternate: I2C0_SDA
+Additional: OSCIN
+
+PF1OSCOUT
+
+Default: PF1
+3
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL
+Additional: OSCOUT
+
+NRST
+
+4
+
+I/O
+
+Default: NRST
+
+VDDA
+
+5
+
+P
+
+Default: VDDA
+Default: PA0
+
+PA0-WKUP
+
+6
+
+I/O
+
+Alternate: USART0_CTS(3), USART1_CTS(4), CMP_OUT,
+I2C1_SCL(5)
+Additional: ADC_IN0, CMP_IM6, RTC_TAMP1, WKUP0
+Default: PA1
+
+PA1
+
+7
+
+I/O
+
+Alternate: USART0_RTS(3), USART1_RTS(4),
+I2C1_SDA(5), EVENTOUT, TIMER14_CH0_ON(5)
+Additional: ADC_IN1, CMP_IP
+Default: PA2
+
+PA2
+
+8
+
+I/O
+
+Alternate: USART0_TX(3), USART1_TX(4),
+TIMER14_CH0(5)
+Additional: ADC_IN2, CMP_IM7
+Default: PA3
+
+PA3
+
+9
+
+I/O
+
+Alternate: USART0_RX(3), USART1_RX(4),
+TIMER14_CH1(5)
+Additional: ADC_IN3
+Default: PA4
+
+PA4
+
+10
+
+I/O
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_CK(3),
+USART1_CK(4), TIMER13_CH0, SPI1_NSS(5)
+20
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Additional: ADC_IN4, CMP_IM4
+Default: PA5
+
+PA5
+
+11
+
+Alternate: SPI0_SCK, I2S0_CK
+
+I/O
+
+Additional: ADC_IN5, CMP_IM5
+Default: PA6
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+PA6
+
+12
+
+TIMER0_BRKIN, TIMER15_CH0, EVENTOUT,
+
+I/O
+
+CMP_OUT
+Additional: ADC_IN6
+Default: PA7
+Alternate: SPI0_MOSI, I2S0_SD, TIMER2_CH1,
+PA7
+
+13
+
+TIMER13_CH0, TIMER0_CH0_ON, TIMER16_CH0,
+
+I/O
+
+EVENTOUT
+Additional: ADC_IN7
+Default: PB0
+PB0
+
+14
+
+Alternate: TIMER2_CH2, TIMER0_CH1_ON,
+
+I/O
+
+USART1_RX(4), EVENTOUT
+Additional: ADC_IN8
+Default: PB1
+
+PB1
+
+15
+
+Alternate: TIMER2_CH3, TIMER13_CH0,
+
+I/O
+
+TIMER0_CH2_ON, SPI1_SCK(5)
+Additional: ADC_IN9
+
+VSS
+
+16
+
+P
+
+Default: VSS
+
+VDD
+
+17
+
+P
+
+Default: VDD
+
+PA8
+
+18
+
+I/O
+
+Default: PA8
+5VT
+
+Alternate: USART0_CK, TIMER0_CH0, CK_OUT,
+USART1_TX(4), EVENTOUT
+Default: PA9
+
+PA9
+
+19
+
+I/O
+
+5VT
+
+Alternate: USART0_TX, TIMER0_CH1,
+TIMER14_BRKIN(5), I2C0_SCL, CK_OUT
+Default: PA10
+
+PA10
+
+20
+
+I/O
+
+5VT
+
+Alternate: USART0_RX, TIMER0_CH2,
+TIMER16_BRKIN, I2C0_SDA
+Default: PA11
+
+PA11
+
+21
+
+I/O
+
+5VT
+
+Alternate: USART0_CTS, TIMER0_CH3, CMP_OUT,
+EVENTOUT, SPI1_IO2(5), I2C0_SMBA, I2C1_SCL(5)
+Default: PA12
+
+PA12
+
+22
+
+I/O
+
+5VT
+
+Alternate: USART0_RTS, TIMER0_ETI, EVENTOUT,
+SPI1_IO3(5), I2C0_TXFRAME, I2C1_SDA(5)
+
+PA13
+
+23
+
+I/O
+
+5VT
+
+PA14
+
+24
+
+I/O
+
+5VT
+
+Default: PA13/SWDIO
+Alternate: SWDIO, IFRP_OUT, SPI1_MISO(5)
+Default: PA14/SWCLK
+Alternate: USART0_TX(3), USART1_TX(4), SWCLK,
+SPI1_MOSI(5)
+
+PA15
+
+25
+
+I/O
+
+5VT
+
+Default: PA15
+Alternate: SPI0_NSS, I2S0_WS, USART0_RX(3),
+21
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+USART1_RX(4), SPI1_NSS(5), EVENTOUT
+
+PB3
+
+26
+
+I/O
+
+5VT
+
+Default: PB3
+Alternate: SPI0_SCK, I2S0_CK, EVENTOUT
+Default: PB4
+
+PB4
+
+27
+
+I/O
+
+5VT
+
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+EVENTOUT, I2C0_TXFRAME, TIMER16_BRKIN
+Default: PB5
+
+PB5
+
+28
+
+I/O
+
+5VT
+
+Alternate: SPI0_MOSI,I2S0_SD, I2C0_SMBA,
+TIMER15_BRKIN, TIMER2_CH1
+Additional: WKUP5
+Default: PB6
+
+PB6
+
+29
+
+I/O
+
+5VT
+
+PB7
+
+30
+
+I/O
+
+5VT
+
+BOOT0
+
+31
+
+I
+
+Default: BOOT0
+
+VSS
+
+32
+
+P
+
+Default: VSS
+
+Alternate: I2C0_SCL, USART0_TX, TIMER15_CH0_ON
+Default: PB7
+Alternate:I2C0_SDA, USART0_RX,TIMER16_CH0_ON
+
+Notes:
+(1) Type: I = input, O = output, P = power.
+(2) I/O Level: 5VT = 5 V tolerant.
+(3) Functions are available on GD32E230K4 devices only.
+(4) Functions are available on GD32E230K8/6 devices.
+(5) Functions are available on GD32E230K8 devices only.
+
+2.6.3
+
+GD32E230Kx QFN32 pin definitions
+Table 2-6. GD32E230Kx QFN32 pin definitions
+Pin Name
+
+Pins
+
+VDD
+
+1
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Default: VDD
+
+P
+
+Default: PF0
+PF0-OSCIN
+
+2
+
+I/O
+
+5VT
+
+Alternate: I2C0_SDA
+Additional: OSCIN
+
+PF1OSCOUT
+
+Default: PF1
+3
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL
+Additional: OSCOUT
+
+NRST
+
+4
+
+I/O
+
+Default: NRST
+
+VDDA
+
+5
+
+P
+
+Default: VDDA
+Default: PA0
+
+PA0-WKUP
+
+6
+
+I/O
+
+Alternate: USART0_CTS(3), USART1_CTS(4), CMP_OUT,
+I2C1_SCL(5)
+Additional: ADC_IN0, CMP_IM6, RTC_TAMP1, WKUP0
+Default: PA1
+
+PA1
+
+7
+
+I/O
+
+Alternate: USART0_RTS(3), USART1_RTS(4),
+I2C1_SDA(5), EVENTOUT, TIMER14_CH0_ON(5)
+22
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Additional: ADC_IN1, CMP_IP
+Default: PA2
+
+PA2
+
+8
+
+Alternate: USART0_TX(3), USART1_TX(4),
+
+I/O
+
+TIMER14_CH0(5)
+Additional: ADC_IN2, CMP_IM7
+Default: PA3
+
+PA3
+
+9
+
+Alternate: USART0_RX(3), USART1_RX(4),
+
+I/O
+
+TIMER14_CH1(5)
+Additional: ADC_IN3
+Default: PA4
+
+PA4
+
+10
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_CK(3),
+
+I/O
+
+USART1_CK(4), TIMER13_CH0, SPI1_NSS(5)
+Additional: ADC_IN4, CMP_IM4
+Default: PA5
+
+PA5
+
+11
+
+Alternate: SPI0_SCK, I2S0_CK
+
+I/O
+
+Additional: ADC_IN5, CMP_IM5
+Default: PA6
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+PA6
+
+12
+
+TIMER0_BRKIN, TIMER15_CH0, EVENTOUT,
+
+I/O
+
+CMP_OUT
+Additional: ADC_IN6
+Default: PA7
+Alternate: SPI0_MOSI, I2S0_SD, TIMER2_CH1,
+PA7
+
+13
+
+TIMER13_CH0, TIMER0_CH0_ON, TIMER16_CH0,
+
+I/O
+
+EVENTOUT
+Additional: ADC_IN7
+Default: PB0
+PB0
+
+14
+
+Alternate: TIMER2_CH2, TIMER0_CH1_ON,
+
+I/O
+
+USART1_RX(4), EVENTOUT
+Additional: ADC_IN8
+Default: PB1
+
+PB1
+
+15
+
+Alternate: TIMER2_CH3, TIMER13_CH0,
+
+I/O
+
+TIMER0_CH2_ON, SPI1_SCK(5)
+Additional: ADC_IN9
+
+PB2
+
+16
+
+I/O
+
+VDD
+
+17
+
+P
+
+5VT
+
+Default: PB2
+Alternate: TIMER2_ETI
+Default: VDD
+Default: PA8
+
+PA8
+
+18
+
+I/O
+
+5VT
+
+Alternate: USART0_CK, TIMER0_CH0, CK_OUT,
+USART1_TX(4), EVENTOUT
+Default: PA9
+
+PA9
+
+19
+
+I/O
+
+5VT
+
+Alternate: USART0_TX, TIMER0_CH1,
+TIMER14_BRKIN(5), I2C0_SCL, CK_OUT
+Default: PA10
+
+PA10
+
+20
+
+I/O
+
+5VT
+
+Alternate: USART0_RX, TIMER0_CH2,
+TIMER16_BRKIN, I2C0_SDA
+23
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Default: PA11
+
+PA11
+
+21
+
+I/O
+
+5VT
+
+Alternate: USART0_CTS, TIMER0_CH3, CMP_OUT,
+EVENTOUT, SPI1_IO2(5), I2C0_SMBA, I2C1_SCL(5)
+Default: PA12
+
+PA12
+
+22
+
+I/O
+
+5VT
+
+Alternate: USART0_RTS, TIMER0_ETI, EVENTOUT,
+SPI1_IO3(5), I2C0_TXFRAME, I2C1_SDA(5)
+
+PA13
+
+23
+
+I/O
+
+5VT
+
+PA14
+
+24
+
+I/O
+
+5VT
+
+Default: PA13/SWDIO
+Alternate: SWDIO, IFRP_OUT, SPI1_MISO(5)
+Default: PA14/SWCLK
+Alternate: USART0_TX(3), USART1_TX(4), SWCLK,
+SPI1_MOSI(5)
+Default: PA15
+
+PA15
+
+25
+
+I/O
+
+5VT
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_RX(3),
+USART1_RX(4), SPI1_NSS(5), EVENTOUT
+
+PB3
+
+26
+
+I/O
+
+5VT
+
+Default: PB3
+Alternate: SPI0_SCK, I2S0_CK, EVENTOUT
+Default: PB4
+
+PB4
+
+27
+
+I/O
+
+5VT
+
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+EVENTOUT, I2C0_TXFRAME, TIMER16_BRKIN
+Default: PB5
+
+PB5
+
+28
+
+I/O
+
+5VT
+
+Alternate: SPI0_MOSI,I2S0_SD, I2C0_SMBA,
+TIMER15_BRKIN, TIMER2_CH1
+Additional: WKUP5
+
+PB6
+
+29
+
+I/O
+
+5VT
+
+PB7
+
+30
+
+I/O
+
+5VT
+
+BOOT0
+
+31
+
+I
+
+PB8
+
+32
+
+I/O
+
+Default: PB6
+Alternate: I2C0_SCL, USART0_TX, TIMER15_CH0_ON
+Default: PB7
+Alternate:I2C0_SDA, USART0_RX,TIMER16_CH0_ON
+Default: BOOT0
+
+5VT
+
+Default: PB8
+Alternate: I2C0_SCL, TIMER15_CH0
+
+Notes:
+(1) Type: I = input, O = output, P = power.
+(2) I/O Level: 5VT = 5 V tolerant.
+(3) Functions are available on GD32E230K4 devices only.
+(4) Functions are available on GD32E230K8/6 devices.
+(5) Functions are available on GD32E230K8 devices only.
+
+2.6.4
+
+GD32E230Gx QFN28 pin definitions
+Table 2-7. GD32E230Gx QFN28 pin definitions
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Pin Name
+
+Pins
+
+BOOT0
+
+1
+
+I
+
+PF0-OSCIN
+
+2
+
+I/O
+
+Functions description
+Default: BOOT0
+
+5VT
+
+Default: PF0
+24
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Alternate: I2C0_SDA
+Additional: OSCIN
+
+PF1OSCOUT
+
+Default: PF1
+3
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL
+Additional: OSCOUT
+
+NRST
+
+4
+
+I/O
+
+Default: NRST
+
+VDDA
+
+5
+
+P
+
+Default: VDDA
+Default: PA0
+
+PA0-WKUP
+
+6
+
+I/O
+
+Alternate: USART0_CTS(3), USART1_CTS(4), CMP_OUT,
+I2C1_SCL(5)
+Additional: ADC_IN0, CMP_IM6, RTC_TAMP1, WKUP0
+Default: PA1
+
+PA1
+
+7
+
+I/O
+
+Alternate: USART0_RTS(3), USART1_RTS(4),
+I2C1_SDA(5), EVENTOUT, TIMER14_CH0_ON(5)
+Additional: ADC_IN1, CMP_IP
+Default: PA2
+
+PA2
+
+8
+
+I/O
+
+Alternate: USART0_TX(3), USART1_TX(4),
+TIMER14_CH0(5)
+Additional: ADC_IN2, CMP_IM7
+Default: PA3
+
+PA3
+
+9
+
+I/O
+
+Alternate: USART0_RX(3), USART1_RX(4),
+TIMER14_CH1(5)
+Additional: ADC_IN3
+Default: PA4
+
+PA4
+
+10
+
+I/O
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_CK(3),
+USART1_CK(4), TIMER13_CH0, SPI1_NSS(5)
+Additional: ADC_IN4, CMP_IM4
+Default: PA5
+
+PA5
+
+11
+
+I/O
+
+Alternate: SPI0_SCK, I2S0_CK
+Additional: ADC_IN5, CMP_IM5
+Default: PA6
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+
+PA6
+
+12
+
+I/O
+
+TIMER0_BRKIN, TIMER15_CH0, EVENTOUT,
+CMP_OUT
+Additional: ADC_IN6
+Default: PA7
+Alternate: SPI0_MOSI, I2S0_SD, TIMER2_CH1,
+
+PA7
+
+13
+
+I/O
+
+TIMER13_CH0, TIMER0_CH0_ON, TIMER16_CH0,
+EVENTOUT
+Additional: ADC_IN7
+Default: PB0
+
+PB0
+
+14
+
+I/O
+
+Alternate: TIMER2_CH2, TIMER0_CH1_ON,
+USART1_RX(4), EVENTOUT
+Additional: ADC_IN8
+
+PB1
+
+15
+
+I/O
+
+Default: PB1
+Alternate: TIMER2_CH3, TIMER13_CH0,
+25
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+TIMER0_CH2_ON, SPI1_SCK(5)
+Additional: ADC_IN9
+
+VSS
+
+16
+
+P
+
+Default: VSS
+
+VDD
+
+17
+
+P
+
+Default: VDD
+Default: PA8
+
+PA8
+
+18
+
+I/O
+
+5VT
+
+Alternate: USART0_CK, TIMER0_CH0, CK_OUT,
+USART1_TX(4), EVENTOUT
+Default: PA9
+
+PA9(6)
+
+19
+
+I/O
+
+5VT
+
+Alternate: USART0_TX, TIMER0_CH1,
+TIMER14_BRKIN(5), I2C0_SCL, CK_OUT
+Default: PA10
+
+PA10(6)
+
+20
+
+I/O
+
+5VT
+
+Alternate: USART0_RX, TIMER0_CH2,
+TIMER16_BRKIN, I2C0_SDA
+
+PA13
+
+21
+
+I/O
+
+5VT
+
+PA14
+
+22
+
+I/O
+
+5VT
+
+Default: PA13/SWDIO
+Alternate: SWDIO, IFRP_OUT, SPI1_MISO(5)
+Default: PA14/SWCLK
+Alternate: USART0_TX(3), USART1_TX(4), SWCLK,
+SPI1_MOSI(5)
+Default: PA15
+
+PA15
+
+23
+
+I/O
+
+5VT
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_RX(3),
+USART1_RX(4), SPI1_NSS(5), EVENTOUT
+
+PB3
+
+24
+
+I/O
+
+5VT
+
+Default: PB3
+Alternate: SPI0_SCK, I2S0_CK, EVENTOUT
+Default: PB4
+
+PB4
+
+25
+
+I/O
+
+5VT
+
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+EVENTOUT, I2C0_TXFRAME, TIMER16_BRKIN
+Default: PB5
+
+PB5
+
+26
+
+I/O
+
+5VT
+
+Alternate: SPI0_MOSI,I2S0_SD, I2C0_SMBA,
+TIMER15_BRKIN, TIMER2_CH1
+Additional: WKUP5
+
+PB6
+
+27
+
+I/O
+
+5VT
+
+PB7
+
+28
+
+I/O
+
+5VT
+
+Default: PB6
+Alternate: I2C0_SCL, USART0_TX, TIMER15_CH0_ON
+Default: PB7
+Alternate:I2C0_SDA,USART0_RX,TIMER16_CH0_ON
+
+Notes:
+(1) Type: I = input, O = output, P = power.
+(2) I/O Level: 5VT = 5 V tolerant.
+(3) Functions are available on GD32E230G4 devices only.
+(4) Functions are available on GD32E230G8/6 devices.
+(5) Functions are available on GD32E230G8 devices only.
+(6) Pin pair PA11/PA12 can be remapped instead of pin pair PA9/PA10 using
+SYSCFG_CFG0 register. Table 2-10. Port A alternate functions summary shows
+PA11/PA12 remap.
+
+26
+
+GD32E230xx Datasheet
+2.6.5
+
+GD32E230Fx TSSOP20 pin definitions
+Table 2-8. GD32E230Fx TSSOP20 pin definitions
+Pin Name
+
+Pins
+
+PF0-OSCIN
+
+2
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+I/O
+
+5VT
+
+Functions description
+Default: PF0
+Alternate: I2C0_SDA
+Additional: OSCIN
+
+PF1OSCOUT
+
+Default: PF1
+3
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL
+Additional: OSCOUT
+
+NRST
+
+4
+
+I/O
+
+Default: NRST
+
+VDDA
+
+5
+
+P
+
+Default: VDDA
+Default: PA0
+
+PA0-WKUP
+
+6
+
+I/O
+
+Alternate: USART0_CTS(3), USART1_CTS(4), CMP_OUT,
+I2C1_SCL(5)
+Additional: ADC_IN0, CMP_IM6, RTC_TAMP1, WKUP0
+Default: PA1
+
+PA1
+
+7
+
+I/O
+
+Alternate: USART0_RTS(3), USART1_RTS(4),
+I2C1_SDA(5), EVENTOUT
+Additional: ADC_IN1, CMP_IP
+Default: PA2
+
+PA2
+
+8
+
+I/O
+
+Alternate: USART0_TX(3), USART1_TX(4)
+Additional: ADC_IN2, CMP_IM7
+Default: PA3
+
+PA3
+
+9
+
+I/O
+
+Alternate: USART0_RX(3), USART1_RX(4)
+Additional: ADC_IN3
+Default: PA4
+
+PA4
+
+10
+
+I/O
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_CK(3),
+USART1_CK(4), TIMER13_CH0, SPI1_NSS(5)
+Additional: ADC_IN4, CMP_IM4
+Default: PA5
+
+PA5
+
+11
+
+I/O
+
+Alternate: SPI0_SCK, I2S0_CK
+Additional: ADC_IN5, CMP_IM5
+Default: PA6
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+
+PA6
+
+12
+
+I/O
+
+TIMER0_BRKIN, TIMER15_CH0, EVENTOUT,
+CMP_OUT
+Additional: ADC_IN6
+Default: PA7
+Alternate: SPI0_MOSI, I2S0_SD, TIMER2_CH1,
+
+PA7
+
+13
+
+I/O
+
+TIMER13_CH0, TIMER0_CH0_ON, TIMER16_CH0,
+EVENTOUT
+Additional: ADC_IN7
+Default: PB1
+
+PB1
+
+14
+
+I/O
+
+Alternate: TIMER2_CH3, TIMER13_CH0,
+TIMER0_CH2_ON, SPI1_SCK(5)
+27
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Additional: ADC_IN9
+
+VSS
+
+15
+
+P
+
+Default: VSS
+
+VDD
+
+16
+
+P
+
+Default: VDD
+
+PA9(6)
+
+17
+
+I/O
+
+Default: PA9
+5VT
+
+Alternate: USART0_TX, TIMER0_CH1, I2C0_SCL,
+CK_OUT
+Default: PA10
+
+PA10(6)
+
+18
+
+I/O
+
+5VT
+
+Alternate: USART0_RX, TIMER0_CH2,
+TIMER16_BRKIN, I2C0_SDA
+
+PA13
+
+19
+
+I/O
+
+5VT
+
+PA14
+
+20
+
+I/O
+
+5VT
+
+Default: PA13/SWDIO
+Alternate: SWDIO, IFRP_OUT, SPI1_MISO(5)
+Default: PA14/SWCLK
+Alternate: USART0_TX(3), USART1_TX(4), SWCLK,
+SPI1_MOSI(5)
+
+BOOT0
+
+1
+
+Default: BOOT0
+
+I
+
+Notes:
+(1) Type: I = input, O = output, P = power.
+(2) I/O Level: 5VT = 5 V tolerant.
+(3) Functions are available on GD32E230F4 devices only.
+(4) Functions are available on GD32E230F8/6 devices.
+(5) Functions are available on GD32E230F8 devices only.
+(6) Pin pair PA11/PA12 can be remapped instead of pin pair PA9/PA10 using
+SYSCFG_CFG0 register. Table 2-10. Port A alternate functions summary shows
+PA11/PA12 remap.
+
+2.6.6
+
+GD32E230Fx LGA20 pin definitions
+Table 2-9. GD32E230Fx LGA20 pin definitions
+Pin Name
+
+Pins
+
+PF0-OSCIN
+
+19
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+I/O
+
+5VT
+
+Functions description
+Default: PF0
+Alternate: I2C0_SDA
+Additional: OSCIN
+
+PF1OSCOUT
+
+Default: PF1
+20
+
+I/O
+
+5VT
+
+Alternate: I2C0_SCL
+Additional: OSCOUT
+
+NRST
+
+1
+
+I/O
+
+Default: NRST
+
+VDDA
+
+2
+
+P
+
+Default: VDDA
+Default: PA0
+
+PA0-WKUP
+
+3
+
+I/O
+
+Alternate: USART0_CTS(3), USART1_CTS(4), CMP_OUT,
+I2C1_SCL(5)
+Additional: ADC_IN0, CMP_IM6, RTC_TAMP1, WKUP0
+
+PA1
+
+4
+
+I/O
+
+Default: PA1
+28
+
+GD32E230xx Datasheet
+Pin Name
+
+Pins
+
+Pin
+
+I/O
+
+Type(1)
+
+Level(2)
+
+Functions description
+Alternate: USART0_RTS(3), USART1_RTS(4),
+I2C1_SDA(5), EVENTOUT
+Additional: ADC_IN1, CMP_IP
+Default: PA2
+
+PA2
+
+5
+
+Alternate: USART0_TX(3), USART1_TX(4)
+
+I/O
+
+Additional: ADC_IN2, CMP_IM7
+Default: PA3
+PA3
+
+6
+
+Alternate: USART0_RX(3), USART1_RX(4)
+
+I/O
+
+Additional: ADC_IN3
+Default: PA4
+PA4
+
+7
+
+Alternate: SPI0_NSS, I2S0_WS, USART0_CK(3),
+
+I/O
+
+USART1_CK(4), TIMER13_CH0, SPI1_NSS(5)
+Additional: ADC_IN4, CMP_IM4
+Default: PA5
+
+PA5
+
+8
+
+Alternate: SPI0_SCK, I2S0_CK
+
+I/O
+
+Additional: ADC_IN5, CMP_IM5
+Default: PA6
+Alternate: SPI0_MISO, I2S0_MCK, TIMER2_CH0,
+PA6
+
+9
+
+TIMER0_BRKIN, TIMER15_CH0, EVENTOUT,
+
+I/O
+
+CMP_OUT
+Additional: ADC_IN6
+Default: PA7
+Alternate: SPI0_MOSI, I2S0_SD, TIMER2_CH1,
+PA7
+
+10
+
+TIMER13_CH0, TIMER0_CH0_ON, TIMER16_CH0,
+
+I/O
+
+EVENTOUT
+Additional: ADC_IN7
+Default: PB1
+Alternate: TIMER2_CH3, TIMER13_CH0,
+
+PB1
+
+11
+
+I/O
+
+VSS
+
+12
+
+P
+
+Default: VSS
+
+VDD
+
+13
+
+P
+
+Default: VDD
+
+TIMER0_CH2_ON, SPI1_SCK(5)
+Additional: ADC_IN9
+
+Default: PA9
+PA9(6)
+
+14
+
+I/O
+
+5VT
+
+Alternate: USART0_TX, TIMER0_CH1, I2C0_SCL,
+CK_OUT
+Default: PA10
+
+PA10(6)
+
+15
+
+I/O
+
+5VT
+
+Alternate: USART0_RX, TIMER0_CH2,
+TIMER16_BRKIN, I2C0_SDA
+
+PA13
+
+16
+
+I/O
+
+5VT
+
+Default: PA13/SWDIO
+Alternate: SWDIO, IFRP_OUT, SPI1_MISO(5)
+Default: PA14/SWCLK
+
+PA14
+
+17
+
+I/O
+
+5VT
+
+Alternate: USART0_TX(3), USART1_TX(4), SWCLK,
+SPI1_MOSI(5)
+
+BOOT0
+
+18
+
+I
+
+Default: BOOT0
+
+Notes:
+29
+
+GD32E230xx Datasheet
+(1) Type: I = input, O = output, P = power.
+(2) I/O Level: 5VT = 5 V tolerant.
+(3) Functions are available on GD32E230F4 devices only.
+(4) Functions are available on GD32E230F8/6 devices.
+(5) Functions are available on GD32E230F8 devices only.
+(6) Pin pair PA11/PA12 can be remapped instead of pin pair PA9/PA10 using
+SYSCFG_CFG0 register. Table 2-10. Port A alternate functions summary shows
+PA11/PA12 remap.
+
+30
+
+GD32E230xx Datasheet
+2.6.7
+
+GD32E230xx pin alternate functions
+Table 2-10. Port A alternate functions summary
+Pin
+Name
+
+AF0
+
+AF1
+
+AF2
+
+AF3
+
+USART0_CTS(1)
+/USART1_CTS(2
+
+PA0
+
+AF4
+
+AF5
+
+AF6
+
+I2C1_SCL(
+
+CMP_
+
+3)
+
+OUT
+
+)
+
+USART0_RTS(1)
+PA1
+
+I2C1_SDA(
+
+EVENTOUT /USART1_RTS(2
+
+3)
+
+PA3
+
+PA4
+
+PA5
+
+PA6
+
+PA7
+
+PA8
+
+PA9
+
+PA10
+
+_CH0_O
+
+TIMER14_C USART0_TX(1)/
+H0(3)
+
+USART1_TX(2)
+
+TIMER14_C USART0_RX(1)/
+H1(3)
+
+USART1_RX(2)
+
+SPI0_NSS/I USART0_CK(1)/
+2S0_WS
+
+USART1_CK(2)
+
+TIMER13_
+
+SPI1_N
+
+CH0
+
+SS(3)
+
+SPI0_SCK/I
+2S0_CK
+SPI0_MISO/
+I2S0_MCK
+SPI0_MOSI/
+I2S0_SD
+CK_OUT
+TIMER14_B
+RKIN(3)
+TIMER16_B
+RKIN
+
+TIMER2_CH0
+
+TIMER2_CH1
+
+USART0_CK
+
+USART0_TX
+
+USART0_RX
+
+TIMER0_BR
+
+SWCLK
+
+CH0
+
+_CH0
+
+OUT
+
+0
+
+OUT
+
+TIMER0_CH
+
+X(2)
+I2C0_SCL CK_OUT
+
+1
+TIMER0_CH
+
+I2C0_SDA
+
+2
+TIMER0_CH
+
+I2C0_SMB I2C1_SC SPI1_I CMP_
+
+3
+
+A
+
+L(3)
+
+O2(3)
+
+OUT
+
+I2C0_TXF I2C1_SD SPI1_I
+RAME
+
+A(3)
+
+O3(3)
+SPI1_M
+
+IFRP_OUT
+
+ISO(3)
+
+USART0_TX(1)/
+
+SPI1_M
+
+USART1_TX(2)
+
+OSI(3)
+
+SPI0_NSS/I USART0_RX(1)/
+
+EVENT
+
+SPI1_N
+
+USART1_RX(2)
+
+OUT
+
+SS(3)
+
+2S0_WS
+
+OUT
+
+TIMER0_CH EVENT USART1_T
+
+USART0_RTS TIMER0_ETI
+
+PA14
+
+OUT
+
+TIMER13_ TIMER16 EVENT
+
+0_ON
+
+PA12 EVENTOUT
+
+SWDIO
+
+_CH0
+
+TIMER0_CH
+
+USART0_CTS
+
+PA13
+
+TIMER15 EVENT CMP_
+
+KIN
+
+PA11 EVENTOUT
+
+PA15
+
+TIMER14
+N(3)
+
+)
+
+PA2
+
+AF7
+
+31
+
+GD32E230xx Datasheet
+Table 2-11. Port B alternate functions summary
+Pin
+
+AF0
+
+Name
+PB0
+
+PB1
+
+EVENTOUT TIMER2_CH2
+TIMER13_CH
+0
+
+PB2
+PB3
+
+AF1
+
+TIMER2_CH3
+
+SPI0_SCK/I2
+S0_CK
+SPI0_MISO
+/I2S0_MCK
+SPI0_MOSI
+
+PB5
+
+/I2S0_SD
+
+TIMER2_CH1
+
+PB7 USART0_RX
+
+I2C0_SDA
+
+PB8
+
+I2C0_SCL
+
+PB9
+
+IFRP_OUT
+
+PB10
+
+PB11 EVENTOUT
+
+PB15
+
+TIMER0_CH
+
+USART1
+
+1_ON
+
+_RX(2)
+
+AF5
+
+AF6
+
+TIMER0_CH
+
+SPI1_S
+
+2_ON
+
+CK(3)
+
+AF7
+
+SPI0_NSS(1)
+/SPI1_NSS(3)
+
+I2C0_SDA
+
+TIMER15_B
+RKIN
+
+TIMER1
+
+I2C0_TX
+
+TIMER2_CH0 EVENTOUT
+
+I2C0_SCL
+
+PB14
+
+AF4
+
+EVENTOUT
+
+PB6 USART0_TX
+
+PB13
+
+AF3
+
+TIMER2_ETI
+
+PB4
+
+PB12
+
+AF2
+
+6_BRKI
+
+FRAME
+
+N
+
+I2C0_SMBA
+
+TIMER15_C
+H0_ON
+TIMER16_C
+H0_ON
+TIMER15_C
+H0
+TIMER16_C
+H0
+
+EVENTOUT
+
+I2S0_M
+
+SPI1_N
+
+CK
+
+SS(3)
+
+I2C0_SCL(1)/I
+
+SPI1_I SPI1_S
+
+2C1_SCL(3)
+
+O2(3)
+
+I2C0_SDA(1)/I
+
+SPI1_I
+
+2C1_SDA(3)
+
+O3(3)
+
+EVENTOUT
+
+TIMER0_BR
+
+I2C1_SM
+
+KIN
+
+BA(3)
+
+SPI0_SCK(1) I2C1_TXFRA TIMER0_CH
+
+I2C1_S
+
+/SPI1_SCK(3)
+
+CL(3)
+
+ME(3)
+
+0_ON
+
+SPI0_MISO(1) TIMER14_CH TIMER0_CH
+
+I2C1_S
+
+/SPI1_MISO(3)
+
+DA(3)
+
+0(3)
+
+1_ON
+
+CK(3)
+
+SPI0_MOSI(1) TIMER14_CH TIMER0_CH TIMER14_CH
+/SPI1_MOSI(3)
+
+1(3)
+
+2_ON
+
+0_ON(3)
+
+Table 2-12. Port F alternate functions summary
+Pin
+Name
+
+AF0
+
+PF0
+
+AF2
+
+AF3
+
+AF4
+
+AF5
+
+AF6
+
+I2C0_SDA
+
+PF1
+PF6
+
+AF1
+
+I2C0_SCL
+I2C0_SCL(1
+)/I2C1_SCL
+
+32
+
+GD32E230xx Datasheet
+Pin
+Name
+
+AF0
+
+AF1
+
+AF2
+
+AF3
+
+AF4
+
+AF5
+
+AF6
+
+(3)
+
+I2C0_SDA(
+PF7
+
+1)/I2C1_SD
+
+A(3)
+
+Notes:
+(1) Functions are available on GD32E230x4 devices only.
+(2) Functions are available on GD32E230x8/6 devices.
+(3) Functions are available on GD32E230x8 devices only.
+
+33
+
+GD32E230xx Datasheet
+
+3
+
+Functional description
+
+3.1
+
+ARM® Cortex®-M23 core
+The Cortex-M23 processor is an energy-efficient processor with a very low gate count. It is
+intended to be used for microcontroller and deeply embedded applications that require an
+area-optimized processor. The processor is highly configurable enabling a wide range of
+implementations from those requiring memory protection and powerful trace technology to
+cost sensitive devices requiring minimal area, while delivering outstanding computational
+performance and an advanced system response to interrupts.
+32-bit ARM® Cortex®-M23 processor core
+
+
+Up to 72 MHz operation frequency
+
+
+
+Single-cycle multiplication and hardware divider
+
+
+
+Ultra-low power, energy-efficient operation
+
+
+
+Excellent code density
+
+
+
+Integrated Nested Vectored Interrupt Controller (NVIC)
+
+
+
+24-bit SysTick timer
+
+The Cortex®-M23 processor is based on the ARMv8-M architecture and supports both Thumb
+and Thumb-2 instruction sets. Some system peripherals listed below are also provided by
+Cortex®-M23:
+
+
+Internal Bus Matrix connected with AHB master, Serial Wire Debug Port and Single-cycle
+IO port
+
+3.2
+
+
+
+Nested Vectored Interrupt Controller (NVIC)
+
+
+
+Breakpoint Unit(BPU)
+
+
+
+Data Watchpoint and Trace (DWT)
+
+
+
+Serial Wire Debug Port
+
+Embedded memory
+
+
+Up to 64 Kbytes of Flash memory
+
+
+
+Up to 8 Kbytes of SRAM with hardware parity checking
+
+64 Kbytes of inner Flash and 8 Kbytes of inner SRAM at most is available for storing programs
+and data, both accessed (R/W) at CPU clock speed with 0~2 wait states. Table 2-3.
+GD32E230xx memory map shows the memory map of the GD32E230xx series of devices,
+including code, SRAM, peripheral, and other pre-defined regions.
+
+3.3
+
+Clock, reset and supply management
+
+
+Internal 8 MHz factory-trimmed RC and external 4 to 32 MHz crystal oscillator
+34
+
+GD32E230xx Datasheet
+
+
+Internal 28 MHz RC oscillator
+
+
+
+Internal 40 KHz RC calibrated oscillator and external 32.768 KHz crystal oscillator
+
+
+
+Integrated system clock PLL
+
+
+
+1.8 to 3.6 V application supply and I/Os
+
+
+
+Supply Supervisor: POR (Power On Reset), PDR (Power Down Reset), and low voltage
+detector (LVD)
+
+The Clock Control Unit (CCU) provides a range of oscillator and clock functions. These
+include speed internal RC oscillator and external crystal oscillator, high speed and low speed
+two types. Several prescalers allow the frequency configuration of the AHB and two APB
+domains. The maximum frequency of the AHB, APB2 and APB1 domains is 72 MHz/72
+MHz/72 MHz. See Figure 2-8. GD32E230xx clock tree for details on the clock tree.
+The Reset Control Unit (RCU) controls three kinds of reset: system reset resets the processor
+core and peripheral IP components. Power-on reset (POR) and power-down reset (PDR) are
+always active, and ensures proper operation starting from 1.71 V and down to 1.67 V. The
+device remains in reset mode when VDD is below a specified threshold. The embedded low
+voltage detector (LVD) monitors the power supply, compares it to the voltage threshold and
+generates an interrupt as a warning message for leading the MCU into security.
+Power supply schemes:
+
+
+VDD range: 1.8 to 3.6 V, external power supply for I/Os and the internal regulator.
+Provided externally through VDD pins.
+
+
+
+VSSA, VDDA range: 1.8 to 3.6 V, external analog power supplies for ADC, reset blocks,
+RCs and PLL. VDDA and VSSA must be connected to VDD and VSS, respectively.
+
+
+
+VBAK range: 1.8 to 3.6 V, power supply for RTC, external clock 32 KHz oscillator and
+backup registers (through power switch) when VDD is not present.
+
+3.4
+
+Boot modes
+At startup, boot pins are used to select one of three boot options:
+
+
+Boot from main Flash memory (default)
+
+
+
+Boot from system memory
+
+
+
+Boot from on-chip SRAM
+
+In default condition, boot from main Flash memory is selected. The boot loader is located in
+the internal boot ROM memory (system memory). It is used to reprogram the Flash memory
+by using USART0 (PA9 and PA10) or USART1 (PA14 and PA15 or PA2 and PA3).
+
+3.5
+
+Power saving modes
+The MCU supports three kinds of power saving modes to achieve even lower power
+consumption. They are sleep mode, deep-sleep mode, and standby mode. These operating
+modes reduce the power consumption and allow the application to achieve the best balance
+35
+
+GD32E230xx Datasheet
+between the CPU operating time, speed and power consumption.
+
+
+Sleep mode
+In sleep mode, only the clock of CPU core is off. All peripherals continue to operate and
+any interrupt/event can wake up the system.
+
+
+
+Deep-sleep mode
+In deep-sleep mode, all clocks in the 1.2V domain are off, and all of the high speed
+crystal oscillator (IRC8M, HXTAL) and PLL are disabled. Only the contents of SRAM and
+registers are retained. Any interrupt or wakeup event from EXTI lines can wake up the
+system from the deep-sleep mode including the 16 external lines, the RTC alarm, RTC
+tamper and timestamp, CMP output, LVD output and USART wakeup. When exiting the
+deep-sleep mode, the IRC8M is selected as the system clock.
+
+
+
+Standby mode
+In standby mode, the whole 1.2V domain is power off, the LDO is shut down, and all of
+IRC8M, HXTAL and PLL are disabled. The contents of SRAM and registers (except
+backup registers) are lost. There are four wakeup sources for the standby mode,
+including the external reset from NRST pin, the RTC alarm, the FWDGT reset, and the
+rising edge on WKUP pin.
+
+3.6
+
+Analog to digital converter (ADC)
+
+
+12-bit SAR ADC's conversion rate is up to 2 MSPS
+
+
+
+12-bit, 10-bit, 8-bit or 6-bit configurable resolution
+
+
+
+Hardware oversampling ratio adjustable from 2 to 256x improves resolution to 16-bit
+
+
+
+Input voltage range: VSSA to VDDA
+
+
+
+Temperature sensor
+
+One 12-bit 2 MSPS multi-channel ADC is integrated in the device. It has a total of 12
+multiplexed channels: up to 10 external channels, 1 channel for internal temperature sensor
+(VSENSE) and 1 channel for internal reference voltage (VREFINT). The input voltage range is
+between VSSA and VDDA. An on-chip hardware oversampling scheme improves performance
+while off-loading the related computational burden from the CPU. An analog watchdog block
+can be used to detect the channels, which are required to remain within a specific threshold
+window. A configurable channel management block can be used to perform conversions in
+single, continuous, scan or discontinuous mode to support more advanced use.
+The ADC can be triggered from the events generated by the general level 0 timers (TIMERx)
+and the advanced timer (TIMER0) with internal connection. The temperature sensor can be
+used to generate a voltage that varies linearly with temperature. It is internally connected to
+the ADC_IN16 input channel which is used to convert the sensor output voltage in a digital
+value.
+
+36
+
+GD32E230xx Datasheet
+3.7
+
+DMA
+
+
+5 channels DMA controller
+
+
+
+Peripherals supported: Timers, ADC, SPIs, I2Cs, USARTs and I2S
+
+The flexible general-purpose DMA controllers provide a hardware method of transferring data
+between peripherals and/or memory without intervention from the CPU, thereby freeing up
+bandwidth for other system functions. Three types of access method are supported:
+peripheral to memory, memory to peripheral, memory to memory.
+Each channel is connected to fixed hardware DMA requests. The priorities of DMA channel
+requests are determined by software configuration and hardware channel number. Transfer
+size of source and destination are independent and configurable.
+
+3.8
+
+General-purpose inputs/outputs (GPIOs)
+
+
+Up to 39 fast GPIOs, all mappable on 16 external interrupt lines
+
+
+
+Analog input/output configurable
+
+
+
+Alternate function input/output configurable
+
+There are up to 39 general purpose I/O pins (GPIO) in GD32E230xx, named PA0 ~ PA15 and
+PB0 ~ PB15, PC13 ~ PC15, PF0 ~ PF1, PF6 ~ PF7 to implement logic input/output functions.
+Each of the GPIO ports has related control and configuration registers to satisfy the
+requirements of specific applications. The external interrupts on the GPIO pins of the device
+have related control and configuration registers in the Interrupt/event controller (EXTI). The
+GPIO ports are pin-shared with other alternative functions (AFs) to obtain maximum flexibility
+on the package pins. Each of the GPIO pins can be configured by software as output (pushpull open-drain or analog), as input (with or without pull-up or pull-down) or as peripheral
+alternate function. Most of the GPIO pins are shared with digital or analog alternate functions.
+All GPIOs are high-current capable except for analog inputs.
+
+3.9
+
+Timers and PWM generation
+
+
+One 16-bit advanced timer (TIMER0), up to five 16-bit general timers (TIMER2, TIMER13
+~ TIMER16), and one 16-bit basic timer (TIMER5)
+
+
+
+Up to 4 independent channels of PWM, output compare or input capture for each general
+timer and external trigger input
+
+
+
+16-bit, motor control PWM advanced timer with programmable dead-time generation for
+output match
+
+
+
+Encoder interface controller with two inputs using quadrature decoder
+
+
+
+24-bit SysTick timer down counter
+
+
+
+2 watchdog timers (free watchdog timer and window watchdog timer)
+
+The advanced timer (TIMER0) can be used as a three-phase PWM multiplexed on 6 channels.
+37
+
+GD32E230xx Datasheet
+It has complementary PWM outputs with programmable dead-time generation. It can also be
+used as a complete general timer. The 4 independent channels can be used for input capture,
+output compare, PWM generation (edge- or center- aligned counting modes) and single pulse
+mode output. If configured as a general 16-bit timer, it has the same functions as the TIMERx
+timer. It can be synchronized with external signals or to interconnect with other general timers
+together which have the same architecture and features.
+The general timer can be used for a variety of purposes including general time, input signal
+pulse width measurement or output waveform generation such as a single pulse generation
+or PWM output, up to 4 independent channels for input capture/output compare. TIMER2 is
+based on a 16-bit auto-reload up/down counter and a 16-bit prescaler. TIMER13 ~ TIMER16
+is based on a 16-bit auto-reload up counter and a 16-bit prescaler. The general timer also
+supports an encoder interface with two inputs using quadrature decoder.
+The basic timer, known as TIMER5 can also be used as a simple 16-bit time base.
+The GD32E230xx have two watchdog peripherals, free watchdog and window watchdog.
+They offer a combination of high safety level, flexibility of use and timing accuracy.
+The free watchdog timer includes a 12-bit down-counting counter and an 8-bit prescaler. It is
+clocked from an independent 40 KHz internal RC and as it operates independently of the
+main clock, it can operate in deep-sleep and standby modes. It can be used either as a
+watchdog to reset the device when a problem occurs, or as a free-running timer for application
+timeout management.
+The window watchdog is based on a 7-bit down counter that can be set as free-running. It
+can be used as a watchdog to reset the device when a problem occurs. It is clocked from the
+main clock. It has an early wakeup interrupt capability and the counter can be frozen in debug
+mode.
+The SysTick timer is dedicated for OS, but could also be used as a standard down counter.
+The features are shown below:
+
+3.10
+
+
+
+A 24-bit down counter
+
+
+
+Auto reload capability
+
+
+
+Maskable system interrupt generation when the counter reaches 0
+
+
+
+Programmable clock source
+
+Real time clock (RTC)
+
+
+Independent binary-coded decimal (BCD) format timer/counter with five 32-bit backup
+registers.
+
+
+
+Calendar with subsecond, second, minute, hour, week day, date, year and month
+automatically correction
+
+
+
+Alarm function with wake up from deep-sleep and standby mode capability
+
+
+
+On-the-fly correction for synchronization with master clock. Digital calibration with 0.954
+ppm resolution for compensation of quartz crystal inaccuracy.
+38
+
+GD32E230xx Datasheet
+The real time clock is an independent timer which provides a set of continuously running
+counters in backup registers to provide a real calendar function, and provides an alarm
+interrupt or an expected interrupt. It is not reset by a system or power reset, or when the
+device wakes up from standby mode. In the RTC unit, there are two prescalers used for
+implementing the calendar and other functions. One prescaler is a 7-bit asynchronous
+prescaler and the other is a 15-bit synchronous prescaler.
+
+3.11
+
+Inter-integrated circuit (I2C)
+
+
+Up to two I2C bus interfaces can support both master and slave mode with a frequency
+up to 1 MHz (Fast mode plus)
+
+
+
+Provide arbitration function, optional PEC (packet error checking) generation and
+checking
+
+
+
+Supports 7-bit and 10-bit addressing mode and general call addressing mode
+
+
+
+Supports SAM_V mode
+
+The I2C interface is an internal circuit allowing communication with an external I2C interface
+which is an industry standard two line serial interface used for connection to external
+hardware. These two serial lines are known as a serial data line (SDA) and a serial clock line
+(SCL). The I2C module provides different data transfer rates: up to 100 KHz in standard mode,
+up to 400 KHz in the fast mode and up to 1 MHz in the fast mode plus. The I2C module also
+has an arbitration detect function to prevent the situation where more than one master
+attempts to transmit data to the I2C bus at the same time. A CRC-8 calculator is also provided
+in I2C interface to perform packet error checking for I2C data.
+
+3.12
+
+Serial peripheral interface (SPI)
+
+
+Up to two SPI interfaces with a frequency of up to 18 MHz
+
+
+
+Support both master and slave mode
+
+
+
+Hardware CRC calculation and transmit automatic CRC error checking
+
+
+
+Separate transmit and receive 32-bit FIFO with DMA capability (only in SPI1)
+
+
+
+Data frame size can be 4 to 16 bits (only in SPI1)
+
+
+
+Quad-SPI configuration available in master mode (only in SPI1)
+
+The SPI interface uses 4 pins, among which are the serial data input and output lines (MISO
+& MOSI), the clock line (SCK) and the slave select line (NSS). Both SPIs can be served by
+the DMA controller. The SPI interface may be used for a variety of purposes, including simplex
+synchronous transfers on two lines with a possible bidirectional data line or reliable
+communication using CRC checking. Specially, SPI1 has separate transmit and receive 32bit FIFO with DMA capability and its data frame size can be 4 to 16 bits. Quad-SPI master
+mode is also supported in SPI1.
+
+39
+
+GD32E230xx Datasheet
+3.13
+
+Universal synchronous asynchronous receiver transmitter
+(USART)
+
+
+Up to two USARTs with operating frequency up to 4.5 MBits/s
+
+
+
+Supports both asynchronous and clocked synchronous serial communication modes
+
+
+
+IrDA SIR encoder and decoder support
+
+
+
+LIN break generation and detection
+
+
+
+ISO 7816-3 compliant smart card interface
+
+The USART (USART0, USART1) are used to translate data between parallel and serial
+interfaces, provides a flexible full duplex data exchange using synchronous or asynchronous
+transfer. It is also commonly used for RS-232 standard communication. The USART includes
+a programmable baud rate generator which is capable of dividing the system clock to produce
+a dedicated clock for the USART transmitter and receiver. The USART also supports DMA
+function for high speed data communication.
+
+3.14
+
+Inter-IC sound (I2S)
+
+
+One I2S bus Interfaces with sampling frequency from 8 KHz to 192 KHz, multiplexed with
+SPI0
+
+
+
+Support either master or slave mode
+
+The Inter-IC sound (I2S) bus provides a standard communication interface for digital audio
+applications by 3-wire serial lines. GD32E230xx contain an I2S-bus interface that can be
+operated with 16/32 bit resolution in master or slave mode, pin multiplexed with SPI0. The
+audio sampling frequency from 8 KHz to 192 KHz is supported with less than 0.5% accuracy
+error.
+
+3.15
+
+Comparators (CMP)
+
+
+One fast rail-to-rail low-power comparators with software configurable
+
+
+
+Programmable reference voltage (internal or external I/O)
+
+One Comparator (CMP) is implemented within the devices. It can wake up from deep-sleep
+mode to generate interrupts and breaks for the timers and also can be combined as a window
+comparator. The internal voltage reference is also connected to ADC_IN17 input channel of
+the ADC.
+
+3.16
+
+Debug mode
+
+
+Serial wire debug port
+40
+
+GD32E230xx Datasheet
+Debug capabilities can be accessed by a debug tool via Serial Wire (SW - Debug Port).
+
+3.17
+
+Package and operation temperature
+
+
+LQFP48 (GD32E230CxTx), LQFP32 (GD32E230KxTx), QFN32 (GD32E230KxUx),
+QFN28 (GD32E230GxUx), TSSOP20 (GD32E230FxPx) and LGA20 (GD32E230FxVx).
+
+
+
+Operation temperature range: -40°C to +85°C (industrial level)
+
+41
+
+GD32E230xx Datasheet
+
+4
+
+Electrical characteristics
+
+4.1
+
+Absolute maximum ratings
+The maximum ratings are the limits to which the device can be subjected without permanently
+damaging the device. Note that the device is not guaranteed to operate properly at the
+maximum ratings. Exposure to the absolute maximum rating conditions for extended periods
+may affect device reliability.
+Table 4-1. Absolute maximum ratings (1)(4)
+Symbol
+
+Parameter
+
+Min
+
+Max
+
+Unit
+
+VDD
+
+External voltage range(2)
+
+VSS - 0.3
+
+VSS + 3.6
+
+V
+
+VDDA
+
+External analog supply voltage
+
+VSSA - 0.3
+
+VSSA + 3.6
+
+V
+
+Input voltage on 5V tolerant pin(3)
+
+VSS - 0.3
+
+VDD + 3.6
+
+V
+
+Input voltage on other I/O
+
+VSS - 0.3
+
+3.6
+
+V
+
+|ΔVDDx|
+
+Variations between different VDD power pins
+
+—
+
+50
+
+mV
+
+|VSSX −VSS|
+
+Variations between different ground pins
+
+—
+
+50
+
+mV
+
+IIO
+
+Maximum current for GPIO pins
+
+—
+
+±25
+
+mA
+
+TA
+
+Operating temperature range
+
+-40
+
++85
+
+°C
+
+Power dissipation at TA = 85°C of LQFP48
+
+—
+
+574
+
+Power dissipation at TA = 85°C of LQFP32
+
+—
+
+724
+
+Power dissipation at TA = 85°C of QFN32
+
+—
+
+939
+
+Power dissipation at TA = 85°C of QFN28
+
+—
+
+845
+
+Power dissipation at TA = 85°C of TSSOP20
+
+—
+
+595
+
+Power dissipation at TA = 85°C of LGA20
+
+—
+
+416
+
+TSTG
+
+Storage temperature range
+
+-55
+
++150
+
+°C
+
+TJ
+
+Maximum junction temperature
+
+—
+
+125
+
+°C
+
+VIN
+
+PD
+
+(1)
+(2)
+(3)
+(4)
+
+4.2
+
+mW
+
+Guaranteed by design, not tested in production.
+All main power and ground pins should be connected to an external power source within the allowable range.
+VIN maximum value cannot exceed 6.5 V.
+It is recommended that VDD and VDDA are powered by the same source. The maximum difference between VDD
+and VDDA does not exceed 300 mV during power-up and operation.
+
+Operating conditions characteristics
+Table 4-2. DC operating conditions
+Symbol
+
+Parameter
+
+Conditions
+
+VDD
+
+Supply voltage
+
+—
+
+VDDA
+(1)
+
+Analog supply voltage ADC not used
+Analog supply voltage ADC used
+
+—
+
+Min(1) Typ Max(1) Unit
+1.8
+
+3.3
+
+3.6
+
+1.8
+
+3.3
+
+3.6
+
+2.4
+
+3.3
+
+3.6
+
+V
+V
+
+Based on characterization, not tested in production.
+
+Figure 4-1. Recommended power supply decoupling capacitors(1) (2)
+42
+
+GD32E230xx Datasheet
+
+N * VDD
+4.7 μF + N * 100 nF
+
+VSS
+
+VDDA
+
+1 μF
+
+(1)
+(2)
+
+VSSA
+
+10 nF
+
+The VREF+ and VREF- pins are only available on no less than 100-pin packages, or else the VREF+ and VREF- pins
+are not available and internally connected to VDDA and VSSA pins.
+All decoupling capacitors need to be as close as possible to the pins on the PCB board.
+
+Table 4-3. Clock frequency(1)
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Max
+
+Unit
+
+fHCLK1
+
+AHB1 clock frequency
+
+—
+
+0
+
+72
+
+MHz
+
+fHCLK2
+
+AHB2 clock frequency
+
+—
+
+0
+
+72
+
+MHz
+
+fAPB1
+
+APB1 clock frequency
+
+—
+
+0
+
+72
+
+MHz
+
+fAPB2
+
+APB2 clock frequency
+
+—
+
+0
+
+72
+
+MHz
+
+Min
+
+Max
+
+Unit
+
+0
+
+∞
+
+20
+
+∞
+
+(1)
+
+Guaranteed by design, not tested in production.
+
+Table 4-4. Operating conditions at Power up/ Power down(1)
+Symbol
+tVDD
+(1)
+
+Parameter
+
+Conditions
+
+VDD rise time rate
+
+—
+
+VDD fall time rate
+
+μs /V
+
+Guaranteed by design, not tested in production.
+
+Table 4-5. Start-up timings of Operating conditions (1)
+Symbol
+
+Parameter
+
+tstart-up
+
+Start-up time
+
+(1)
+(2)
+(3)
+
+Conditions
+
+Typ
+
+Clock source from HXTAL
+
+432
+
+Clock source from IRC8M
+
+76
+
+Unit
+
+μs
+
+Based on characterization, not tested in production.
+After power-up, the start-up time is the time between the rising edge of NRST high and the first I/O instruction
+conversion in SystemInit function.
+PLL is off.
+
+Table 4-6. Power saving mode wakeup timings characteristics(1) (2)
+Symbol
+
+Parameter
+
+Typ
+
+tSleep
+
+Wakeup from Sleep mode
+
+3.5
+
+Wakeup from Deep-sleep mode（LDO On）
+
+17.1
+
+Wakeup from Deep-sleep mode（LDO in low power mode）
+
+17.1
+
+Wakeup from Standby mode
+
+77.5
+
+tDeep-sleep
+tStandby
+(1)
+(2)
+
+Unit
+
+μs
+
+Based on characterization, not tested in production.
+The wakeup time is measured from the wakeup event to the point at which the application code reads the first
+
+43
+
+GD32E230xx Datasheet
+instruction under the below conditions: VDD = VDDA = 3.3 V, IRC8M = System clock = 8 MHz.
+
+4.3
+
+Power consumption
+The power measurements specified in the tables represent that code with data executing from
+on-chip Flash with the following specifications.
+Table 4-7. Power consumption characteristics (2)(3)(4)
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ(1) Max Unit
+
+—
+
+8.5
+
+—
+
+mA
+
+—
+
+5.4
+
+—
+
+mA
+
+-—
+
+6.2
+
+-—
+
+mA
+
+—
+
+4.2
+
+—
+
+mA
+
+—
+
+5.1
+
+—
+
+mA
+
+-—
+
+3.6
+
+-—
+
+mA
+
+—
+
+4.0
+
+—
+
+mA
+
+—
+
+2.9
+
+—
+
+mA
+
+-—
+
+3.2
+
+-—
+
+mA
+
+—
+
+2.5
+
+—
+
+mA
+
+—
+
+2.4
+
+—
+
+mA
+
+-—
+
+2.1
+
+-—
+
+mA
+
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 72 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 72 MHz, All peripherals
+disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 48 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 48 MHz, All peripherals
+disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 36 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 36 MHz, All peripherals
+IDD+IDDA
+
+Supply current
+
+disabled
+
+(Run mode)
+
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 24 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 24 MHz, All peripherals
+disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 16 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 16 MHz, All peripherals
+disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 8 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz,
+System clock = 8 MHz, All peripherals
+disabled
+44
+
+GD32E230xx Datasheet
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ(1) Max Unit
+
+—
+
+0.8
+
+—
+
+mA
+
+—
+
+0.6
+
+—
+
+mA
+
+-—
+
+0.6
+
+-—
+
+mA
+
+—
+
+0.5
+
+—
+
+mA
+
+—
+
+7.4
+
+—
+
+mA
+
+—
+
+3.7
+
+—
+
+mA
+
+-—
+
+5.5
+
+-—
+
+mA
+
+—
+
+3.1
+
+—
+
+mA
+
+—
+
+4.5
+
+—
+
+mA
+
+-—
+
+2.7
+
+-—
+
+mA
+
+—
+
+3.6
+
+—
+
+mA
+
+—
+
+2.4
+
+—
+
+mA
+
+-—
+
+3.0
+
+-—
+
+mA
+
+—
+
+2.1
+
+—
+
+mA
+
+VDD = VDDA = 3.3 V, HXTAL = 4 MHz,
+System clock = 4 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 4 MHz,
+System clock = 4 MHz, All peripherals
+disabled
+VDD = VDDA = 3.3 V, HXTAL = 2 MHz,
+System clock = 2 MHz, All peripherals
+enabled
+VDD = VDDA = 3.3 V, HXTAL = 2 MHz,
+System clock = 2 MHz, All peripherals
+disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 72 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 72 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 48 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 48 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 36 MHz, All
+Supply current
+
+peripherals enabled
+
+(Sleep mode)
+
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 36 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 24 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 24 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 16 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 16 MHz, All
+peripherals disabled
+
+45
+
+GD32E230xx Datasheet
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ(1) Max Unit
+
+—
+
+2.3
+
+—
+
+mA
+
+-—
+
+1.9
+
+-—
+
+mA
+
+—
+
+0.7
+
+—
+
+mA
+
+—
+
+0.5
+
+—
+
+mA
+
+-—
+
+0.5
+
+-—
+
+mA
+
+—
+
+0.4
+
+—
+
+mA
+
+—
+
+25.5
+
+58
+
+μA
+
+—
+
+12.3
+
+58
+
+μA
+
+—
+
+3.8
+
+5.5
+
+μA
+
+—
+
+3.6
+
+5.5
+
+μA
+
+—
+
+3.1
+
+5.5
+
+μA
+
+—
+
+1.6
+
+5.5
+
+μA
+
+—
+
+1.43
+
+—
+
+μA
+
+—
+
+1.36
+
+—
+
+μA
+
+—
+
+1.23
+
+—
+
+μA
+
+—
+
+1.15
+
+—
+
+μA
+
+—
+
+1.13
+
+—
+
+μA
+
+—
+
+1.06
+
+—
+
+μA
+
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 8 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 8 MHz, CPU
+clock off, System clock = 8 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, HXTAL = 4 MHz, CPU
+clock off, System clock = 4 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 4 MHz, CPU
+clock off, System clock = 4 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, HXTAL = 2 MHz, CPU
+clock off, System clock = 2 MHz, All
+peripherals enabled
+VDD = VDDA = 3.3 V, HXTAL = 2 MHz, CPU
+clock off, System clock = 2 MHz, All
+peripherals disabled
+VDD = VDDA = 3.3 V, LDO in run mode,
+Supply current
+(Deep-sleep
+mode)
+
+IRC40K off, RTC off, All GPIOs analog
+mode
+VDD = VDDA = 3.3 V, LDO in low power
+mode, IRC40K off, RTC off, All GPIOs
+analog mode
+VDD = VDDA = 3.3 V, LXTAL off, IRC40K on,
+RTC on
+VDD = VDDA = 3.3 V, LXTAL off, IRC40K on,
+
+Supply current
+
+RTC off
+
+(Standby mode) VDD = VDDA = 3.3 V, LXTAL off, IRC40K off,
+RTC off, VDDA Monitor on
+VDD = VDDA = 3.3 V, LXTAL off, IRC40K off,
+RTC off, VDDA Monitor off
+VDD = VDDA = 3.6 V, LXTAL on with external
+crystal, RTC on, Higher driving
+VDD = VDDA = 3.3 V, LXTAL on with external
+crystal, RTC on, Higher driving
+VDD = VDDA = 2.5 V, LXTAL on with external
+ILXTAL+RTC
+
+LXTAL+RTC
+
+crystal, RTC on, Higher driving
+
+current
+
+VDD = VDDA = 1.8 V, LXTAL on with external
+crystal, RTC on, Higher driving
+VDD = VDDA = 3.6 V, LXTAL on with external
+crystal, RTC on, Medium High driving
+VDD = VDDA = 3.3 V, LXTAL on with external
+crystal, RTC on, Medium High driving
+
+46
+
+GD32E230xx Datasheet
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ(1) Max Unit
+
+VDD = VDDA = 2.5 V, LXTAL on with external
+
+—
+
+0.95
+
+—
+
+μA
+
+—
+
+0.86
+
+—
+
+μA
+
+—
+
+0.84
+
+—
+
+μA
+
+—
+
+0.76
+
+—
+
+μA
+
+—
+
+0.64
+
+—
+
+μA
+
+—
+
+0.56
+
+—
+
+μA
+
+—
+
+0.74
+
+—
+
+μA
+
+—
+
+0.67
+
+—
+
+μA
+
+—
+
+0.56
+
+—
+
+μA
+
+—
+
+0.47
+
+—
+
+μA
+
+crystal, RTC on, Medium High driving
+VDD = VDDA = 1.8 V, LXTAL on with external
+crystal, RTC on, Medium High driving
+VDD = VDDA = 3.6 V, LXTAL on with external
+crystal, RTC on, Medium Low driving
+VDD = VDDA = 3.3 V, LXTAL on with external
+crystal, RTC on, Medium Low driving
+VDD = VDDA = 2.5 V, LXTAL on with external
+crystal, RTC on, Medium Low driving
+VDD = VDDA = 1.8 V, LXTAL on with external
+crystal, RTC on, Medium Low driving
+VDD = VDDA = 3.6 V, LXTAL on with external
+crystal, RTC on, Low driving
+VDD = VDDA = 3.3 V, LXTAL on with external
+crystal, RTC on, Low driving
+VDD = VDDA = 2.5 V, LXTAL on with external
+crystal, RTC on, Low driving
+VDD = VDDA = 1.8 V, LXTAL on with external
+crystal, RTC on, Low driving
+(1)
+(2)
+(3)
+(4)
+
+Based on characterization, not tested in production.
+When System Clock is less than 4 MHz, an external source is used, and the HXTAL bypass function is needed,
+no PLL.
+When System Clock is greater than 8 MHz, a crystal 8 MHz is used, and the HXTAL bypass function is closed,
+using PLL.
+When analog peripheral blocks such as ADCs, HXTAL, LXTAL, IRC8M, or IRC40K are ON, an additional power
+consumption should be considered.
+
+47
+
+GD32E230xx Datasheet
+Figure 4-2. Typical supply current consumption in Run mode
+
+Figure 4-3. Typical supply current consumption in Sleep mode
+
+48
+
+GD32E230xx Datasheet
+Table 4-8. Peripheral current consumption characteristics(1)
+Peripherials(4)
+
+APB1
+
+APB2
+
+AHB
+
+(1)
+(2)
+(3)
+(4)
+
+4.4
+
+Typical consumption at TA = 25 ℃
+（TYP）
+
+PMU
+
+1.44
+
+I2C1
+
+1.38
+
+I2C0
+
+1.38
+
+USART1
+
+1.34
+
+SPI1
+
+1.37
+
+WWDGT
+
+1.32
+
+TIMER13
+
+1.36
+
+TIMER5
+
+0.17
+
+TIMER2
+
+0.23
+
+DBGMCU
+
+1.3
+
+TIMER16
+
+1.42
+
+TIMER15
+
+1.42
+
+TIMER14
+
+1.49
+
+USART0
+
+1.63
+
+SPI0
+
+1.38
+
+TIMER0
+
+1.68
+
+ADC(2)
+
+0.95
+
+CFG & CMP(3)
+
+1.27
+
+GPIOF
+
+1.31
+
+GPIOC
+
+1.31
+
+GPIOB
+
+1.34
+
+GPIOA
+
+1.34
+
+CRC
+
+0.16
+
+DMA
+
+0.15
+
+Unit
+
+mA
+
+Based on characterization, not tested in production.
+fADCCLK = IRC28M, ADCON bit is set to 1.
+CMP enabled by setting CMPEN bit in CMP_CS，CMP mode is set to High Speed.
+If there is no other description, then VDD = VDDA = 3.3 V, HXTAL = 8 MHz, system clock = fHCLK = 72 MHz, fAPB1
+= fHCLK/2, fAPB2 = fHCLK, fADCCLK = fAPB2/2.
+
+EMC characteristics
+EMS (electromagnetic susceptibility) includes ESD (Electrostatic discharge, positive and
+negative) and FTB (Burst of Fast Transient voltage, positive and negative) testing result is
+given in Table 4-9. EMS characteristics(1), based on the EMS levels and classes compliant
+with IEC 61000 series standard.
+
+49
+
+GD32E230xx Datasheet
+Table 4-9. EMS characteristics(1)
+Symbol
+
+VESD
+
+VFTB
+
+(1)
+
+Parameter
+Voltage applied to all device pins to
+induce a functional disturbance
+
+Conditions
+
+Level/Class
+
+VDD = 3.3 V, TA = 25 °C,
+LQFP48, fHCLK = 72 MHz
+
+3A
+
+conforms to IEC 61000-4-2
+
+Fast transient voltage burst applied to
+
+VDD = 3.3 V, TA = 25 °C,
+
+induce a functional disturbance through
+
+LQFP48, fHCLK = 72 MHz
+
+100 pF on VDD and VSS pins
+
+conforms to IEC 61000-4-4
+
+4A
+
+Based on characterization, not tested in production.
+
+50
+
+GD32E230xx Datasheet
+4.5
+
+Power supply supervisor characteristics
+Table 4-10. Power supply supervisor characteristics (1)
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+LVDT[2:0] = 000, rising edge
+
+—
+
+2.11
+
+—
+
+V
+
+LVDT[2:0] = 000, falling edge
+
+—
+
+2.01
+
+—
+
+V
+
+LVDT[2:0] = 001, rising edge
+
+—
+
+2.25
+
+—
+
+V
+
+LVDT[2:0] = 001, falling edge
+
+—
+
+2.16
+
+—
+
+V
+
+LVDT[2:0] = 010, rising edge
+
+—
+
+2.39
+
+—
+
+V
+
+LVDT[2:0] = 010, falling edge
+
+—
+
+2.29
+
+—
+
+V
+
+LVDT[2:0] = 011, rising edge
+
+—
+
+2.52
+
+—
+
+V
+
+Low Voltage Detector
+
+LVDT[2:0] = 011, falling edge
+
+—
+
+2.43
+
+—
+
+V
+
+Threshold
+
+LVDT[2:0] = 100, rising edge
+
+—
+
+2.66
+
+—
+
+V
+
+LVDT[2:0] = 100, falling edge
+
+—
+
+2.57
+
+—
+
+V
+
+LVDT[2:0] = 101, rising edge
+
+—
+
+2.80
+
+—
+
+V
+
+LVDT[2:0] = 101, falling edge
+
+—
+
+2.71
+
+—
+
+V
+
+LVDT[2:0] = 110, rising edge
+
+—
+
+2.95
+
+—
+
+V
+
+LVDT[2:0] = 110, falling edge
+
+—
+
+2.84
+
+—
+
+V
+
+LVDT[2:0] = 111, rising edge
+
+—
+
+3.08
+
+—
+
+V
+
+LVDT[2:0] = 111, falling edge
+
+—
+
+2.98
+
+—
+
+V
+
+—
+
+—
+
+100
+
+—
+
+mV
+
+—
+
+1.71
+
+—
+
+V
+
+—
+
+1.67
+
+—
+
+V
+
+VLVD(1)
+
+VLVDhyst(2)
+VPOR(1)
+
+VPDR(1)
+
+Power on reset
+threshold
+Power down reset
+threshold
+
+—
+
+VPDRhyst(2)
+
+PDR hysteresis
+
+—
+
+40
+
+—
+
+mV
+
+tRSTTEMPO(2)
+
+Reset temporization
+
+—
+
+2
+
+—
+
+ms
+
+(1)
+(2)
+
+4.6
+
+LVD hysteresis
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+Electrical sensitivity
+The device is strained in order to determine its performance in terms of electrical sensitivity.
+Electrostatic discharges (ESD) are applied directly to the pins of the sample. Static latch-up
+51
+
+GD32E230xx Datasheet
+(LU) test is based on the two measurement methods.
+Table 4-11. ESD characteristics (1)
+Symbol
+VESD(HBM)
+
+VESD(CDM)
+(1)
+
+Parameter
+
+Conditions
+
+Electrostatic discharge
+
+TA = 25 °C;
+
+voltage (human body model)
+
+JESD22-A114
+
+Electrostatic discharge
+
+TA = 25 °C;
+
+voltage (charge device model)
+
+JESD22-C101
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+—
+
+—
+
+6000
+
+V
+
+—
+
+—
+
+2000
+
+V
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+—
+
+—
+
+±200
+
+mA
+
+—
+
+—
+
+5.4
+
+V
+
+Based on characterization, not tested in production.
+
+Table 4-12. Static latch-up characteristics(1)
+Symbol
+
+Parameter
+
+Conditions
+
+I-test
+LU
+
+TA = 25 °C; JESD78
+Vsupply over voltage
+
+(1)
+
+4.7
+
+Based on characterization, not tested in production.
+
+External clock characteristics
+Table 4-13. High speed external clock (HXTAL) generated from a crystal/ceramic
+characteristics
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+fHXTAL(1)
+
+Crystal or ceramic frequency
+
+VDD = 3.3 V
+
+4
+
+8
+
+32
+
+MHz
+
+RF(2)
+
+Feedback resistor
+
+VDD = 3.3 V
+
+—
+
+400
+
+—
+
+kΩ
+
+CHXTAL(2) (3)
+
+capacitance on OSCIN and
+
+—
+
+—
+
+20
+
+30
+
+pF
+
+Recommended matching
+
+OSCOUT
+Ducy(HXTAL)(2)
+
+Crystal or ceramic duty cycle
+
+—
+
+30
+
+50
+
+70
+
+%
+
+gm(2)
+
+Oscillator transconductance
+
+Startup
+
+—
+
+25
+
+—
+
+mA/V
+
+VDD = 3.3 V, TA = 25 °C
+
+—
+
+1.2
+
+—
+
+mA
+
+Crystal or ceramic startup time VDD = 3.3 V, TA = 25 °C
+
+—
+
+1.8
+
+—
+
+ms
+
+IDD(HXTAL) (1)
+tSUHXTAL(1)
+(1)
+(2)
+(3)
+
+Crystal or ceramic operating
+current
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+CHXTAL1 = CHXTAL2 = 2*(CLOAD - CS), For CHXTAL1 and CHXTAL2, it is recommended matching capacitance on OSCIN
+and OSCOUT. For CLOAD, it is crystal/ceramic load capacitance, provided by the crystal or ceramic
+manufacturer. For CS, it is PCB and MCU pin stray capacitance.
+
+52
+
+GD32E230xx Datasheet
+Table 4-14. High speed external user clock characteristics (HXTAL in bypass mode)
+Symbol
+
+Parameter
+External clock source or oscillator
+
+fHXTAL_ext(1)
+
+(1)
+(2)
+
+frequency
+
+VHXTALH(2)
+
+OSCIN input pin high level voltage
+
+VHXTALL(2)
+
+OSCIN input pin low level voltage
+
+tH/L(HXTAL) (2)
+
+OSCIN high or low time
+
+tR/F(HXTAL)(2)
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+VDD = 3.3 V
+
+1
+
+8
+
+50
+
+MHz
+
+0.7 VDD —
+
+VDD
+
+VDD = 3.3 V
+
+V
+
+VSS
+
+—
+
+0.3 VDD
+
+—
+
+5
+
+—
+
+—
+
+OSCIN rise or fall time
+
+—
+
+—
+
+—
+
+10
+
+CIN(2)
+
+OSCIN input capacitance
+
+—
+
+—
+
+5
+
+—
+
+pF
+
+Ducy(HXTAL) (2)
+
+Duty cycle
+
+—
+
+30
+
+50
+
+70
+
+%
+
+ns
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+Table 4-15. Low speed external clock (LXTAL) generated from a crystal/ceramic
+characteristics
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+fLXTAL(1)
+
+Crystal or ceramic frequency
+
+VDD = 3.3 V
+
+—
+
+32.768
+
+—
+
+kHz
+
+CLXTAL(2)(3)
+
+capacitance on OSC32IN
+
+—
+
+—
+
+10
+
+—
+
+pF
+
+—
+
+30
+
+—
+
+70
+
+%
+
+—
+
+4
+
+—
+
+—
+
+6
+
+—
+
+Recommended matching
+and OSC32OUT
+Ducy(LXTAL)
+
+(2)
+
+Crystal or ceramic duty cycle
+
+Lower driving
+capability
+Medium low driving
+gm(2)
+
+Oscillator transconductance
+
+capability
+Medium high driving
+capability
+Higher driving
+capability
+Lower driving
+capability
+Medium low driving
+
+IDDLXTAL
+
+(1)
+
+Crystal or ceramic operating
+
+capability
+
+current
+
+Medium high driving
+capability
+Higher driving
+capability
+
+tSULXTAL(1)(4)
+(1)
+(2)
+(3)
+
+(4)
+
+Crystal or ceramic startup
+time
+
+VDD = 3.3 V
+
+μA/V
+—
+
+12
+
+—
+
+—
+
+18
+
+—
+
+—
+
+0.5
+
+—
+
+—
+
+0.6
+
+—
+μA
+
+—
+
+1.0
+
+—
+
+—
+
+1.2
+
+—
+
+—
+
+1.8
+
+—
+
+s
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+CLXTAL1 = CLXTAL2 = 2*(CLOAD - CS), For CLXTAL1 and CLXTAL2, it is recommended matching capacitance on OSC32IN
+and OSC32OUT. For CLOAD, it is crystal/ceramic load capacitance, provided by the crystal or ceramic
+manufacturer. For CS, it is PCB and MCU pin stray capacitance.
+tSULXTAL is the startup time measured from the moment it is enabled (by software) to the 32.768 kHz oscillator
+stabilization flags is SET. This value varies significantly with the crystal manufacturer.
+
+53
+
+GD32E230xx Datasheet
+Table 4-16. Low speed external user clock characteristics (LXTAL in bypass mode)
+Symbol
+
+Parameter
+External clock source or
+
+fLXTAL_ext(1)
+
+oscillator frequency
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+VDD = 3.3 V
+
+—
+
+32.768
+
+1000
+
+kHz
+
+0.7 VDD
+
+—
+
+VDD
+
+OSC32IN input pin high level
+
+VLXTALH(2)
+
+voltage
+
+VDD = 3.3 V
+
+OSC32IN input pin low level
+
+VLXTALL(2)
+
+voltage
+
+tH/L(LXTAL) (2)
+
+—
+
+OSC32IN high or low time
+
+V
+VSS
+
+—
+
+0.3 VDD
+
+450
+
+—
+
+—
+ns
+
+tR/F(LXTAL)
+
+OSC32IN rise or fall time
+
+—
+
+—
+
+—
+
+50
+
+OSC32IN input capacitance
+
+—
+
+—
+
+5
+
+—
+
+pF
+
+Duty cycle
+
+—
+
+30
+
+50
+
+70
+
+%
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+VDD = VDDA = 3.3 V
+
+—
+
+8
+
+—
+
+MHz
+
+-4.0
+
+—
+
++5.0
+
+%
+
+-2.0
+
+—
+
++2.0
+
+%
+
+-1.0
+
+—
+
++1.0
+
+%
+
+—
+
+—
+
+0.5
+
+—
+
+%
+
+IRC8M oscillator duty cycle
+
+VDD = VDDA = 3.3 V
+
+45
+
+50
+
+55
+
+%
+
+IRC8M oscillator operating
+
+VDD = VDDA = 3.3 V,
+
+current
+
+fIRC8M = 8 MHz
+
+—
+
+55
+
+—
+
+μA
+
+IRC8M oscillator startup
+
+VDD = VDDA = 3.3 V,
+
+time
+
+fIRC8M = 8 MHz
+
+—
+
+1.5
+
+—
+
+μs
+
+(2)
+
+CIN(2)
+Ducy(LXTAL)
+(1)
+(2)
+
+4.8
+
+(2)
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+Internal clock characteristics
+Table 4-17. High speed internal clock (IRC8M) characteristics
+Symbol
+
+Parameter
+High Speed Internal
+
+fIRC8M
+
+Oscillator (IRC8M)
+frequency
+
+VDD = VDDA = 3.3 V,
+TA = -40 °C ~ +85 °C
+IRC8M oscillator Frequency
+
+VDD = VDDA = 3.3 V,
+
+accuracy, Factory-trimmed
+
+TA = 0 °C ~ +85 °C
+
+ACCIRC8M(1)
+
+VDD = VDDA = 3.3 V,
+TA = 25°C
+IRC8M oscillator Frequency
+accuracy, User trimming
+step
+
+DIRC8M(2)
+IDDIRC8M(1)
+
+tSUIRC8M(1)
+(1)
+(2)
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+54
+
+GD32E230xx Datasheet
+Table 4-18. Low speed internal clock (IRC40K) characteristics
+Symbol
+fIRC40K(1)
+
+IDDIRC40K(2)
+
+tSUIRC40K(2)
+(1)
+(2)
+
+Parameter
+
+Conditions
+
+Low Speed Internal oscillator
+
+VDD = VDDA = 3.3 V,
+
+(IRC40K) frequency
+
+TA = -40 °C ~ +85 °C
+
+IRC40K oscillator operating
+
+VDD = VDDA = 3.3 V,
+
+current
+
+TA = 25 °C
+
+IRC40K oscillator startup
+
+VDD = VDDA = 3.3 V,
+
+time
+
+TA = 25 °C
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+30
+
+40
+
+60
+
+kHz
+
+—
+
+0.41
+
+—
+
+μA
+
+—
+
+33
+
+—
+
+μs
+
+Guaranteed by design, not tested in production.
+Based on characterization, not tested in production.
+
+Table 4-19. High speed internal clock (IRC28M) characteristics
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+VDD = VDDA = 3.3 V
+
+—
+
+28
+
+—
+
+MHz
+
+-4.0
+
+—
+
++5.0
+
+%
+
+-3.0
+
+—
+
++3.0
+
+%
+
+-2.0
+
+—
+
++2.0
+
+%
+
+—
+
+—
+
+0.5
+
+—
+
+%
+
+IRC28M oscillator duty cycle
+
+VDD = VDDA = 3.3 V
+
+45
+
+50
+
+55
+
+%
+
+IRC28M oscillator operating
+
+VDD = VDDA = 3.3 V,
+
+current
+
+fIRC28M = 28 MHz
+
+—
+
+121
+
+—
+
+μA
+
+IRC28M oscillator startup
+
+VDD = VDDA = 3.3 V,
+
+time
+
+fIRC28M = 28 MHz
+
+—
+
+1.5
+
+—
+
+μs
+
+High Speed Internal
+fIRC28M
+
+Oscillator (IRC28M)
+frequency
+
+VDD = VDDA = 3.3 V,
+IRC28M oscillator
+Frequency accuracy,
+ACCIRC28M(1)
+
+Factory-trimmed
+
+TA = -40 °C ~ +85 °C
+VDD = VDDA = 3.3 V,
+TA = 0 °C ~ +85 °C
+VDD = VDDA = 3.3 V
+TA = 25 °C
+
+IRC28M oscillator
+Frequency accuracy, User
+trimming step
+DIRC28M(2)
+IDDAIRC28M(1)
+
+tSUIRC28M(1)
+(1)
+(2)
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+55
+
+GD32E230xx Datasheet
+4.9
+
+PLL characteristics
+Table 4-20. PLL characteristics
+Symbol
+fPLLIN
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+(1)
+
+PLL input clock frequency
+
+—
+
+1
+
+—
+
+25
+
+MHz
+
+(2)
+
+PLL output clock frequency
+
+—
+
+16
+
+—
+
+72
+
+MHz
+
+—
+
+—
+
+—
+
+72
+
+MHz
+
+—
+
+—
+
+—
+
+300
+
+μs
+
+VCO freq = 72 MHz
+
+—
+
+260
+
+—
+
+μA
+
+—
+
+50
+
+—
+
+fPLLOUT
+
+PLL VCO output clock
+
+fVCO(2)
+
+frequency
+
+tLOCK(2)
+IDDA(1)
+
+PLL lock time
+Current consumption on
+VDDA
+Cycle to cycle Jitter
+
+JitterPLL(3)
+
+（rms）
+System clock
+
+Cycle to cycle Jitter
+
+ps
+—
+
+（peak to peak）
+(1)
+(2)
+(3)
+
+4.10
+
+—
+
+500
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+Value given with main PLL running.
+
+Memory characteristics
+Table 4-21. Flash memory characteristics
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+TA = -40 °C ~ +85 °C
+
+100
+
+—
+
+—
+
+kcycles
+
+Data retention time
+
+10k cycles at TA = 85 °C
+
+10
+
+—
+
+—
+
+years
+
+Number of guaranteed
+PECYC(1)
+
+program /erase cycles
+before failure (Endurance)
+
+tRET(1)
+
+Word programming time
+
+TA = -40 °C ~ + 85 °C
+
+37
+
+—
+
+42
+
+μs
+
+tERASE(2)
+
+Page erase time
+
+TA = -40 °C ~ + 85 °C
+
+3.2
+
+—
+
+4
+
+ms
+
+tMERASE(2)
+
+Mass erase time
+
+TA = -40 °C ~ + 85°C
+
+8
+
+—
+
+10
+
+ms
+
+tPROG
+
+(1)
+(2)
+
+4.11
+
+(2)
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+NRST pin characteristics
+Table 4-22. NRST pin characteristics
+Symbol
+VIL(NRST)
+
+(1)
+
+VIH(NRST)
+
+(1)
+
+Vhyst(1)
+Rpu
+(1)
+(2)
+
+(2)
+
+Parameter
+NRST Input low level voltage
+NRST Input high level voltage
+
+Conditions
+1.8 V ≤ VDD = VDDA ≤
+
+Schmidt trigger Voltage hysteresis
+Pull-up equivalent resistor
+
+3.6 V
+—
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+-0.5
+
+—
+
+0.35 VDD
+
+0.65 VDD
+
+—
+
+VDD + 0.5
+
+—
+
+400
+
+—
+
+mV
+
+—
+
+40
+
+—
+
+kΩ
+
+V
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+56
+
+GD32E230xx Datasheet
+Figure 4-4. Recommended external NRST pin circuit
+
+VDD
+
+VDD
+
+External reset circuit
+RPU
+
+10 kΩ
+NRST
+
+K
+
+100 nF
+
+GND
+
+4.12
+
+GPIO characteristics
+Table 4-23. I/O port DC characteristics(1) (3)
+Symbol
+
+Parameter
+Standard IO Low level input
+
+VIL
+
+voltage
+5V-tolerant IO Low level
+input voltage
+Standard IO High level
+
+VIH
+
+input voltage
+5 V-tolerant IO High level
+input voltage
+Low level output voltage
+
+VOL
+
+for an IO Pin
+(IIO = +8 mA)
+
+Low level output voltage
+VOL
+
+for an IO Pin
+(IIO = +20 mA)
+
+High level output voltage
+VOH
+
+for an IO Pin
+(IIO = +8 mA)
+
+High level output voltage
+VOH
+
+for an IO Pin
+(IIO = +20 mA)
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+1.8 V ≤ VDD = VDDA ≤ 3.6 V
+
+—
+
+—
+
+0.3 VDD
+
+V
+
+1.8 V ≤ VDD = VDDA ≤ 3.6 V
+
+—
+
+—
+
+0.3 VDD
+
+V
+
+1.8 V ≤ VDD = VDDA ≤ 3.6 V
+
+0.7 VDD —
+
+—
+
+V
+
+1.8 V ≤ VDD = VDDA ≤ 3.6 V
+
+0.7 VDD —
+
+—
+
+V
+
+VDD = 1.8 V
+
+—
+
+—
+
+0.20
+
+VDD = 2.5 V
+
+—
+
+—
+
+0.20
+
+VDD = 3.3 V
+
+—
+
+—
+
+0.10
+
+VDD = 3.6 V
+
+—
+
+—
+
+0.10
+
+VDD = 1.8 V
+
+—
+
+—
+
+—
+
+VDD = 2.5 V
+
+—
+
+—
+
+0.50
+
+VDD = 3.3 V
+
+—
+
+—
+
+0.40
+
+VDD = 3.6 V
+
+—
+
+—
+
+0.40
+
+VDD = 1.8 V
+
+1.50
+
+—
+
+—
+
+VDD = 2.5 V
+
+2.30
+
+—
+
+—
+
+VDD = 3.3 V
+
+3.10
+
+—
+
+—
+
+VDD = 3.6 V
+
+3.40
+
+—
+
+—
+
+VDD = 1.8 V
+
+—
+
+—
+
+—
+
+VDD = 2.5 V
+
+1.90
+
+—
+
+—
+
+VDD = 3.3 V
+
+2.80
+
+—
+
+—
+
+VDD = 3.6 V
+
+3.10
+
+—
+
+—
+
+V
+
+V
+
+V
+
+V
+
+57
+
+GD32E230xx Datasheet
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+RPU(2)
+
+Internal pull-up resistor
+
+—
+
+—
+
+40
+
+—
+
+kΩ
+
+RPD(2)
+
+Internal pull-down resistor
+
+—
+
+—
+
+40
+
+—
+
+kΩ
+
+(1)
+(2)
+(3)
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+All pins except PC13 / PC14 / PC15. Since PC13 to PC15 are supplied through the Power Switch, which can
+only be obtained by a small current, the speed of GPIOs PC13 to PC15 should not exceed 2 MHz when they
+are in output mode(maximum load: 30 pF).
+
+Table 4-24. I/O port AC characteristics(1) (2)
+GPIOx_OSPD[1:0] bit value(3)
+
+Parameter
+
+GPIOx_OSPD0->OSPDy[1:0] = X0
+
+Maximum
+
+（IO_Speed = 2 MHz）
+
+frequency(4)
+
+GPIOx_OSPD0->OSPDy[1:0] = 01
+
+Maximum
+
+（IO_Speed = 10 MHz）
+
+frequency(4)
+
+GPIOx_OSPD0->OSPDy[1:0] = 11
+
+Maximum
+
+（IO_Speed = 50 MHz）
+
+frequency(4)
+
+(1)
+(2)
+(3)
+(4)
+
+Conditions
+
+Max
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 10 pF
+
+4
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 30 pF
+
+3
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 50 pF
+
+2
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 10 pF
+
+24
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 30 pF
+
+16
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 50 pF
+
+14
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 10 pF
+
+72
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 30 pF
+
+72
+
+1.8 ≤ VDD ≤ 3.6 V, CL = 50 pF
+
+72
+
+Unit
+
+MHz
+
+MHz
+
+MHz
+
+Based on characterization, not tested in production.
+Unless otherwise specified, all test results given for TA = 25 ℃.
+The I/O speed is configured using the GPIOx_OSPD0->OSPDy [1:0] bits. Refer to the GD32E230 user manual
+which is selected to set the GPIO port output speed.
+The maximum frequency is defined in 错误!未找到引用源。, and maximum frequency cannot exceed 72 MHz.
+
+Figure 4-5. I/O port AC characteristics definition
+
+90%
+EXTERNAL
+OUTPU T
+ON 50pF
+
+90%
+50%
+
+50%
+10%
+
+tr(IO)out
+
+10%
+
+tf(IO)out
+T
+
+If (tr + tf) ≤ 2/3 T, then maximum frequency is achieved .
+The duty cycle is （45%-55%）when loaded by 50 pF
+
+4.13
+
+ADC characteristics
+Table 4-25. ADC characteristics
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+VDDA(1)
+
+Operating voltage
+
+—
+
+2.4
+
+3.3
+
+3.6
+
+V
+
+VIN(1)
+
+ADC input voltage range
+
+—
+
+0
+
+—
+
+VDDA
+
+V
+
+fADC(1)
+
+ADC clock
+
+—
+
+0.1
+
+—
+
+28
+
+MHz
+
+fS(1)
+
+Sampling rate
+
+12-bit
+
+0.007
+
+—
+
+2
+58
+
+GD32E230xx Datasheet
+Symbol
+
+VAIN1)
+(2)
+
+RAIN
+
+RADC(2)
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+10-bit
+
+0.008
+
+—
+
+2.3
+
+8-bit
+
+0.01
+
+—
+
+2.8
+
+6-bit
+
+0.011
+
+—
+
+3.5
+
+Analog input voltage
+
+10 external; 2 internal
+
+0
+
+—
+
+VDDA
+
+V
+
+External input impedance
+
+See Equation 1
+
+—
+
+—
+
+50.6
+
+kΩ
+
+—
+
+—
+
+—
+
+0.5
+
+kΩ
+
+—
+
+—
+
+4
+
+pF
+
+Input sampling switch
+resistance
+
+No pin/pad capacitance
+
+MSP
+S
+
+CADC(2)
+
+Input sampling capacitance
+
+tCAL(2)
+
+Calibration time
+
+fADC = 28 MHz
+
+—
+
+4.68
+
+—
+
+μs
+
+ts(2)
+
+Sampling time
+
+fADC = 28 MHz
+
+0.05
+
+—
+
+8.55
+
+μs
+
+12-bit
+
+—
+
+14
+
+—
+
+10-bit
+
+—
+
+12
+
+—
+
+1/
+
+8-bit
+
+—
+
+10
+
+—
+
+fADC
+
+6-bit
+
+—
+
+8
+
+—
+
+—
+
+—
+
+—
+
+1
+
+included
+
+Total conversion
+tCONV(2)
+
+time(including sampling
+time)
+
+tSU(2)
+(1)
+(2)
+
+Unit
+
+Startup time
+
+μs
+
+Based on characterization, not tested in production.
+Guaranteed by design, not tested in production.
+
+Equation 1: RAIN max formula R AIN <
+
+Ts
+fADC ∗CADC ∗ln(2N+2 )
+
+− R ADC
+
+The formula above (Equation 1) is used to determine the maximum external impedance allowed for an
+error below 1/4 of LSB. Here N = 12 (from 12-bit resolution).
+
+Table 4-26. ADC RAIN max for fADC = 28 MHz(1)
+
+(1)
+
+Ts(cycles)
+
+ts(μs)
+
+RAINmax (kΩ)
+
+1.5
+
+0.05
+
+0.88
+
+7.5
+
+0.27
+
+6.40
+
+13.5
+
+0.48
+
+11.90
+
+28.5
+
+1.02
+
+25.70
+
+41.5
+
+1.48
+
+37.70
+
+55.5
+
+1.98
+
+50.60
+
+71.5
+
+2.55
+
+NA
+
+239.5
+
+8.55
+
+NA
+
+Based on characterization, not tested in production.
+
+59
+
+GD32E230xx Datasheet
+4.14
+
+Temperature sensor characteristics
+Table 4-27. Temperature sensor characteristics
+Symbol
+
+Parameter
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+TL(1)
+
+VSENSE linearity with temperature
+
+—
+
+±1.5
+
+—
+
+℃
+
+Avg_Slope(1)
+V25
+
+Average slope
+
+—
+
+4.3
+
+—
+
+mV/℃
+
+(1)
+
+Voltage at 25 °C
+
+—
+
+1.45
+
+—
+
+V
+
+(2)
+
+ADC sampling time when reading the temperature
+
+—
+
+17.1
+
+—
+
+μs
+
+tS_temp
+(2)
+(3)
+
+4.15
+
+Based on characterization, not tested in production.
+Shortest sampling time can be determined in the application by multiple iterations.
+
+Comparators characteristics
+Table 4-28. CMP characteristics(1)
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+VDDA
+
+Operating voltage
+
+—
+
+1.8
+
+3.3
+
+3.6
+
+V
+
+VIN
+
+Input voltage range
+
+—
+
+0
+
+—
+
+VDDA
+
+V
+
+VBG
+
+Scaler input voltage
+
+—
+
+—
+
+1.2
+
+—
+
+V
+
+VSC
+
+Scaler offset voltage
+
+—
+
+—
+
+—
+
+—
+
+mV
+
+Ultra low power mode
+
+—
+
+0.98
+
+—
+
+μs
+
+Low power mode
+
+—
+
+0.25
+
+—
+
+μs
+
+Medium power mode
+
+—
+
+0.12
+
+—
+
+μs
+
+High speed power mode
+
+—
+
+33
+
+—
+
+ns
+
+Ultra low power mode
+
+—
+
+—
+
+—
+
+μs
+
+Low power mode
+
+—
+
+—
+
+—
+
+μs
+
+Medium power mode
+
+—
+
+—
+
+—
+
+μs
+
+High speed power mode
+
+—
+
+—
+
+—
+
+ns
+
+Ultra low power mode
+
+—
+
+2.2
+
+—
+
+Low power mode
+
+—
+
+3.2
+
+—
+
+Medium power mode
+
+—
+
+8.1
+
+—
+
+High speed power mode
+
+—
+
+46.9
+
+—
+
+—
+
+—
+
+±4
+
+—
+
+No Hysteresis
+
+—
+
+0
+
+—
+
+Low Hysteresis
+
+—
+
+11
+
+—
+
+Medium Hysteresis
+
+—
+
+22
+
+—
+
+High Hysteresis
+
+—
+
+43
+
+—
+
+Propagation delay for 200
+mV step with 100 mV
+overdrive
+tD
+Propagation delay for full
+range step with 100 mV
+overdrive
+
+IDD
+
+Voffset
+
+Vhyst
+
+(1)
+
+Current consumption
+
+Offset error
+
+Hysteresis Voltage
+
+μA
+
+mV
+
+mV
+
+Based on characterization, not tested in production.
+
+60
+
+GD32E230xx Datasheet
+4.16
+
+TIMER characteristics
+Table 4-29. TIMER characteristics (1)
+Symbol
+
+Parameter
+
+tres
+
+Timer resolution time
+
+fEXT
+RES
+
+tCOUNTER
+
+Conditions
+
+Min
+
+Max
+
+Unit
+
+—
+
+1
+
+—
+
+tTIMERxCLK
+
+fTIMERxCLK = 72 MHz
+
+13.9
+
+—
+
+ns
+
+Timer external clock
+
+—
+
+0
+
+fTIMERxCLK/2
+
+MHz
+
+frequency
+
+fTIMERxCLK = 72 MHz
+
+0
+
+36
+
+MHz
+
+Timer resolution
+
+—
+
+—
+
+16
+
+bit
+
+16-bit counter clock period
+
+—
+
+1
+
+65536
+
+tTIMERxCLK
+
+fTIMERxCLK = 72 MHz
+
+0.0139
+
+910
+
+μs
+
+—
+
+—
+
+fTIMERxCLK = 72 MHz
+
+—
+
+when internal clock is
+selected
+
+tMAX_COUNT
+(1)
+
+4.17
+
+Maximum possible count
+
+65536 × 65536 tTIMERxCLK
+59.6
+
+s
+
+Guaranteed by design, not tested in production.
+
+I2C characteristics
+Table 4-30. I2C characteristics (1)(2)(3)
+Symbol
+
+mode
+
+Fast mode
+
+Fast mode
+plus
+
+Unit
+
+Min
+
+Max
+
+Min
+
+Max
+
+Min
+
+Max
+
+SCL clock high time
+
+—
+
+4.0
+
+—
+
+0.6
+
+—
+
+0.2
+
+—
+
+μs
+
+tSCL(L)
+
+SCL clock low time
+
+—
+
+4.7
+
+—
+
+1.3
+
+—
+
+0.5
+
+—
+
+μs
+
+tsu(SDA)
+
+SDA setup time
+
+—
+
+2
+
+—
+
+0.8
+
+—
+
+0.1
+
+—
+
+μs
+
+th(SDA)
+
+SDA data hold time
+
+—
+
+250
+
+—
+
+250
+
+—
+
+130
+
+—
+
+ns
+
+SDA and SCL rise
+
+—
+
+—
+
+1000
+
+20
+
+300
+
+—
+
+120
+
+ns
+
+4
+
+300
+
+4
+
+300
+
+4
+
+120
+
+ns
+
+4.0
+
+—
+
+0.6
+
+—
+
+0.26
+
+—
+
+μs
+
+tf(SDA/SCL)
+
+th(STA)
+
+(3)
+
+ons
+
+Standard
+
+tSCL(H)
+
+tr(SDA/SCL)
+
+(1)
+(2)
+
+Parameter
+
+Conditi
+
+time
+SDA and SCL fall
+
+—
+
+time
+Start condition hold
+time
+
+—
+
+Guaranteed by design, not tested in production.
+To ensure the standard mode I2C frequency, fPCLK1 must be at least 2 MHz, To ensure the fast mode I2C
+frequency, fPCLK1 must be at least 4 MHz. To ensure the fast mode plus I2C frequency, fPCLK1 must be at least a
+multiple of 10 MHz.
+The device should provide a data hold time of 300 ns at least in order to bridge the undefined region of the
+falling edge of SCL.
+
+61
+
+GD32E230xx Datasheet
+4.18
+
+SPI characteristics
+Table 4-31. Standard SPI characteristics(1)
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+fSCK
+
+SCK clock frequency
+
+—
+
+—
+
+—
+
+18
+
+MHz
+
+tsck(H)
+
+SCK clock high time
+
+25
+
+27
+
+29
+
+ns
+
+tsck (L)
+
+SCK clock low time
+
+25
+
+27
+
+29
+
+ns
+
+Master mode, fPCLKx = 72 MHz,
+presc = 4
+Master mode, fPCLKx = 72 MHz,
+presc = 4
+SPI master mode
+
+tV(MO)
+
+Data output valid time
+
+—
+
+—
+
+—
+
+2
+
+ns
+
+tSU(MI)
+
+Data input setup time
+
+—
+
+5
+
+—
+
+—
+
+ns
+
+tH(MI)
+
+Data input hold time
+
+—
+
+5
+
+—
+
+—
+
+ns
+
+SPI slave mode
+
+(1)
+
+tSU(NSS)
+
+NSS enable setup time
+
+—
+
+0
+
+—
+
+—
+
+ns
+
+tH(NSS)
+
+NSS enable hold time
+
+—
+
+1
+
+—
+
+—
+
+ns
+
+tA(SO)
+
+Data output access time
+
+—
+
+—
+
+7
+
+—
+
+ns
+
+tDIS(SO)
+
+Data output disable time
+
+—
+
+—
+
+8
+
+—
+
+ns
+
+tV(SO)
+
+Data output valid time
+
+—
+
+—
+
+10
+
+—
+
+ns
+
+tSU(SI)
+
+Data input setup time
+
+—
+
+—
+
+10
+
+—
+
+ns
+
+tH(SI)
+
+Data input hold time
+
+—
+
+0
+
+—
+
+—
+
+ns
+
+Based on characterization, not tested in production.
+
+62
+
+GD32E230xx Datasheet
+4.19
+
+I2S characteristics
+Table 4-32. I2S characteristics(1)
+Symbol
+
+Parameter
+
+fCK
+
+Clock frequency
+
+Conditions
+Master mode (data: 16 bits,
+Audio frequency = 96 kHz)
+Slave mode
+
+Typ
+
+Max
+
+Unit
+
+—
+
+3.12
+
+—
+
+—
+
+10
+
+—
+
+—
+
+160
+
+—
+
+ns
+
+—
+
+160
+
+—
+
+ns
+
+MHz
+
+tH
+
+Clock high time
+
+tL
+
+Clock low time
+
+tV(WS)
+
+WS valid time
+
+Master mode
+
+—
+
+3
+
+—
+
+ns
+
+tH(WS)
+
+WS hold time
+
+Master mode
+
+—
+
+3
+
+—
+
+ns
+
+tSU(WS)
+
+WS setup time
+
+Slave mode
+
+0
+
+—
+
+—
+
+ns
+
+tH(WS)
+
+WS hold time
+
+Slave mode
+
+3
+
+—
+
+—
+
+ns
+
+Slave mode
+
+—
+
+50
+
+—
+
+%
+
+Ducy(sck)
+
+—
+
+I2S slave input clock duty
+cycle
+
+tSU(SD_MR)
+
+Data input setup time
+
+Master mode
+
+0
+
+—
+
+—
+
+ns
+
+tsu(SD_SR)
+
+Data input setup time
+
+Slave mode
+
+0
+
+—
+
+—
+
+ns
+
+Master receiver
+
+2
+
+—
+
+—
+
+ns
+
+Slave receiver
+
+2
+
+—
+
+—
+
+ns
+
+—
+
+12
+
+—
+
+ns
+
+—
+
+10
+
+—
+
+ns
+
+—
+
+10
+
+—
+
+ns
+
+—
+
+7
+
+—
+
+ns
+
+tH(SD_MR)
+tH(SD_SR)
+
+(1)
+
+4.20
+
+Min
+
+Data input hold time
+
+tv(SD_ST)
+
+Data output valid time
+
+th(SD_ST)
+
+Data output hold time
+
+tv(SD_MT)
+
+Data output valid time
+
+th(SD_MT)
+
+Data output hold time
+
+Slave transmitter
+(after enable edge)
+Slave transmitter
+(after enable edge)
+Master transmitter
+(after enable edge)
+Master transmitter
+(after enable edge)
+
+Based on characterization, not tested in production.
+
+USART characteristics
+Table 4-33. USART characteristics (1)
+Symbol
+
+Parameter
+
+Conditions
+
+Min
+
+Typ
+
+Max
+
+Unit
+
+fSCK
+
+SCK clock frequency
+
+—
+
+—
+
+—
+
+36
+
+MHz
+
+tSCK(H)
+
+SCK clock high time
+
+—
+
+13.5
+
+—
+
+—
+
+ns
+
+tSCK(L)
+
+SCK clock low time
+
+—
+
+13.5
+
+—
+
+—
+
+ns
+
+(1)
+
+Guaranteed by design, not tested in production.
+
+63
+
+GD32E230xx Datasheet
+4.21
+
+WDGT characteristics
+Table 4-34. FWDGT min/max timeout period at 40 kHz (IRC40K)(1)
+Prescaler divider
+
+PR[2:0] bits
+
+1/4
+
+(1)
+
+Min timeout RLD[11:0]= Max timeout RLD[11:0]=
+0x000
+
+0xFFF
+
+000
+
+0.1
+
+409.6
+
+1/8
+
+001
+
+0.2
+
+819.2
+
+1/16
+
+010
+
+0.4
+
+1638.4
+
+1/32
+
+011
+
+0.8
+
+3276.8
+
+1/64
+
+100
+
+1.6
+
+6553.6
+
+1/128
+
+101
+
+3.2
+
+13107.2
+
+1/256
+
+110 or 111
+
+6.4
+
+26214.4
+
+Unit
+
+ms
+
+Guaranteed by design, not tested in production.
+
+Table 4-35. WWDGT min-max timeout value at 72 MHz (fPCLK1)(1)
+PSC[2:0]
+
+1/1
+
+00
+
+56.9
+
+1/2
+
+01
+
+113.8
+
+1/4
+
+10
+
+227.6
+
+1/8
+
+11
+
+455.2
+
+(1)
+
+4.22
+
+Min timeout value
+
+Prescaler divider
+
+CNT[6:0] = 0x40
+
+Unit
+
+Max timeout value
+CNT[6:0] = 0x7F
+
+Unit
+
+3.64
+
+μs
+
+7.28
+14.56
+
+ms
+
+29.12
+
+Guaranteed by design, not tested in production.
+
+Parameter conditions
+Unless otherwise specified, all values given for VDD = VDDA = 3.3 V, TA = 25 ℃.
+
+64
+
+GD32E230xx Datasheet
+
+5
+
+Package information
+
+5.1
+
+LQFP48 package outline dimensions
+Figure 5-1. LQFP48 package outline
+
+65
+
+GD32E230xx Datasheet
+Table 5-1. LQFP48 package dimensions
+Symbol
+
+Min
+
+Typ
+
+Max
+
+A
+
+—
+
+—
+
+1.60
+
+A1
+
+0.05
+
+—
+
+0.15
+
+A2
+
+1.35
+
+1.40
+
+1.45
+
+A3
+
+0.59
+
+0.64
+
+0.69
+
+b
+
+0.18
+
+—
+
+0.26
+
+b1
+
+0.17
+
+0.20
+
+0.23
+
+c
+
+0.13
+
+—
+
+0.17
+
+c1
+
+0.12
+
+0.13
+
+0.14
+
+D
+
+8.80
+
+9.00
+
+9.20
+
+D1
+
+6.90
+
+7.00
+
+7.10
+
+E
+
+8.80
+
+9.00
+
+9.20
+
+eB
+
+8.10
+
+—
+
+8.25
+
+E1
+
+6.90
+
+7.00
+
+7.10
+
+e
+L
+
+0.50 BSC
+0.45
+
+L1
+θ
+
+—
+
+0.75
+
+1.00 REF
+0
+
+—
+
+7°
+
+(Original dimensions are in millimeters)
+
+66
+
+GD32E230xx Datasheet
+5.2
+
+LQFP32 package outline dimensions
+Figure 5-2. LQFP32 package outline
+
+67
+
+GD32E230xx Datasheet
+Table 5-2. LQFP32 package dimensions
+Symbol
+
+Min
+
+Typ
+
+Max
+
+A
+
+—
+
+—
+
+1.60
+
+A1
+
+0.05
+
+—
+
+0.15
+
+A2
+
+1.35
+
+1.40
+
+1.45
+
+A3
+
+0.59
+
+0.64
+
+0.69
+
+b
+
+0.32
+
+—
+
+0.43
+
+b1
+
+0.31
+
+0.35
+
+0.39
+
+c
+
+0.13
+
+—
+
+0.18
+
+c1
+
+0.12
+
+0.13
+
+0.14
+
+D
+
+8.80
+
+9.00
+
+9.20
+
+D1
+
+6.90
+
+7.00
+
+7.10
+
+E
+
+8.80
+
+9.00
+
+9.20
+
+E1
+
+6.90
+
+7.00
+
+7.10
+
+θ
+
+0°
+
+—
+
+7°
+
+L
+
+0.45
+
+—
+
+0.75
+
+L1
+eB
+
+1.00 BSC
+8.10
+
+e
+
+—
+
+8.25
+
+0.80 BSC
+
+(Original dimensions are in millimeters)
+
+68
+
+GD32E230xx Datasheet
+5.3
+
+QFN32 package outline dimensions
+Figure 5-3. QFN32 package outline
+
+Table 5-3. QFN32 package dimensions
+Symbol
+
+Min
+
+Typ
+
+Max
+
+A
+
+0.70
+
+0.75
+
+0.80
+
+A1
+
+—
+
+0.02
+
+0.05
+
+D
+
+4.90
+
+5.00
+
+5.10
+
+D2
+
+3.40
+
+3.50
+
+3.60
+
+E
+
+4.90
+
+5.00
+
+5.10
+
+E1
+
+3.40
+
+3.50
+
+3.60
+
+b
+
+0.18
+
+0.25
+
+0.30
+
+c
+
+0.18
+
+0.20
+
+0.25
+
+e
+
+0.50 BSC
+
+Ne
+
+3.50 BSC
+
+L
+
+0.35
+
+0.40
+
+0.45
+
+h
+
+0.30
+
+0.35
+
+0.40
+
+(Original dimensions are in millimeters)
+
+69
+
+GD32E230xx Datasheet
+5.4
+
+QFN28 package outline dimensions
+Figure 5-4. QFN28 package outline
+
+Table 5-4. QFN28 package dimensions
+Symbol
+
+Min
+
+Typ
+
+Max
+
+A
+
+0.70
+
+0.75
+
+0.80
+
+A1
+
+0
+
+0.02
+
+0.05
+
+b
+
+0.15
+
+0.20
+
+0.25
+
+b1
+
+0.14 REF
+
+c
+
+0.18
+
+0.20
+
+0.25
+
+D
+
+3.90
+
+4.00
+
+4.10
+
+D2
+
+2.70
+
+2.80
+
+2.90
+
+E
+
+3.90
+
+4.00
+
+4.10
+
+E2
+
+2.70
+
+2.80
+
+2.90
+
+e
+
+0.40 BSC
+
+Ne
+
+2.40 BSC
+
+Nd
+
+2.40 BSC
+
+L
+
+0.25
+
+0.35
+
+0.45
+
+h
+
+0.30
+
+0.35
+
+0.40
+
+(Original dimensions are in millimeters)
+
+70
+
+GD32E230xx Datasheet
+5.5
+
+TSSOP20 package outline dimensions
+Figure 5-5. TSSOP20 package outline
+
+Table 5-5. TSSOP20 package dimensions
+Symbol
+
+Min
+
+Typ
+
+Max
+
+A
+
+—
+
+—
+
+1.20
+
+A1
+
+0.05
+
+—
+
+0.15
+
+A2
+
+0.80
+
+1.00
+
+1.05
+
+A3
+
+0.39
+
+0.44
+
+0.49
+
+b
+
+0.20
+
+—
+
+0.29
+
+b1
+
+0.19
+
+0.22
+
+0.25
+
+c
+
+0.13
+
+—
+
+0.18
+
+c1
+
+0.12
+
+0.13
+
+0.14
+
+D
+
+6.40
+
+6.50
+
+6.60
+
+E1
+
+4.30
+
+4.40
+
+4.50
+
+E
+
+6.20
+
+6.40
+
+6.60
+
+e
+
+0.65 BSC
+
+L
+
+0.45
+
+0.60
+
+0.75
+
+θ
+
+0°
+
+—
+
+8°
+
+(Original dimensions are in millimeters)
+
+71
+
+GD32E230xx Datasheet
+5.6
+
+LGA20 package outline dimensions
+Figure 5-6. LGA20 package outline
+
+Table 5-6. LGA20 package dimensions
+Symbol
+
+Min
+
+Typ
+
+Max
+
+A
+
+0.51
+
+0.56
+
+0.61
+
+A1
+
+—
+
+0.015
+
+0.022
+
+A2
+
+0.35
+
+0.40
+
+0.45
+
+c
+
+0.13
+
+0.16
+
+0.19
+
+D
+
+2.90
+
+3.00
+
+3.10
+
+D1
+
+1.95
+
+2.00
+
+2.05
+
+E
+
+2.90
+
+3.00
+
+3.10
+
+E1
+
+1.95
+
+2.00
+
+2.05
+
+e
+
+0.50 BSC
+
+L1
+
+0.50
+
+0.55
+
+0.60
+
+L2
+
+0.30
+
+0.35
+
+0.40
+
+L3
+L4
+
+0.200 REF
+0.30
+
+0.35
+
+L5
+
+0.125 REF
+
+L6
+
+0.234 REF
+
+L7
+
+0.050 REF
+
+R1
+
+0.125 REF
+
+K1
+
+0.375 REF
+
+K2
+
+0.375 REF
+
+b
+
+0.20
+
+0.25
+
+0.40
+
+0.30
+72
+
+GD32E230xx Datasheet
+Symbol
+
+Min
+
+Typ
+
+Max
+
+aaa
+
+0.100
+
+ccc
+
+0.080
+
+(Original dimensions are in millimeters)
+
+5.7
+
+Thermal characteristics
+Thermal resistance is used to characterize the thermal performance of the package device,
+which is represented by the Greek letter “Θ”. For semiconductor devices, thermal resistance
+represents the steady-state temperature rise of the chip junction due to the heat dissipated
+on the chip surface.
+ΘJA: Thermal resistance, junction-to-ambient.
+ΘJB: Thermal resistance, junction-to-board.
+ΘJC: Thermal resistance, junction-to-case.
+ΨJB: Thermal characterization parameter, junction-to-board.
+ΨJT: Thermal characterization parameter, junction-to-top center.
+ΘJA = (TJ - TA)/PD
+ΘJB = (TJ – TB)/PD
+ΘJC = (TJ – TC)/PD
+Where, TJ = Junction temperature.
+TA = Ambient temperature
+TB = Board temperature
+TC = Case temperature which is monitoring on package surface
+PD = Total power dissipation
+ΘJA represents the resistance of the heat flows from the heating junction to ambient air. It is
+an indicator of package heat dissipation capability. Lower ΘJA can be considerate as better
+overall thermal performance. ΘJA is generally used to estimate junction temperature.
+ΘJB is used to measure the heat flow resistance between the chip surface and the PCB board.
+ΘJC represents the thermal resistance between the chip surface and the package top case.
+ΘJC is mainly used to estimate the heat dissipation of the system (using heat sink or other
+heat dissipation methods outside the device package).
+Table 5-7. Package thermal characteristics(1)
+Symbol
+
+ΘJA
+
+ΘJB
+
+Condition
+
+Package
+
+Value
+
+LQFP48
+
+69.64
+
+LQFP32
+
+55.26
+
+TA = 85°C, Natural convection, 2S2P
+
+QFN32
+
+42.58
+
+PCB
+
+QFN28
+
+47.32
+
+TSSOP20
+
+67.24
+
+LGA20
+
+96.08
+
+LQFP48
+
+43.16
+
+LQFP32
+
+26.24
+
+QFN32
+
+12.22
+
+TA = 25°C, Cold plate, 2S2P PCB
+
+Unit
+
+°C/W
+
+°C/W
+
+73
+
+GD32E230xx Datasheet
+Symbol
+
+ΘJC
+
+ΨJB
+
+ΨJT
+
+Condition
+
+Package
+
+Value
+
+QFN28
+
+12.97
+
+TSSOP20
+
+37.72
+
+LGA20
+
+58.46
+
+LQFP48
+
+25.36
+
+LQFP32
+
+25.23
+
+QFN32
+
+16.76
+
+QFN28
+
+20.26
+
+TSSOP20
+
+25.06
+
+LGA20
+
+31.54
+
+LQFP48
+
+47.75
+
+LQFP32
+
+32.03
+
+TA = 85°C, Natural convection, 2S2P
+
+QFN32
+
+12.81
+
+PCB
+
+QFN28
+
+13.07
+
+TSSOP20
+
+49.07
+
+LGA20
+
+58.61
+
+LQFP48
+
+2.45
+
+LQFP32
+
+2.06
+
+TA = 85°C, Natural convection, 2S2P
+
+QFN32
+
+0.69
+
+PCB
+
+QFN28
+
+0.75
+
+TSSOP20
+
+2.37
+
+LGA20
+
+1.83
+
+TA = 25°C, Cold plate, 2S2P PCB
+
+Unit
+
+°C/W
+
+°C/W
+
+°C/W
+
+(1). Thermal characteristics are based on simulation, and meet JEDEC specification.
+
+74
+
+GD32E230xx Datasheet
+
+6
+
+Ordering information
+Table 6-1. Part ordering code for GD32E230xx devices
+Ordering code
+
+Flash (KB)
+
+Package
+
+Package type
+
+GD32E230F4P6
+
+16
+
+TSSOP20
+
+Green
+
+GD32E230F6P6
+
+32
+
+TSSOP20
+
+Green
+
+GD32E230F8P6
+
+64
+
+TSSOP20
+
+Green
+
+GD32E230F4V6
+
+16
+
+LGA20
+
+Green
+
+GD32E230F6V6
+
+32
+
+LGA20
+
+Green
+
+GD32E230F8V6
+
+64
+
+LGA20
+
+Green
+
+GD32E230G4U6
+
+16
+
+QFN28
+
+Green
+
+GD32E230G6U6
+
+32
+
+QFN28
+
+Green
+
+GD32E230G8U6
+
+64
+
+QFN28
+
+Green
+
+GD32E230K4U6
+
+16
+
+QFN32
+
+Green
+
+GD32E230K6U6
+
+32
+
+QFN32
+
+Green
+
+GD32E230K8U6
+
+64
+
+QFN32
+
+Green
+
+GD32E230K4T6
+
+16
+
+LQFP32
+
+Green
+
+GD32E230K6T6
+
+32
+
+LQFP32
+
+Green
+
+GD32E230K8T6
+
+64
+
+LQFP32
+
+Green
+
+GD32E230C4T6
+
+16
+
+LQFP48
+
+Green
+
+GD32E230C6T6
+
+32
+
+LQFP48
+
+Green
+
+GD32E230C8T6
+
+64
+
+LQFP48
+
+Green
+
+Temperature
+operating range
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+Industrial
+-40 °C to +85 °C
+
+75
+
+GD32E230xx Datasheet
+
+7
+
+Revision history
+Table 7-1. Revision history
+Revision No.
+
+Description
+
+Date
+
+1.0
+
+Initial Release
+
+Oct.10, 2018
+
+1.1
+
+Add information about the QFN20 package
+
+Dec.7, 2018
+
+1.2
+
+Delete QFN20 package, add information about the LGA20
+package and electrical characteristics with few changes.
+
+Dec.28, 2018
+
+1. Modify PA13 and PA14 pin definitions in chapter2.6.
+2. Modify PA9 and PB2 alternate functions in chapter2.6.2.
+
+3. Add USART1(PA2 and PA3) to reprogram the flash
+memory in chapter3.4.
+1.3
+
+4. Modify description of debug mode.
+
+Oct.8, 2019
+
+5. Modify block diagram.
+6. Modify the value of POR and PDR in chapter3.3.
+7. Update electrical characteristics, package information,
+ordering information and logo.
+1. Modify GD32E230K6T6 SRAM capacity form 4K to 6K.
+1.4
+
+2. Add thermal characteristics.
+
+June.29, 2020
+
+3. Update electrical characteristics.
+
+76
+
+GD32E230xx Datasheet
+
+Important Notice
+This document is the property of GigaDevice Semiconductor Inc. and its subsidiaries (the "Company"). This document, including any
+product of the Company described in this document (the “Product”), is owned by the Company under the intellectual property laws and
+treaties of the People’s Republic of China and other jurisdictions worldwide. The Company reserves all rights under such laws and
+treaties and does not grant any license under its patents, copyrights, trademarks, or other intellectual property rights. The names and
+brands of third party referred thereto (if any) are the property of their respective owner and referred to for identification purposes only.
+The Company makes no warranty of any kind, express or implied, with regard to this document or any Product, including, but not
+limited to, the implied warranties of merchantability and fitness for a particular purpose. The Company does not assume any liability
+arising out of the application or use of any Product described in this document. Any information provided in this document is provided
+only for reference purposes. It is the responsibility of the user of this document to properly design, program, and test the functionality
+and safety of any application made of this information and any resulting product. Except for customized products which has been
+expressly identified in the applicable agreement, the Products are designed, developed, and/or manufactured for ordinary business,
+industrial, personal, and/or household applications only. The Products are not designed, intended, or authorized for use as components
+in systems designed or intended for the operation of weapons, weapons systems, nuclear installations, atomic energy control
+instruments, combustion control instruments, airplane or spaceship instruments, transportation instruments, traffic signal instruments,
+life-support devices or systems, other medical devices or systems (including resuscitation equipment and surgical implants), pollution
+control or hazardous substances management, or other uses where the failure of the device or Product could cause personal injury,
+death, property or environmental damage ("Unintended Uses"). Customers shall take any and all actions to ensure using and selling
+the Products in accordance with the applicable laws and regulations. The Company is not liable, in whole or in part, and customers
+shall and hereby do release the Company as well as it’s suppliers and/or distributors from any claim, damage, or other liability arising
+from or related to all Unintended Uses of the Products. Customers shall indemnify and hold the Company as well as it’s suppliers
+and/or distributors harmless from and against all claims, costs, damages, and other liabilities, including claims for personal injury or
+death, arising from or related to any Unintended Uses of the Products.
+Information in this document is provided solely in connection with the Products. The Company reserves the right to make changes,
+corrections, modifications or improvements to this document and Products and services described herein at any time, without notice.
+
+© 2020 GigaDevice – All rights reserved
+
+77
+
+

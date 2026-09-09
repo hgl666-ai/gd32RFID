@@ -3,11 +3,19 @@
 
 #include "gd32e23x.h"
 
+/*
+ * 软件I2C引脚定义
+ *
+ * F8P6 板 (GD32E230F8P6TR, TSSOP20) 原理图映射:
+ *   I2C1_SCL = PA0 (芯片脚6)
+ *   I2C1_SDA = PA1 (芯片脚7)
+ * FM17622 与 FMSE 共用该软件I2C总线 (开漏输出+上拉, ~100kHz)
+ */
 
-#define I2C_RCU         RCU_GPIOB
-#define I2C_PORT        GPIOB
-#define I2C_SCL_PIN     GPIO_PIN_6
-#define I2C_SDA_PIN     GPIO_PIN_7
+#define I2C_RCU         RCU_GPIOA
+#define I2C_PORT        GPIOA
+#define I2C_SCL_PIN     GPIO_PIN_0
+#define I2C_SDA_PIN     GPIO_PIN_1
 
 
 #define I2C_SCL_H()     gpio_bit_set(I2C_PORT, I2C_SCL_PIN)
@@ -28,5 +36,7 @@ uint8_t i2c_wait_ack(void);
 uint8_t i2c_read_byte(uint8_t send_ack);
 
 void i2c_bus_recovery(void);
+
+void i2c_bus_scan(void);
 
 #endif 

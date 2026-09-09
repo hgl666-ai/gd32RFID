@@ -1,0 +1,48 @@
+【原理图描述】FM17622 非接触读卡芯片外围电路（单页），I2C 接口模式。
+天线匹配网络和 27.12MHz 晶振电路不在此页（用灰色"网络端口"引出到其他页）。
+
+■ 主芯片
+U1 = FM17622-QNA-T-G（复旦微 13.56MHz RFID 读卡芯片，QFN 封装，
+引脚 1~32，另有 EP=33 为芯片背面散热焊盘，本页未见连接）。
+电源网络：AVDD、3.3V、GND。
+说明：AVDD 由 3.3V 经 R5 0Ω + 去耦电容产生（见 pin15），芯片各上拉电阻均接 AVDD。
+
+■ 左上排引脚（接口/地址配置）
+- pin32 EA   ：网络 EA_1，经 R15 4.7kΩ 上拉到 AVDD
+- pin31 SCL  ：网络 RFID_SCL（I2C 时钟），经 R6 2kΩ 上拉到 AVDD
+- pin30 D6   ：网络 ADR0_1（I2C 从地址位0），经 R16 4.7kΩ 上拉到 AVDD
+- pin29 D5   ：网络 ADR1_1（地址位1），经 R17 4.7kΩ 上拉到 AVDD
+- pin28 D4   ：网络 ADR2_1（地址位2），经 R18 4.7kΩ 上拉到 AVDD
+- pin27 D3 / pin26 D2 / pin25 D1：图中打绿叉，未使用
+
+■ 左下排引脚（电源/模式/使能）
+- pin1 I2C  ：网络 RFID_I2C，经 R1 10kΩ 上拉到 AVDD（接口模式选择=I2C）
+- pin2 PVDD ：接 AVDD，对地挂 C7 100nF、C8 100nF 去耦
+- pin3 NC   ：经 R2 0Ω 连到 PVDD(AVDD) 网络
+- pin4 DVSS ：接 GND（与 pin5 共用走线）
+- pin5 PVSS ：接 GND
+- pin6 NPD  ：网络 RFID_NPD（使能/复位），经 R20 4.7kΩ 上拉到 AVDD；
+              NPD 经 C9 2.2uF 接 GND（滤波/上电延时）
+- pin7 NC   ：引脚名标 NC，实际经 R3 0Ω 接 GND（与 C9 的地端汇聚在同一节点）
+- pin8 TOUT ：网络 PT2，接测试点 TP2
+
+■ 右侧排引脚
+- pin24 SDA    ：网络 RFID_SDA（I2C 数据），经 R7 2kΩ 上拉到 AVDD
+- pin23 IRQ    ：网络 RFID_IRQ（中断输出），经 R19 4.7kΩ 上拉到 AVDD
+- pin22 OSCOUT ：网络 SOS27.12_OUT，灰色网络端口（去其他页，27.12MHz 振荡）
+- pin21 OSCIN  ：网络 SOS27.12_IN，灰色网络端口（去其他页）
+- pin20 NC     ：打绿叉，未连接
+- pin19 AUX    ：接测试点 TP1
+- pin18 AVSS   ：接 GND
+- pin17 RX     ：网络 RX_1（接收输入），灰色网络端口，去其他页天线匹配电路
+
+■ 底部排引脚
+- pin9  NC   ：经 R4 0Ω 接 AVDD
+- pin10      ：接 GND（无网络标号）
+- pin11 TX1  ：网络 TX1_1（灰色网络端口，去其他页天线发射匹配）
+- pin12 TVDD ：网络 TVDD（本页未画出供电来源，经网络连接）
+- pin13 TX2  ：网络 TX2_1（灰色网络端口，去其他页天线发射匹配）
+- pin14 TVSS ：接 GND
+- pin15 AVDD ：接去耦节点——该节点经 R5 0Ω 接 3.3V，
+               节点对地挂 C10 100nF、C11 2.2uF（两个独立 GND 符号）
+- pin16 VMID ：网络 VMID_1（灰色网络端口，本页未展开）

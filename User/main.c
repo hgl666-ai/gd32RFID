@@ -36,12 +36,19 @@ int main(void)
      */
     bsp_watchdog_feed();
 
-    /* FM17622 初始化 */
+    /* FM17622 初始化 (含 RFID_NPD/PA4 使能时序) */
     FM17622_Init();
     bsp_watchdog_feed();
 
+    /* 取证: RFID_NPD 双状态诊断 (PA4高/低各做一次总线扫描+版本读取) */
+    FM17622_NpdDiag();
+    bsp_watchdog_feed();
+
+#if !RFID_READ_VIA_SE
+    /* 直连模式: 校验FM17622在线 (SE读卡模式下读卡器不在MCU总线上, 跳过) */
     g_fm17622_online = FM17622_CheckComm();
     bsp_watchdog_feed();
+#endif
 
     /* 应用协议初始化 (内部含 FMSE SE 认证, 打印 [SE] 和 [SYS] Ready) */
     app_protocol_init();

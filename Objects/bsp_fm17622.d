@@ -14,5 +14,7 @@
   Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h Head\gd32e23x_rtc.h \
   Head\gd32e23x_spi.h Head\gd32e23x_timer.h Head\gd32e23x_usart.h \
   Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
-  Head\bsp_flash.h Head\bsp_watchdog.h \
+  Head\bsp_flash.h Head\bsp_watchdog.h Head\bsp_systick.h \
+  Head\debug_config.h \
+  D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdio.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h

@@ -114,14 +114,15 @@ uint8_t crypto_chip_encrypt(const uint8_t *pPlain,  uint8_t  plain_len,
     uint16_t rlen = 0;
     uint16_t sw;
 
-    /* 第1步: 构造写入 TLV, 把明文送给 SE */
-    uint8_t write_tlv[9 + CRYPTO_CIPHER_MAX_LEN];
+    /* 第1步: 构造写入 TLV, 把明文送给 SE
+     * TLV 总长 = 10 + plain_len (头10字节: C0 02 00 03 | C1 02 00 00 | C2 len) */
+    uint8_t write_tlv[10 + CRYPTO_CIPHER_MAX_LEN];
     write_tlv[0] = 0xC0; write_tlv[1] = 0x02; write_tlv[2] = 0x00; write_tlv[3] = 0x03;
     write_tlv[4] = 0xC1; write_tlv[5] = 0x02; write_tlv[6] = 0x00; write_tlv[7] = 0x00;
     write_tlv[8] = 0xC2; write_tlv[9] = plain_len;
     memcpy(&write_tlv[10], pPlain, plain_len);
 
-    sw = write_se_data(0x0000, 9 + plain_len, write_tlv, rbuf, &rlen);
+    sw = write_se_data(0x0000, 10 + plain_len, write_tlv, rbuf, &rlen);
     if (sw != 0x9000) {
         DBG_PRINTF("[SE] encrypt FAIL: write_se_data SW=0x%04X\r\n", sw);
         return 0;

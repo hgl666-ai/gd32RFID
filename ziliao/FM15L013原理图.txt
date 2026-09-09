@@ -1,0 +1,20 @@
+【原理图描述】FM15L013 芯片（U4）应用电路（单页），8 引脚封装（左侧 1~4，右侧 5~8）。
+供电 3.3V，I2C 接口，总线上带测试点。
+
+■ 芯片
+U4 = FM15L013。
+引脚名为多重复用命名（PAx/GPIOx/CT_xxx/I2C_xxx/SPI_xxx），本设计使用其 I2C 功能。
+
+■ 引脚连接（左排，1~4）
+- pin1 PA5/GPIO3/CT_RFU/I2C_SDA/SPI_NSS ：网络 I2C1_SDA（I2C 数据），
+        经 R33 4.7kΩ 上拉到 3.3V；该网络接测试点 TP3
+- pin2 PA7/GPIO5/CT_IO0/I2C_IRQ/SPI_IRQ ：网络 RFID_IRQ（灰色网络端口，去其他页）
+- pin3 PA6/GPIO4/CT_HRS/I2C_HRS/SPI_MISO：网络 RFID_SDA（灰色网络端口，去其他页）
+- pin4 GND：接 GND
+
+■ 引脚连接（右排，8~5 自上而下）
+- pin8 VCC ：接 3.3V，对地挂 C34 10uF、C35 100nF 去耦（各有独立 GND 符号）
+- pin7 PA1/GPIO1/CT_RST/I2C_A2/SPI_MOSI/SWIO ：网络 RFID_NPD（灰色网络端口，去其他页）
+- pin6 PA0/GPIO0/CT_CLK/I2C_A1/SPI_HRS/SWCLK ：网络 RFID_SCL（灰色网络端口，去其他页）
+- pin5 PA3/GPIO2/CT_RFU/I2C_SCL/SPI_SCK ：网络 I2C1_SCL（I2C 时钟），
+        经 R34 4.7kΩ 上拉到 3.3V；该网络接测试点 TP4

@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Mon Sep  7 10:11:14 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Tue Sep  8 15:38:29 2026
 <BR><P>
-<H3>Maximum Stack Usage =       1432 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1440 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; app_rfid_poll_task &rArr; crypto_chip_init &rArr; mcu_l013_mutual_auth &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+main &rArr; app_rfid_poll_task &rArr; se_reader_setup &rArr; se_probe_cmds &rArr; se_active &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 <P>
 <H3>
 Mutually Recursive functions
@@ -82,7 +82,7 @@ Global Symbols
 <P><STRONG><a name="[24]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(.text)
 </UL>
-<P><STRONG><a name="[cb]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[c8]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[36]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -92,15 +92,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[cc]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[c9]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[cd]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[ca]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[ce]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[cb]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[cf]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[cc]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[d0]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[cd]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
@@ -190,69 +190,66 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>WWDGT_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
-<P><STRONG><a name="[ba]"></a>rand</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, rand.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<P><STRONG><a name="[b4]"></a>rand</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, rand.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
 </UL>
 
-<P><STRONG><a name="[b9]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<P><STRONG><a name="[b3]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
 </UL>
 
-<P><STRONG><a name="[48]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_data_serialize
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_MifareReadBlock
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_MifareAuth
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;block_to_tag_data
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<P><STRONG><a name="[6a]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
 
-<P><STRONG><a name="[6d]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-</UL>
+<P><STRONG><a name="[ce]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[d1]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[cf]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[39]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[d2]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[d0]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[d3]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[d1]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[38]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
 
-<P><STRONG><a name="[bf]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parser_init
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parse_byte
+<P><STRONG><a name="[b9]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parser_init
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parse_byte
 </UL>
 
-<P><STRONG><a name="[d4]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[d2]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[3a]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[a4]"></a>memcmp</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, memcmp.o(.text))
+<P><STRONG><a name="[69]"></a>memcmp</STRONG> (Thumb, 26 bytes, Stack size 12 bytes, memcmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = memcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
 </UL>
 
 <P><STRONG><a name="[3b]"></a>__aeabi_uldivmod</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, uldiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[37]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -261,84 +258,56 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[d5]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[d3]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[3d]"></a>__aeabi_llsl</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[d6]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[d4]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[3c]"></a>__aeabi_llsr</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[d7]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[d5]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
 
-<P><STRONG><a name="[58]"></a>Calculate_CRC16_Modbus</STRONG> (Thumb, 56 bytes, Stack size 20 bytes, protocol.o(.text.Calculate_CRC16_Modbus))
+<P><STRONG><a name="[54]"></a>Calculate_CRC16_Modbus</STRONG> (Thumb, 56 bytes, Stack size 20 bytes, protocol.o(.text.Calculate_CRC16_Modbus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Calculate_CRC16_Modbus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_verify_crc
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_verify_crc
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
 </UL>
 
-<P><STRONG><a name="[3f]"></a>FM17622_AntennaOn</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, bsp_fm17622.o(.text.FM17622_AntennaOn))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = FM17622_AntennaOn &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
+<P><STRONG><a name="[3f]"></a>FM17622_Init</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.FM17622_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = FM17622_Init &rArr; gpio_mode_set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-</UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
-</UL>
-
-<P><STRONG><a name="[42]"></a>FM17622_Anticoll</STRONG> (Thumb, 472 bytes, Stack size 64 bytes, bsp_fm17622.o(.text.FM17622_Anticoll))
-<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = FM17622_Anticoll &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ClearBitMask
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-</UL>
-
-<P><STRONG><a name="[45]"></a>FM17622_CheckComm</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, bsp_fm17622.o(.text.FM17622_CheckComm))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = FM17622_CheckComm &rArr; FM17622_ReadReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
+<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[46]"></a>FM17622_Init</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.FM17622_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = FM17622_Init &rArr; FM17622_AntennaOn &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
+<P><STRONG><a name="[46]"></a>FM17622_NpdDiag</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, bsp_fm17622.o(.text.FM17622_NpdDiag))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = FM17622_NpdDiag &rArr; i2c_bus_scan &rArr; i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_AntennaOn
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[47]"></a>FM17622_MifareAuth</STRONG> (Thumb, 64 bytes, Stack size 32 bytes, bsp_fm17622.o(.text.FM17622_MifareAuth))
-<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = FM17622_MifareAuth &rArr; fm_transceive &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_transceive
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-</UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadTagData
-</UL>
-
-<P><STRONG><a name="[4a]"></a>FM17622_MifareReadBlock</STRONG> (Thumb, 64 bytes, Stack size 48 bytes, bsp_fm17622.o(.text.FM17622_MifareReadBlock))
-<BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = FM17622_MifareReadBlock &rArr; fm_transceive &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_transceive
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-</UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadTagData
-</UL>
-
-<P><STRONG><a name="[40]"></a>FM17622_ReadReg</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.FM17622_ReadReg))
+<P><STRONG><a name="[49]"></a>FM17622_ReadReg</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.FM17622_ReadReg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = FM17622_ReadReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_err_track
@@ -349,65 +318,7 @@ Global Symbols
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read_byte
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Select
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_RequestA
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Anticoll
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_AntennaOn
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_transceive
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ClearBitMask
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_CheckComm
-</UL>
-
-<P><STRONG><a name="[52]"></a>FM17622_ReadTagData</STRONG> (Thumb, 70 bytes, Stack size 72 bytes, bsp_fm17622.o(.text.FM17622_ReadTagData))
-<BR><BR>[Stack]<UL><LI>Max Depth = 228<LI>Call Chain = FM17622_ReadTagData &rArr; FM17622_MifareReadBlock &rArr; fm_transceive &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_MifareReadBlock
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_MifareAuth
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;block_to_tag_data
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-</UL>
-
-<P><STRONG><a name="[54]"></a>FM17622_RequestA</STRONG> (Thumb, 152 bytes, Stack size 24 bytes, bsp_fm17622.o(.text.FM17622_RequestA))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = FM17622_RequestA &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ClearBitMask
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-</UL>
-
-<P><STRONG><a name="[55]"></a>FM17622_Select</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, bsp_fm17622.o(.text.FM17622_Select))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = FM17622_Select &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ClearBitMask
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-</UL>
-
-<P><STRONG><a name="[44]"></a>FM17622_WriteReg</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.FM17622_WriteReg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_err_track
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
-</UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Select
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_RequestA
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Anticoll
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_transceive
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ClearBitMask
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, gd32e23x_it.o(.text.HardFault_Handler))
@@ -418,18 +329,18 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_it.o(.text.NMI_Handler))
-<BR><BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;syscfg_flag_get
+<BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;syscfg_flag_get
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
-<P><STRONG><a name="[57]"></a>Pack_Data_Frame</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, protocol.o(.text.Pack_Data_Frame))
+<P><STRONG><a name="[53]"></a>Pack_Data_Frame</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, protocol.o(.text.Pack_Data_Frame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Pack_Data_Frame &rArr; Calculate_CRC16_Modbus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_CRC16_Modbus
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_CRC16_Modbus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
 </UL>
 
 <P><STRONG><a name="[4]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, gd32e23x_it.o(.text.PendSV_Handler))
@@ -452,104 +363,104 @@ Global Symbols
 <P><STRONG><a name="[23]"></a>SystemInit</STRONG> (Thumb, 220 bytes, Stack size 24 bytes, system_gd32e23x.o(.text.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = SystemInit &rArr; system_clock_config &rArr; system_clock_72m_hxtal
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_vector_table_set
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_soft_delay_
+<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_vector_table_set
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_soft_delay_
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(.text)
 </UL>
 <P><STRONG><a name="[1e]"></a>USART0_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, gd32e23x_it.o(.text.USART0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART0_IRQHandler &rArr; usart0_isr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart0_isr
+<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart0_isr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
-<P><STRONG><a name="[66]"></a>app_process_frame</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, app_protocol.o(.text.app_process_frame))
+<P><STRONG><a name="[60]"></a>app_process_frame</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, app_protocol.o(.text.app_process_frame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = app_process_frame &rArr; app_handle_write_key &rArr; flash_key_write &rArr; fmc_word_program &rArr; fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
-<BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
 </UL>
 
-<P><STRONG><a name="[67]"></a>app_protocol_init</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, app_protocol.o(.text.app_protocol_init))
+<P><STRONG><a name="[61]"></a>app_protocol_init</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, app_protocol.o(.text.app_protocol_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1232<LI>Call Chain = app_protocol_init &rArr; crypto_chip_init &rArr; mcu_l013_mutual_auth &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parser_init
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parser_init
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6b]"></a>app_rfid_poll_task</STRONG> (Thumb, 420 bytes, Stack size 208 bytes, app_protocol.o(.text.app_rfid_poll_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1432<LI>Call Chain = app_rfid_poll_task &rArr; crypto_chip_init &rArr; mcu_l013_mutual_auth &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+<P><STRONG><a name="[65]"></a>app_rfid_poll_task</STRONG> (Thumb, 432 bytes, Stack size 176 bytes, app_protocol.o(.text.app_rfid_poll_task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1440<LI>Call Chain = app_rfid_poll_task &rArr; se_reader_setup &rArr; se_probe_cmds &rArr; se_active &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_ping
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_data_serialize
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Select
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_RequestA
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadTagData
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Anticoll
+<BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_active
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_uid
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_data
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_ping
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_reader_setup
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[72]"></a>app_uart_rx_task</STRONG> (Thumb, 320 bytes, Stack size 40 bytes, app_protocol.o(.text.app_uart_rx_task))
+<P><STRONG><a name="[70]"></a>app_uart_rx_task</STRONG> (Thumb, 320 bytes, Stack size 40 bytes, app_protocol.o(.text.app_uart_rx_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = app_uart_rx_task &rArr; app_process_frame &rArr; app_handle_write_key &rArr; flash_key_write &rArr; fmc_word_program &rArr; fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_rx_read_byte
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_rx_available
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parse_byte
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_get_parsed_frame
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_CRC16_Modbus
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_rx_read_byte
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_rx_available
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parse_byte
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_get_parsed_frame
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_CRC16_Modbus
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[77]"></a>bsp_i2c_init</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, bsp_i2c.o(.text.bsp_i2c_init))
+<P><STRONG><a name="[75]"></a>bsp_i2c_init</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, bsp_i2c.o(.text.bsp_i2c_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = bsp_i2c_init &rArr; gpio_mode_set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
+<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7c]"></a>bsp_uart_init</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, bsp_usart.o(.text.bsp_uart_init))
+<P><STRONG><a name="[76]"></a>bsp_uart_init</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, bsp_usart.o(.text.bsp_uart_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = bsp_uart_init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_af_set
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_transmit_config
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_receive_config
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_enable
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_enable
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
+<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_output_options_set
+<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_af_set
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_transmit_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_receive_config
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_enable
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_enable
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -557,192 +468,220 @@ Global Symbols
 <P><STRONG><a name="[4b]"></a>bsp_watchdog_feed</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, bsp_watchdog.o(.text.bsp_watchdog_feed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = bsp_watchdog_feed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_counter_reload
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_counter_reload
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_get_atr
 </UL>
 
-<P><STRONG><a name="[86]"></a>bsp_watchdog_init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, bsp_watchdog.o(.text.bsp_watchdog_init))
+<P><STRONG><a name="[80]"></a>bsp_watchdog_init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, bsp_watchdog.o(.text.bsp_watchdog_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = bsp_watchdog_init &rArr; fwdgt_config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_write_enable
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_flag_get
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_enable
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_counter_reload
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_config
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_write_enable
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_flag_get
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_enable
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_counter_reload
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fwdgt_config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[70]"></a>crypto_chip_encrypt</STRONG> (Thumb, 316 bytes, Stack size 216 bytes, bsp_crypto.o(.text.crypto_chip_encrypt))
+<P><STRONG><a name="[85]"></a>cmd_data_wrap</STRONG> (Thumb, 84 bytes, Stack size 72 bytes, se_cmd.o(.text.cmd_data_wrap))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1040<LI>Call Chain = cmd_data_wrap &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_active
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tag_reader
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_uid
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_data
+</UL>
+
+<P><STRONG><a name="[6e]"></a>crypto_chip_encrypt</STRONG> (Thumb, 316 bytes, Stack size 216 bytes, bsp_crypto.o(.text.crypto_chip_encrypt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1224<LI>Call Chain = crypto_chip_encrypt &rArr; get_se_data &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
 </UL>
 
-<P><STRONG><a name="[69]"></a>crypto_chip_init</STRONG> (Thumb, 140 bytes, Stack size 120 bytes, bsp_crypto.o(.text.crypto_chip_init))
+<P><STRONG><a name="[63]"></a>crypto_chip_init</STRONG> (Thumb, 140 bytes, Stack size 120 bytes, bsp_crypto.o(.text.crypto_chip_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1224<LI>Call Chain = crypto_chip_init &rArr; mcu_l013_mutual_auth &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_se_register
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_se_register
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
-</UL>
-
-<P><STRONG><a name="[6c]"></a>crypto_chip_ping</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, bsp_crypto.o(.text.crypto_chip_ping))
-<BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
 </UL>
 
-<P><STRONG><a name="[ae]"></a>delay_ms</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, bsp_systick.o(.text.delay_ms))
-<BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_send_frame
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_recv_frame
+<P><STRONG><a name="[66]"></a>crypto_chip_ping</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, bsp_crypto.o(.text.crypto_chip_ping))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+</UL>
+
+<P><STRONG><a name="[44]"></a>delay_ms</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, bsp_systick.o(.text.delay_ms))
+<BR><BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
+<LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_send_frame
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_recv_frame
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_power_on
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_power_off
 </UL>
 
-<P><STRONG><a name="[92]"></a>des3_crypt_ecb</STRONG> (Thumb, 896 bytes, Stack size 48 bytes, des.o(.text.des3_crypt_ecb))
+<P><STRONG><a name="[8f]"></a>des3_crypt_ecb</STRONG> (Thumb, 896 bytes, Stack size 48 bytes, des.o(.text.des3_crypt_ecb))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = des3_crypt_ecb
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
 </UL>
 
-<P><STRONG><a name="[8f]"></a>des3_ecb_decrypt</STRONG> (Thumb, 82 bytes, Stack size 408 bytes, des.o(.text.des3_ecb_decrypt))
+<P><STRONG><a name="[8c]"></a>des3_ecb_decrypt</STRONG> (Thumb, 82 bytes, Stack size 408 bytes, des.o(.text.des3_ecb_decrypt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 960<LI>Call Chain = des3_ecb_decrypt &rArr; des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_dec
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_dec
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_free
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_crypt_ecb
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_dec
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_dec
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_free
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_crypt_ecb
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_active
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_uid
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;response_data_unwrap
 </UL>
 
-<P><STRONG><a name="[94]"></a>des3_ecb_encrypt</STRONG> (Thumb, 164 bytes, Stack size 416 bytes, des.o(.text.des3_ecb_encrypt))
+<P><STRONG><a name="[87]"></a>des3_ecb_encrypt</STRONG> (Thumb, 164 bytes, Stack size 416 bytes, des.o(.text.des3_ecb_encrypt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 968<LI>Call Chain = des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
 <BR>[Calls]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_enc
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_enc
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_free
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_crypt_ecb
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_enc
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_enc
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_free
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_crypt_ecb
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_active
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_uid
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmd_data_wrap
 </UL>
 
-<P><STRONG><a name="[93]"></a>des3_free</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, des.o(.text.des3_free))
+<P><STRONG><a name="[90]"></a>des3_free</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, des.o(.text.des3_free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = des3_free
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
 </UL>
 
-<P><STRONG><a name="[90]"></a>des3_set2key_dec</STRONG> (Thumb, 32 bytes, Stack size 392 bytes, des.o(.text.des3_set2key_dec))
+<P><STRONG><a name="[8d]"></a>des3_set2key_dec</STRONG> (Thumb, 32 bytes, Stack size 392 bytes, des.o(.text.des3_set2key_dec))
 <BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
 </UL>
 
-<P><STRONG><a name="[95]"></a>des3_set2key_enc</STRONG> (Thumb, 30 bytes, Stack size 392 bytes, des.o(.text.des3_set2key_enc))
+<P><STRONG><a name="[91]"></a>des3_set2key_enc</STRONG> (Thumb, 30 bytes, Stack size 392 bytes, des.o(.text.des3_set2key_enc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 552<LI>Call Chain = des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
 
-<P><STRONG><a name="[91]"></a>des3_set3key_dec</STRONG> (Thumb, 32 bytes, Stack size 392 bytes, des.o(.text.des3_set3key_dec))
+<P><STRONG><a name="[8e]"></a>des3_set3key_dec</STRONG> (Thumb, 32 bytes, Stack size 392 bytes, des.o(.text.des3_set3key_dec))
 <BR><BR>[Stack]<UL><LI>Max Depth = 544<LI>Call Chain = des3_set3key_dec &rArr; des3_set3key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
 </UL>
 
-<P><STRONG><a name="[96]"></a>des3_set3key_enc</STRONG> (Thumb, 30 bytes, Stack size 392 bytes, des.o(.text.des3_set3key_enc))
+<P><STRONG><a name="[92]"></a>des3_set3key_enc</STRONG> (Thumb, 30 bytes, Stack size 392 bytes, des.o(.text.des3_set3key_enc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 544<LI>Call Chain = des3_set3key_enc &rArr; des3_set3key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;zeroize
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
 
-<P><STRONG><a name="[9b]"></a>des_setkey</STRONG> (Thumb, 800 bytes, Stack size 104 bytes, des.o(.text.des_setkey))
+<P><STRONG><a name="[97]"></a>des_setkey</STRONG> (Thumb, 800 bytes, Stack size 104 bytes, des.o(.text.des_setkey))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = des_setkey
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key
 </UL>
 
-<P><STRONG><a name="[6a]"></a>flash_key_is_stored</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_flash.o(.text.flash_key_is_stored))
-<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
+<P><STRONG><a name="[64]"></a>flash_key_is_stored</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_flash.o(.text.flash_key_is_stored))
+<BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
 </UL>
 
-<P><STRONG><a name="[6e]"></a>flash_key_read</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, bsp_flash.o(.text.flash_key_read))
+<P><STRONG><a name="[6b]"></a>flash_key_read</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, bsp_flash.o(.text.flash_key_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = flash_key_read
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
 </UL>
 
-<P><STRONG><a name="[65]"></a>flash_key_write</STRONG> (Thumb, 172 bytes, Stack size 40 bytes, bsp_flash.o(.text.flash_key_write))
+<P><STRONG><a name="[5f]"></a>flash_key_write</STRONG> (Thumb, 172 bytes, Stack size 40 bytes, bsp_flash.o(.text.flash_key_write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = flash_key_write &rArr; fmc_word_program &rArr; fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_word_program
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_unlock
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_page_erase
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_lock
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_flag_clear
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_enter
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_word_program
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_unlock
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_page_erase
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_lock
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_flag_clear
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_enter
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
+<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
 </UL>
 
-<P><STRONG><a name="[b3]"></a>fm_chk_result</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, se_cmd.o(.text.fm_chk_result))
+<P><STRONG><a name="[ac]"></a>fm_chk_result</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, se_cmd.o(.text.fm_chk_result))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fm_chk_result
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth2
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth1
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_active
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tag_reader
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_active
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_uid
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_data
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_uid
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth2
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth1
 </UL>
 
 <P><STRONG><a name="[29]"></a>fm_i2c_close_device</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, fmse_i2c.o(.text.fm_i2c_close_device))
@@ -765,10 +704,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = fm_i2c_get_atr &rArr; fm_i2c_send_frame
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_send_frame
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_recv_frame
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_init_timeout_ms
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_check_timeout
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_send_frame
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_recv_frame
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_init_timeout_ms
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_check_timeout
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> fmse_i2c.o(.data.gfm_se_i2c)
 </UL>
@@ -777,19 +716,19 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> fmse_i2c.o(.data.gfm_se_i2c)
 </UL>
-<P><STRONG><a name="[ac]"></a>fm_i2c_recv_frame</STRONG> (Thumb, 224 bytes, Stack size 32 bytes, fmse_i2c.o(.text.fm_i2c_recv_frame))
+<P><STRONG><a name="[a7]"></a>fm_i2c_recv_frame</STRONG> (Thumb, 224 bytes, Stack size 32 bytes, fmse_i2c.o(.text.fm_i2c_recv_frame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = fm_i2c_recv_frame
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_get_atr
 </UL>
 
-<P><STRONG><a name="[aa]"></a>fm_i2c_send_frame</STRONG> (Thumb, 152 bytes, Stack size 40 bytes, fmse_i2c.o(.text.fm_i2c_send_frame))
+<P><STRONG><a name="[a5]"></a>fm_i2c_send_frame</STRONG> (Thumb, 152 bytes, Stack size 40 bytes, fmse_i2c.o(.text.fm_i2c_send_frame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = fm_i2c_send_frame
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_get_atr
@@ -798,194 +737,250 @@ Global Symbols
 <P><STRONG><a name="[2b]"></a>fm_i2c_transceive</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, fmse_i2c.o(.text.fm_i2c_transceive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = fm_i2c_transceive &rArr; fm_i2c_send_frame
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_send_frame
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_recv_frame
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_init_timeout_ms
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_check_timeout
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_send_frame
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_recv_frame
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_init_timeout_ms
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_check_timeout
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> fmse_i2c.o(.data.gfm_se_i2c)
 </UL>
-<P><STRONG><a name="[b2]"></a>fm_memmove</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, se_cmd.o(.text.fm_memmove))
+<P><STRONG><a name="[86]"></a>fm_memmove</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, se_cmd.o(.text.fm_memmove))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fm_memmove
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth2
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth1
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_data
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tag_reader
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_active
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_uid
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth2
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth1
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;response_data_unwrap
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmd_data_wrap
 </UL>
 
-<P><STRONG><a name="[8d]"></a>fm_se_register</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, se_cmd.o(.text.fm_se_register))
+<P><STRONG><a name="[8a]"></a>fm_se_register</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, se_cmd.o(.text.fm_se_register))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fm_se_register
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
 </UL>
 
-<P><STRONG><a name="[9f]"></a>fmc_flag_clear</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_flag_clear))
-<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<P><STRONG><a name="[9b]"></a>fmc_flag_clear</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_flag_clear))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
 </UL>
 
-<P><STRONG><a name="[a1]"></a>fmc_lock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_lock))
-<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<P><STRONG><a name="[9d]"></a>fmc_lock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_lock))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
 </UL>
 
-<P><STRONG><a name="[a0]"></a>fmc_page_erase</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, gd32e23x_fmc.o(.text.fmc_page_erase))
+<P><STRONG><a name="[9c]"></a>fmc_page_erase</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, gd32e23x_fmc.o(.text.fmc_page_erase))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = fmc_page_erase &rArr; fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_ready_wait
+<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_ready_wait
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
 </UL>
 
-<P><STRONG><a name="[af]"></a>fmc_ready_wait</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, gd32e23x_fmc.o(.text.fmc_ready_wait))
+<P><STRONG><a name="[a9]"></a>fmc_ready_wait</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, gd32e23x_fmc.o(.text.fmc_ready_wait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_state_get
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_state_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_word_program
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_page_erase
-</UL>
-
-<P><STRONG><a name="[b0]"></a>fmc_state_get</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_state_get))
-<BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_ready_wait
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_word_program
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_page_erase
 </UL>
 
-<P><STRONG><a name="[9e]"></a>fmc_unlock</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_unlock))
-<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<P><STRONG><a name="[aa]"></a>fmc_state_get</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_state_get))
+<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_ready_wait
 </UL>
 
-<P><STRONG><a name="[a3]"></a>fmc_word_program</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, gd32e23x_fmc.o(.text.fmc_word_program))
+<P><STRONG><a name="[9a]"></a>fmc_unlock</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_fmc.o(.text.fmc_unlock))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+</UL>
+
+<P><STRONG><a name="[9f]"></a>fmc_word_program</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, gd32e23x_fmc.o(.text.fmc_word_program))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = fmc_word_program &rArr; fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_ready_wait
+<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmc_ready_wait
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
 </UL>
 
 <P><STRONG><a name="[25]"></a>fputc</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, bsp_usart.o(.text.fputc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fputc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf8.o(i.__0printf$8)
 </UL>
-<P><STRONG><a name="[89]"></a>fwdgt_config</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, gd32e23x_fwdgt.o(.text.fwdgt_config))
+<P><STRONG><a name="[83]"></a>fwdgt_config</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, gd32e23x_fwdgt.o(.text.fwdgt_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fwdgt_config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
 </UL>
 
-<P><STRONG><a name="[85]"></a>fwdgt_counter_reload</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_counter_reload))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
+<P><STRONG><a name="[7f]"></a>fwdgt_counter_reload</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_counter_reload))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
 </UL>
 
-<P><STRONG><a name="[8a]"></a>fwdgt_enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
+<P><STRONG><a name="[84]"></a>fwdgt_enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
 </UL>
 
-<P><STRONG><a name="[88]"></a>fwdgt_flag_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_flag_get))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
+<P><STRONG><a name="[82]"></a>fwdgt_flag_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_flag_get))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
 </UL>
 
-<P><STRONG><a name="[87]"></a>fwdgt_write_enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_write_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
+<P><STRONG><a name="[81]"></a>fwdgt_write_enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_fwdgt.o(.text.fwdgt_write_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
 </UL>
 
-<P><STRONG><a name="[8c]"></a>get_se_data</STRONG> (Thumb, 244 bytes, Stack size 40 bytes, se_cmd.o(.text.get_se_data))
+<P><STRONG><a name="[89]"></a>get_se_data</STRONG> (Thumb, 244 bytes, Stack size 40 bytes, se_cmd.o(.text.get_se_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1008<LI>Call Chain = get_se_data &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
 </UL>
 
-<P><STRONG><a name="[7d]"></a>gpio_af_set</STRONG> (Thumb, 94 bytes, Stack size 28 bytes, gd32e23x_gpio.o(.text.gpio_af_set))
+<P><STRONG><a name="[ad]"></a>get_se_uid</STRONG> (Thumb, 184 bytes, Stack size 40 bytes, se_cmd.o(.text.get_se_uid))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1008<LI>Call Chain = get_se_uid &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+</UL>
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+</UL>
+
+<P><STRONG><a name="[6d]"></a>get_tag_data</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, se_cmd.o(.text.get_tag_data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1080<LI>Call Chain = get_tag_data &rArr; response_data_unwrap &rArr; des3_ecb_decrypt &rArr; des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;response_data_unwrap
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmd_data_wrap
+</UL>
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+</UL>
+
+<P><STRONG><a name="[68]"></a>get_tag_uid</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, se_cmd.o(.text.get_tag_uid))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1080<LI>Call Chain = get_tag_uid &rArr; response_data_unwrap &rArr; des3_ecb_decrypt &rArr; des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;response_data_unwrap
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmd_data_wrap
+</UL>
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+</UL>
+
+<P><STRONG><a name="[77]"></a>gpio_af_set</STRONG> (Thumb, 94 bytes, Stack size 28 bytes, gd32e23x_gpio.o(.text.gpio_af_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = gpio_af_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[b6]"></a>gpio_bit_reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32e23x_gpio.o(.text.gpio_bit_reset))
+<P><STRONG><a name="[43]"></a>gpio_bit_reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32e23x_gpio.o(.text.gpio_bit_reset))
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read_byte
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
 </UL>
 
-<P><STRONG><a name="[7b]"></a>gpio_bit_set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32e23x_gpio.o(.text.gpio_bit_set))
+<P><STRONG><a name="[45]"></a>gpio_bit_set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32e23x_gpio.o(.text.gpio_bit_set))
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read_byte
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
 </UL>
 
-<P><STRONG><a name="[b7]"></a>gpio_input_bit_get</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32e23x_gpio.o(.text.gpio_input_bit_get))
+<P><STRONG><a name="[b1]"></a>gpio_input_bit_get</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32e23x_gpio.o(.text.gpio_input_bit_get))
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read_byte
 </UL>
 
-<P><STRONG><a name="[79]"></a>gpio_mode_set</STRONG> (Thumb, 66 bytes, Stack size 28 bytes, gd32e23x_gpio.o(.text.gpio_mode_set))
+<P><STRONG><a name="[41]"></a>gpio_mode_set</STRONG> (Thumb, 66 bytes, Stack size 28 bytes, gd32e23x_gpio.o(.text.gpio_mode_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = gpio_mode_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>gpio_output_options_set</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, gd32e23x_gpio.o(.text.gpio_output_options_set))
+<P><STRONG><a name="[42]"></a>gpio_output_options_set</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, gd32e23x_gpio.o(.text.gpio_output_options_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = gpio_output_options_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
 </UL>
 
-<P><STRONG><a name="[b4]"></a>i2c_bus_recovery</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, bsp_i2c.o(.text.i2c_bus_recovery))
+<P><STRONG><a name="[af]"></a>i2c_bus_recovery</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, bsp_i2c.o(.text.i2c_bus_recovery))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_err_track
 </UL>
 
-<P><STRONG><a name="[4f]"></a>i2c_read_byte</STRONG> (Thumb, 136 bytes, Stack size 40 bytes, bsp_i2c.o(.text.i2c_read_byte))
+<P><STRONG><a name="[48]"></a>i2c_bus_scan</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, bsp_i2c.o(.text.i2c_bus_scan))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = i2c_bus_scan &rArr; i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
+</UL>
+<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+</UL>
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
+</UL>
+
+<P><STRONG><a name="[4f]"></a>i2c_read_byte</STRONG> (Thumb, 140 bytes, Stack size 40 bytes, bsp_i2c.o(.text.i2c_read_byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = i2c_read_byte &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_recv_char_nak
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_recv_char
 </UL>
 
-<P><STRONG><a name="[4d]"></a>i2c_send_byte</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, bsp_i2c.o(.text.i2c_send_byte))
+<P><STRONG><a name="[4d]"></a>i2c_send_byte</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, bsp_i2c.o(.text.i2c_send_byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = i2c_send_byte &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_send_char
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_send_addr
 </UL>
@@ -993,390 +988,435 @@ Global Symbols
 <P><STRONG><a name="[4c]"></a>i2c_start</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, bsp_i2c.o(.text.i2c_start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = i2c_start &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_start
 </UL>
 
-<P><STRONG><a name="[50]"></a>i2c_stop</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, bsp_i2c.o(.text.i2c_stop))
+<P><STRONG><a name="[50]"></a>i2c_stop</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, bsp_i2c.o(.text.i2c_stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = i2c_stop &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_stop
 </UL>
 
-<P><STRONG><a name="[4e]"></a>i2c_wait_ack</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, bsp_i2c.o(.text.i2c_wait_ack))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
+<P><STRONG><a name="[4e]"></a>i2c_wait_ack</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, bsp_i2c.o(.text.i2c_wait_ack))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_send_char
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fmse_i2c_send_addr
 </UL>
 
-<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1432<LI>Call Chain = main &rArr; app_rfid_poll_task &rArr; crypto_chip_init &rArr; mcu_l013_mutual_auth &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1440<LI>Call Chain = main &rArr; app_rfid_poll_task &rArr; se_reader_setup &rArr; se_probe_cmds &rArr; se_active &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_init
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_watchdog_feed
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_CheckComm
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[8e]"></a>mcu_l013_mutual_auth</STRONG> (Thumb, 196 bytes, Stack size 136 bytes, se_cmd.o(.text.mcu_l013_mutual_auth))
+<P><STRONG><a name="[8b]"></a>mcu_l013_mutual_auth</STRONG> (Thumb, 196 bytes, Stack size 136 bytes, se_cmd.o(.text.mcu_l013_mutual_auth))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1104<LI>Call Chain = mcu_l013_mutual_auth &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;srand
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth2
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth1
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;srand
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth2
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_auth1
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
 </UL>
 
-<P><STRONG><a name="[83]"></a>nvic_irq_enable</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, gd32e23x_misc.o(.text.nvic_irq_enable))
+<P><STRONG><a name="[7d]"></a>nvic_irq_enable</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, gd32e23x_misc.o(.text.nvic_irq_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = nvic_irq_enable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[5d]"></a>nvic_vector_table_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_misc.o(.text.nvic_vector_table_set))
+<P><STRONG><a name="[59]"></a>nvic_vector_table_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_misc.o(.text.nvic_vector_table_set))
 <BR><BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[76]"></a>protocol_get_parsed_frame</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, protocol.o(.text.protocol_get_parsed_frame))
-<BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<P><STRONG><a name="[74]"></a>protocol_get_parsed_frame</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, protocol.o(.text.protocol_get_parsed_frame))
+<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
 </UL>
 
-<P><STRONG><a name="[75]"></a>protocol_parse_byte</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, protocol.o(.text.protocol_parse_byte))
+<P><STRONG><a name="[73]"></a>protocol_parse_byte</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, protocol.o(.text.protocol_parse_byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = protocol_parse_byte &rArr; protocol_verify_crc &rArr; Calculate_CRC16_Modbus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_verify_crc
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_verify_crc
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
 </UL>
 
-<P><STRONG><a name="[68]"></a>protocol_parser_init</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, protocol.o(.text.protocol_parser_init))
+<P><STRONG><a name="[62]"></a>protocol_parser_init</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, protocol.o(.text.protocol_parser_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = protocol_parser_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
+<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
 </UL>
 
-<P><STRONG><a name="[c0]"></a>protocol_verify_crc</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, protocol.o(.text.protocol_verify_crc))
+<P><STRONG><a name="[ba]"></a>protocol_verify_crc</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, protocol.o(.text.protocol_verify_crc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = protocol_verify_crc &rArr; Calculate_CRC16_Modbus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_CRC16_Modbus
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_CRC16_Modbus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parse_byte
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_parse_byte
 </UL>
 
-<P><STRONG><a name="[c4]"></a>rcu_clock_freq_get</STRONG> (Thumb, 344 bytes, Stack size 24 bytes, gd32e23x_rcu.o(.text.rcu_clock_freq_get))
+<P><STRONG><a name="[c1]"></a>rcu_clock_freq_get</STRONG> (Thumb, 344 bytes, Stack size 24 bytes, gd32e23x_rcu.o(.text.rcu_clock_freq_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = rcu_clock_freq_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
 </UL>
 
-<P><STRONG><a name="[78]"></a>rcu_periph_clock_enable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_rcu.o(.text.rcu_periph_clock_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<P><STRONG><a name="[40]"></a>rcu_periph_clock_enable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_rcu.o(.text.rcu_periph_clock_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_i2c_init
+<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Init
 </UL>
 
-<P><STRONG><a name="[c6]"></a>rcu_periph_reset_disable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_rcu.o(.text.rcu_periph_reset_disable))
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
+<P><STRONG><a name="[c3]"></a>rcu_periph_reset_disable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_rcu.o(.text.rcu_periph_reset_disable))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
 </UL>
 
-<P><STRONG><a name="[c5]"></a>rcu_periph_reset_enable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_rcu.o(.text.rcu_periph_reset_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
+<P><STRONG><a name="[c2]"></a>rcu_periph_reset_enable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32e23x_rcu.o(.text.rcu_periph_reset_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
 </UL>
 
-<P><STRONG><a name="[bb]"></a>se_auth1</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, se_cmd.o(.text.se_auth1))
+<P><STRONG><a name="[ae]"></a>response_data_unwrap</STRONG> (Thumb, 74 bytes, Stack size 88 bytes, se_cmd.o(.text.response_data_unwrap))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1048<LI>Call Chain = response_data_unwrap &rArr; des3_ecb_decrypt &rArr; des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tag_active
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tag_reader
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_uid
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_tag_data
+</UL>
+
+<P><STRONG><a name="[bb]"></a>se_active</STRONG> (Thumb, 184 bytes, Stack size 40 bytes, se_cmd.o(.text.se_active))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1008<LI>Call Chain = se_active &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_decrypt
+</UL>
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+</UL>
+
+<P><STRONG><a name="[b5]"></a>se_auth1</STRONG> (Thumb, 112 bytes, Stack size 32 bytes, se_cmd.o(.text.se_auth1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = se_auth1 &rArr; fm_memmove
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
 </UL>
 
-<P><STRONG><a name="[bc]"></a>se_auth2</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, se_cmd.o(.text.se_auth2))
+<P><STRONG><a name="[b6]"></a>se_auth2</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, se_cmd.o(.text.se_auth2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = se_auth2 &rArr; fm_memmove
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mcu_l013_mutual_auth
 </UL>
 
-<P><STRONG><a name="[56]"></a>syscfg_flag_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_syscfg.o(.text.syscfg_flag_get))
+<P><STRONG><a name="[bd]"></a>set_tag_reader</STRONG> (Thumb, 168 bytes, Stack size 32 bytes, se_cmd.o(.text.set_tag_reader))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1080<LI>Call Chain = set_tag_reader &rArr; response_data_unwrap &rArr; des3_ecb_decrypt &rArr; des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;response_data_unwrap
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmd_data_wrap
+</UL>
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_reader_setup
+</UL>
+
+<P><STRONG><a name="[52]"></a>syscfg_flag_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_syscfg.o(.text.syscfg_flag_get))
 <BR><BR>[Called By]<UL><LI><a href="#[1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NMI_Handler
 </UL>
 
-<P><STRONG><a name="[b8]"></a>systick_config</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_systick.o(.text.systick_config))
+<P><STRONG><a name="[b2]"></a>systick_config</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_systick.o(.text.systick_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = systick_config &rArr; SysTick_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Config
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6f]"></a>tag_data_serialize</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.tag_data_serialize))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = tag_data_serialize
+<P><STRONG><a name="[6c]"></a>tag_active</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, se_cmd.o(.text.tag_active))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1080<LI>Call Chain = tag_active &rArr; response_data_unwrap &rArr; des3_ecb_decrypt &rArr; des3_set2key_dec &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;response_data_unwrap
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmd_data_wrap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-</UL>
-
-<P><STRONG><a name="[73]"></a>uart_rx_available</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_usart.o(.text.uart_rx_available))
-<BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
 </UL>
 
-<P><STRONG><a name="[a9]"></a>uart_rx_flush</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, bsp_usart.o(.text.uart_rx_flush))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+<P><STRONG><a name="[71]"></a>uart_rx_available</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, bsp_usart.o(.text.uart_rx_available))
+<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
 </UL>
 
-<P><STRONG><a name="[74]"></a>uart_rx_read_byte</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, bsp_usart.o(.text.uart_rx_read_byte))
-<BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<P><STRONG><a name="[a4]"></a>uart_rx_flush</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, bsp_usart.o(.text.uart_rx_flush))
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
 </UL>
 
-<P><STRONG><a name="[c2]"></a>uart_send_byte</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, bsp_usart.o(.text.uart_send_byte))
+<P><STRONG><a name="[72]"></a>uart_rx_read_byte</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, bsp_usart.o(.text.uart_rx_read_byte))
+<BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+</UL>
+
+<P><STRONG><a name="[bf]"></a>uart_send_byte</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, bsp_usart.o(.text.uart_send_byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = uart_send_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
+<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
 </UL>
 
-<P><STRONG><a name="[61]"></a>uart_send_data</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, bsp_usart.o(.text.uart_send_data))
+<P><STRONG><a name="[5d]"></a>uart_send_data</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, bsp_usart.o(.text.uart_send_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = uart_send_data &rArr; uart_send_byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_byte
+<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
 </UL>
 
-<P><STRONG><a name="[60]"></a>uid_read</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, bsp_uid.o(.text.uid_read))
+<P><STRONG><a name="[5c]"></a>uid_read</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, bsp_uid.o(.text.uid_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = uid_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
 </UL>
 
-<P><STRONG><a name="[5e]"></a>usart0_isr</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, bsp_usart.o(.text.usart0_isr))
+<P><STRONG><a name="[5a]"></a>usart0_isr</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, bsp_usart.o(.text.usart0_isr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart0_isr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[7f]"></a>usart_baudrate_set</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, gd32e23x_usart.o(.text.usart_baudrate_set))
+<P><STRONG><a name="[79]"></a>usart_baudrate_set</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, gd32e23x_usart.o(.text.usart_baudrate_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_clock_freq_get
+<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_clock_freq_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
-</UL>
-
-<P><STRONG><a name="[a7]"></a>usart_data_receive</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_data_receive))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart0_isr
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[b1]"></a>usart_data_transmit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_data_transmit))
-<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_byte
+<P><STRONG><a name="[a2]"></a>usart_data_receive</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_data_receive))
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart0_isr
+</UL>
+
+<P><STRONG><a name="[ab]"></a>usart_data_transmit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_data_transmit))
+<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_byte
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
-<P><STRONG><a name="[7e]"></a>usart_deinit</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, gd32e23x_usart.o(.text.usart_deinit))
+<P><STRONG><a name="[78]"></a>usart_deinit</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, gd32e23x_usart.o(.text.usart_deinit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_deinit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_enable
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_disable
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_enable
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
-</UL>
-
-<P><STRONG><a name="[84]"></a>usart_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[a8]"></a>usart_flag_clear</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_flag_clear))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+<P><STRONG><a name="[7e]"></a>usart_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[a6]"></a>usart_flag_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_flag_get))
-<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_byte
+<P><STRONG><a name="[a3]"></a>usart_flag_clear</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_flag_clear))
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+</UL>
+
+<P><STRONG><a name="[a1]"></a>usart_flag_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_flag_get))
+<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_byte
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
 </UL>
 
-<P><STRONG><a name="[a5]"></a>usart_interrupt_disable</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_interrupt_disable))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_enter
+<P><STRONG><a name="[a0]"></a>usart_interrupt_disable</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_interrupt_disable))
+<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_enter
 </UL>
 
-<P><STRONG><a name="[82]"></a>usart_interrupt_enable</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_interrupt_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<P><STRONG><a name="[7c]"></a>usart_interrupt_enable</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_interrupt_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_uart_protect_exit
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[c3]"></a>usart_interrupt_flag_get</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_interrupt_flag_get))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart0_isr
+<P><STRONG><a name="[c0]"></a>usart_interrupt_flag_get</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_interrupt_flag_get))
+<BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart0_isr
 </UL>
 
-<P><STRONG><a name="[81]"></a>usart_receive_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_receive_config))
-<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<P><STRONG><a name="[7b]"></a>usart_receive_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_receive_config))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[80]"></a>usart_transmit_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_transmit_config))
-<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
+<P><STRONG><a name="[7a]"></a>usart_transmit_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32e23x_usart.o(.text.usart_transmit_config))
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart_init
 </UL>
 
-<P><STRONG><a name="[8b]"></a>write_se_data</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, se_cmd.o(.text.write_se_data))
+<P><STRONG><a name="[88]"></a>write_se_data</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, se_cmd.o(.text.write_se_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1000<LI>Call Chain = write_se_data &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_memmove
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_chk_result
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
-</UL>
-
-<P><STRONG><a name="[c7]"></a>__0printf$8</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
 </UL>
 
-<P><STRONG><a name="[d8]"></a>__1printf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8), UNUSED)
+<P><STRONG><a name="[c4]"></a>__0printf$8</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+</UL>
 
-<P><STRONG><a name="[62]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8))
+<P><STRONG><a name="[d6]"></a>__1printf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8), UNUSED)
+
+<P><STRONG><a name="[4a]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_reader_setup
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_upload_data
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_protocol_init
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
 </UL>
 
-<P><STRONG><a name="[d9]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[d7]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[da]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[d8]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[db]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[d9]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[98]"></a>free</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, malloc.o(i.free))
+<P><STRONG><a name="[94]"></a>free</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, malloc.o(i.free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
 
-<P><STRONG><a name="[97]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
+<P><STRONG><a name="[93]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_ecb_encrypt
 </UL>
 
-<P><STRONG><a name="[63]"></a>puts</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, puts.o(i.puts))
+<P><STRONG><a name="[47]"></a>puts</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, puts.o(i.puts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = puts &rArr; fputc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crypto_chip_encrypt
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_write_key
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_handle_query_uid
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_scan
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_uart_rx_task
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_NpdDiag
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[be]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, gd32e23x_misc.o(.text.__NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<P><STRONG><a name="[b8]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, gd32e23x_misc.o(.text.__NVIC_EnableIRQ))
+<BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
 </UL>
 
-<P><STRONG><a name="[bd]"></a>__NVIC_SetPriority</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, gd32e23x_misc.o(.text.__NVIC_SetPriority))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<P><STRONG><a name="[b7]"></a>__NVIC_SetPriority</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, gd32e23x_misc.o(.text.__NVIC_SetPriority))
+<BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
 </UL>
 
-<P><STRONG><a name="[5b]"></a>_soft_delay_</STRONG> (Thumb, 34 bytes, Stack size 4 bytes, system_gd32e23x.o(.text._soft_delay_))
+<P><STRONG><a name="[57]"></a>_soft_delay_</STRONG> (Thumb, 34 bytes, Stack size 4 bytes, system_gd32e23x.o(.text._soft_delay_))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = _soft_delay_
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[c1]"></a>system_clock_72m_hxtal</STRONG> (Thumb, 228 bytes, Stack size 28 bytes, system_gd32e23x.o(.text.system_clock_72m_hxtal))
+<P><STRONG><a name="[be]"></a>system_clock_72m_hxtal</STRONG> (Thumb, 228 bytes, Stack size 28 bytes, system_gd32e23x.o(.text.system_clock_72m_hxtal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = system_clock_72m_hxtal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
+<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
 </UL>
 
-<P><STRONG><a name="[5c]"></a>system_clock_config</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_gd32e23x.o(.text.system_clock_config))
+<P><STRONG><a name="[58]"></a>system_clock_config</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_gd32e23x.o(.text.system_clock_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = system_clock_config &rArr; system_clock_72m_hxtal
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_72m_hxtal
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_72m_hxtal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[59]"></a>SysTick_Config</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_systick.o(.text.SysTick_Config))
+<P><STRONG><a name="[55]"></a>SysTick_Config</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_systick.o(.text.SysTick_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysTick_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
-</UL>
-
-<P><STRONG><a name="[5a]"></a>__NVIC_SetPriority</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, bsp_systick.o(.text.__NVIC_SetPriority))
-<BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Config
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
 </UL>
 
-<P><STRONG><a name="[b5]"></a>i2c_delay</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, bsp_i2c.o(.text.i2c_delay))
+<P><STRONG><a name="[56]"></a>__NVIC_SetPriority</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, bsp_systick.o(.text.__NVIC_SetPriority))
+<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Config
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
+</UL>
+
+<P><STRONG><a name="[b0]"></a>i2c_delay</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, bsp_i2c.o(.text.i2c_delay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = i2c_delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
@@ -1384,141 +1424,120 @@ Local Symbols
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_start
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_read_byte
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
-</UL>
-
-<P><STRONG><a name="[43]"></a>FM17622_ClearBitMask</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, bsp_fm17622.o(.text.FM17622_ClearBitMask))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = FM17622_ClearBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-</UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Select
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_RequestA
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Anticoll
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_transceive
-</UL>
-
-<P><STRONG><a name="[41]"></a>FM17622_SetBitMask</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.FM17622_SetBitMask))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-</UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Select
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_RequestA
-<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_Anticoll
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_AntennaOn
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_transceive
-</UL>
-
-<P><STRONG><a name="[53]"></a>block_to_tag_data</STRONG> (Thumb, 144 bytes, Stack size 16 bytes, bsp_fm17622.o(.text.block_to_tag_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = block_to_tag_data
-</UL>
-<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-</UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadTagData
-</UL>
-
-<P><STRONG><a name="[49]"></a>fm_transceive</STRONG> (Thumb, 176 bytes, Stack size 32 bytes, bsp_fm17622.o(.text.fm_transceive))
-<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = fm_transceive &rArr; FM17622_SetBitMask &rArr; FM17622_WriteReg &rArr; i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
-</UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_SetBitMask
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ClearBitMask
-</UL>
-<BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_MifareReadBlock
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_MifareAuth
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
 </UL>
 
 <P><STRONG><a name="[51]"></a>i2c_err_track</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_fm17622.o(.text.i2c_err_track))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = i2c_err_track &rArr; i2c_bus_recovery &rArr; i2c_stop &rArr; i2c_delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
+<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_bus_recovery
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_WriteReg
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FM17622_ReadReg
 </UL>
 
-<P><STRONG><a name="[5f]"></a>app_handle_query_uid</STRONG> (Thumb, 76 bytes, Stack size 32 bytes, app_protocol.o(.text.app_handle_query_uid))
+<P><STRONG><a name="[5b]"></a>app_handle_query_uid</STRONG> (Thumb, 76 bytes, Stack size 32 bytes, app_protocol.o(.text.app_handle_query_uid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = app_handle_query_uid &rArr; Pack_Data_Frame &rArr; Calculate_CRC16_Modbus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uid_read
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uid_read
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
+<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
 </UL>
 
-<P><STRONG><a name="[64]"></a>app_handle_write_key</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, app_protocol.o(.text.app_handle_write_key))
+<P><STRONG><a name="[5e]"></a>app_handle_write_key</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, app_protocol.o(.text.app_handle_write_key))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = app_handle_write_key &rArr; flash_key_write &rArr; fmc_word_program &rArr; fmc_ready_wait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
+<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_process_frame
 </UL>
 
-<P><STRONG><a name="[71]"></a>app_upload_data</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, app_protocol.o(.text.app_upload_data))
+<P><STRONG><a name="[6f]"></a>app_upload_data</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, app_protocol.o(.text.app_upload_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = app_upload_data &rArr; Pack_Data_Frame &rArr; Calculate_CRC16_Modbus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_data
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Data_Frame
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
 </UL>
 
-<P><STRONG><a name="[9d]"></a>flash_uart_protect_enter</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, bsp_flash.o(.text.flash_uart_protect_enter))
+<P><STRONG><a name="[bc]"></a>se_probe_cmds</STRONG> (Thumb, 144 bytes, Stack size 136 bytes, app_protocol.o(.text.se_probe_cmds))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1144<LI>Call Chain = se_probe_cmds &rArr; se_active &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_se_data
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_active
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_se_uid
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_read
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_is_stored
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;puts
+</UL>
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_reader_setup
+</UL>
+
+<P><STRONG><a name="[67]"></a>se_reader_setup</STRONG> (Thumb, 108 bytes, Stack size 120 bytes, app_protocol.o(.text.se_reader_setup))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1264<LI>Call Chain = se_reader_setup &rArr; se_probe_cmds &rArr; se_active &rArr; des3_ecb_encrypt &rArr; des3_set2key_enc &rArr; des3_set2key &rArr; des_setkey
+</UL>
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_tag_reader
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;se_probe_cmds
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_rfid_poll_task
+</UL>
+
+<P><STRONG><a name="[99]"></a>flash_uart_protect_enter</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, bsp_flash.o(.text.flash_uart_protect_enter))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = flash_uart_protect_enter
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_disable
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
 </UL>
 
-<P><STRONG><a name="[a2]"></a>flash_uart_protect_exit</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, bsp_flash.o(.text.flash_uart_protect_exit))
+<P><STRONG><a name="[9e]"></a>flash_uart_protect_exit</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, bsp_flash.o(.text.flash_uart_protect_exit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = flash_uart_protect_exit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_rx_flush
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_enable
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_clear
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_rx_flush
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_enable
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_clear
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
 </UL>
-<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_key_write
 </UL>
 
-<P><STRONG><a name="[9a]"></a>des3_set2key</STRONG> (Thumb, 146 bytes, Stack size 56 bytes, des.o(.text.des3_set2key))
+<P><STRONG><a name="[96]"></a>des3_set2key</STRONG> (Thumb, 146 bytes, Stack size 56 bytes, des.o(.text.des3_set2key))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = des3_set2key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des_setkey
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des_setkey
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_enc
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_dec
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_enc
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_dec
 </UL>
 
-<P><STRONG><a name="[9c]"></a>des3_set3key</STRONG> (Thumb, 152 bytes, Stack size 48 bytes, des.o(.text.des3_set3key))
+<P><STRONG><a name="[98]"></a>des3_set3key</STRONG> (Thumb, 152 bytes, Stack size 48 bytes, des.o(.text.des3_set3key))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = des3_set3key &rArr; des_setkey
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des_setkey
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des_setkey
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_enc
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_dec
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_enc
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_dec
 </UL>
 
-<P><STRONG><a name="[99]"></a>zeroize</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, des.o(.text.zeroize))
-<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_enc
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_dec
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_enc
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_dec
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_free
+<P><STRONG><a name="[95]"></a>zeroize</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, des.o(.text.zeroize))
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_enc
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set3key_dec
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_enc
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_set2key_dec
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;des3_free
 </UL>
 
 <P><STRONG><a name="[2f]"></a>fmse_i2c_init</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, fmse_port.o(.text.fmse_i2c_init))
@@ -1539,7 +1558,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> fmse_port.o(.data.gusr_i2c_drv)
 </UL>
 <P><STRONG><a name="[34]"></a>fmse_i2c_send_addr</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, fmse_port.o(.text.fmse_i2c_send_addr))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = fmse_i2c_send_addr &rArr; i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = fmse_i2c_send_addr &rArr; i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
@@ -1547,7 +1566,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> fmse_port.o(.data.gusr_i2c_drv)
 </UL>
 <P><STRONG><a name="[32]"></a>fmse_i2c_send_char</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, fmse_port.o(.text.fmse_i2c_send_char))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = fmse_i2c_send_char &rArr; i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = fmse_i2c_send_char &rArr; i2c_wait_ack &rArr; i2c_stop &rArr; i2c_delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_wait_ack
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_send_byte
@@ -1571,41 +1590,41 @@ Local Symbols
 <P><STRONG><a name="[2e]"></a>fmse_power_off</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, fmse_port.o(.text.fmse_power_off))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fmse_power_off
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> fmse_port.o(.data.gusr_i2c_drv)
 </UL>
 <P><STRONG><a name="[2d]"></a>fmse_power_on</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, fmse_port.o(.text.fmse_power_on))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fmse_power_on
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> fmse_port.o(.data.gusr_i2c_drv)
 </UL>
-<P><STRONG><a name="[ad]"></a>fmse_check_timeout</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, fmse_i2c.o(.text.fmse_check_timeout))
+<P><STRONG><a name="[a8]"></a>fmse_check_timeout</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, fmse_i2c.o(.text.fmse_check_timeout))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_get_atr
 </UL>
 
-<P><STRONG><a name="[ab]"></a>fmse_init_timeout_ms</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, fmse_i2c.o(.text.fmse_init_timeout_ms))
+<P><STRONG><a name="[a6]"></a>fmse_init_timeout_ms</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, fmse_i2c.o(.text.fmse_init_timeout_ms))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_transceive
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fm_i2c_get_atr
 </UL>
 
-<P><STRONG><a name="[c8]"></a>_printf_core</STRONG> (Thumb, 1020 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
+<P><STRONG><a name="[c5]"></a>_printf_core</STRONG> (Thumb, 1020 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$8
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$8
 </UL>
 
-<P><STRONG><a name="[ca]"></a>_printf_post_padding</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, printf8.o(i._printf_post_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[c7]"></a>_printf_post_padding</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, printf8.o(i._printf_post_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[c9]"></a>_printf_pre_padding</STRONG> (Thumb, 44 bytes, Stack size 40 bytes, printf8.o(i._printf_pre_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[c6]"></a>_printf_pre_padding</STRONG> (Thumb, 44 bytes, Stack size 40 bytes, printf8.o(i._printf_pre_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 <P>
 <H3>

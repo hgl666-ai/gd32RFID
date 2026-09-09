@@ -627,8 +627,8 @@ F (.\Head\main.h)(0x69F949E2)()
 F (.\Head\system_gd32e23x.h)(0x69645ED3)()
 F (.\Head\bsp_systick.h)(0x6A599A58)()
 F (.\Head\bsp_usart.h)(0x6A599A9E)()
-F (.\Head\bsp_i2c.h)(0x6A599A3B)()
-F (.\Head\bsp_fm17622.h)(0x6A599A40)()
+F (.\Head\bsp_i2c.h)(0x6A9F51B4)()
+F (.\Head\bsp_fm17622.h)(0x6A9F5566)()
 F (.\Head\protocol.h)(0x6A599B17)()
 F (.\Head\app_protocol.h)(0x6A5AEE52)()
 F (.\Head\bsp_uid.h)(0x6A5D66E7)()
@@ -673,7 +673,7 @@ I (Head\gd32e23x_cmp.h)(0x698306C8)
 I (Head\main.h)(0x69F949E2)
 I (Head\bsp_usart.h)(0x6A599A9E)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
-F (.\User\main.c)(0x6A5AEE59)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/main.o -MD)
+F (.\User\main.c)(0x6A9FA3EA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/main.o -MD)
 I (Head\gd32e23x.h)(0x698306C8)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h)(0x5E8ED122)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
@@ -703,14 +703,14 @@ I (Head\gd32e23x_usart.h)(0x698306C8)
 I (Head\gd32e23x_wwdgt.h)(0x698306C8)
 I (Head\gd32e23x_misc.h)(0x698306C8)
 I (Head\gd32e23x_cmp.h)(0x698306C8)
-I (Head\debug_config.h)(0x6A9A18A5)
+I (Head\debug_config.h)(0x6A9FB9D2)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (Head\bsp_systick.h)(0x6A599A58)
 I (Head\bsp_usart.h)(0x6A599A9E)
-I (Head\bsp_i2c.h)(0x6A599A3B)
+I (Head\bsp_i2c.h)(0x6A9F51B4)
 I (Head\bsp_flash.h)(0x6A599A45)
 I (Head\bsp_uid.h)(0x6A5D66E7)
-I (Head\bsp_fm17622.h)(0x6A599A40)
+I (Head\bsp_fm17622.h)(0x6A9F5566)
 I (Head\bsp_watchdog.h)(0x6A599AC0)
 I (Head\app_protocol.h)(0x6A5AEE52)
 I (Head\protocol.h)(0x6A599B17)
@@ -746,8 +746,8 @@ I (Head\gd32e23x_wwdgt.h)(0x698306C8)
 I (Head\gd32e23x_misc.h)(0x698306C8)
 I (Head\gd32e23x_cmp.h)(0x698306C8)
 I (Head\bsp_systick.h)(0x6A599A58)
-F (.\Bsp\bsp_i2c.c)(0x6A599769)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_i2c.o -MD)
-I (Head\bsp_i2c.h)(0x6A599A3B)
+F (.\Bsp\bsp_i2c.c)(0x6A9F51AD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_i2c.o -MD)
+I (Head\bsp_i2c.h)(0x6A9F51B4)
 I (Head\gd32e23x.h)(0x698306C8)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h)(0x5E8ED122)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
@@ -777,9 +777,12 @@ I (Head\gd32e23x_usart.h)(0x698306C8)
 I (Head\gd32e23x_wwdgt.h)(0x698306C8)
 I (Head\gd32e23x_misc.h)(0x698306C8)
 I (Head\gd32e23x_cmp.h)(0x698306C8)
-F (.\Bsp\bsp_fm17622.c)(0x6A5AEE5E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_fm17622.o -MD)
-I (Head\bsp_fm17622.h)(0x6A599A40)
-I (Head\bsp_i2c.h)(0x6A599A3B)
+I (Head\bsp_systick.h)(0x6A599A58)
+I (Head\debug_config.h)(0x6A9FB9D2)
+I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
+F (.\Bsp\bsp_fm17622.c)(0x6A9FA3EA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_fm17622.o -MD)
+I (Head\bsp_fm17622.h)(0x6A9F5566)
+I (Head\bsp_i2c.h)(0x6A9F51B4)
 I (Head\gd32e23x.h)(0x698306C8)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h)(0x5E8ED122)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
@@ -811,21 +814,24 @@ I (Head\gd32e23x_misc.h)(0x698306C8)
 I (Head\gd32e23x_cmp.h)(0x698306C8)
 I (Head\bsp_flash.h)(0x6A599A45)
 I (Head\bsp_watchdog.h)(0x6A599AC0)
+I (Head\bsp_systick.h)(0x6A599A58)
+I (Head\debug_config.h)(0x6A9FB9D2)
+I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\string.h)(0x6035A4A8)
 F (.\Bsp\protocol.c)(0x6A5AEB11)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/protocol.o -MD)
 I (Head\protocol.h)(0x6A599B17)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\string.h)(0x6035A4A8)
-F (.\Bsp\app_protocol.c)(0x6A9A5E25)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/app_protocol.o -MD)
-I (Head\debug_config.h)(0x6A9A18A5)
+F (.\Bsp\app_protocol.c)(0x6A9FB985)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/app_protocol.o -MD)
+I (Head\debug_config.h)(0x6A9FB9D2)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (Head\app_protocol.h)(0x6A5AEE52)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
 I (Head\protocol.h)(0x6A599B17)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
-I (Head\bsp_fm17622.h)(0x6A599A40)
-I (Head\bsp_i2c.h)(0x6A599A3B)
+I (Head\bsp_fm17622.h)(0x6A9F5566)
+I (Head\bsp_i2c.h)(0x6A9F51B4)
 I (Head\gd32e23x.h)(0x698306C8)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h)(0x5E8ED122)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\cmsis_version.h)(0x5E8ED122)
@@ -860,6 +866,7 @@ I (Head\bsp_flash.h)(0x6A599A45)
 I (Head\bsp_systick.h)(0x6A599A58)
 I (Head\bsp_crypto.h)(0x6A98D21E)
 I (Head\bsp_watchdog.h)(0x6A599AC0)
+I (Head\se_cmd.h)(0x6A599B43)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\string.h)(0x6035A4A8)
 F (.\Bsp\bsp_flash.c)(0x6A59976E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_flash.o -MD)
 I (Head\bsp_flash.h)(0x6A599A45)
@@ -927,13 +934,13 @@ I (Head\gd32e23x_wwdgt.h)(0x698306C8)
 I (Head\gd32e23x_misc.h)(0x698306C8)
 I (Head\gd32e23x_cmp.h)(0x698306C8)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
-I (Head\debug_config.h)(0x6A9A18A5)
+I (Head\debug_config.h)(0x6A9FB9D2)
 F (.\Bsp\bsp_uid.c)(0x6A5D66E6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_uid.o -MD)
 I (Head\bsp_uid.h)(0x6A5D66E7)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\string.h)(0x6035A4A8)
-F (.\Bsp\bsp_crypto.c)(0x6A9A1871)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_crypto.o -MD)
-I (Head\debug_config.h)(0x6A9A18A5)
+F (.\Bsp\bsp_crypto.c)(0x6A9FB98C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/bsp_crypto.o -MD)
+I (Head\debug_config.h)(0x6A9FB9D2)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (Head\bsp_crypto.h)(0x6A98D21E)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
@@ -1010,7 +1017,7 @@ I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 F (.\Bsp\fmse_port.c)(0x6A5999A8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I D:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Include -I ./Head-I./RTE/_Target_1-ID:/Develop/Keil_MDK/ARM/PACK/ARM/CMSIS/5.7.0/CMSIS/Core/Include-ID:/Develop/Keil_MDK/ARM/PACK/GigaDevice/GD32E23x_DFP/2.3.2/Device/Include-D__UVISION_VERSION="534" -D_RTE_ -DGD32E23x -D_RTE_ -DGD32E230 -DUSE_STDPERIPH_DRIVER-o ./objects/fmse_port.o -MD)
 I (Head\fmse_port.h)(0x6A599AD0)
 I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
-I (Head\bsp_i2c.h)(0x6A599A3B)
+I (Head\bsp_i2c.h)(0x6A9F51B4)
 I (Head\gd32e23x.h)(0x698306C8)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\core_cm23.h)(0x5E8ED122)
 I (D:\Develop\Keil_MDK\ARM\PACK\ARM\CMSIS\5.7.0\CMSIS\Include\cmsis_version.h)(0x5E8ED122)
@@ -1085,4 +1092,4 @@ I (D:\Develop\Keil_MDK\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
 I (Head\fmse_i2c.h)(0x6A599AB8)
 I (Head\fmse_port.h)(0x6A599AD0)
 I (Head\des.h)(0x6A16AFCF)
-F (.\Head\debug_config.h)(0x6A9A18A5)()
+F (.\Head\debug_config.h)(0x6A9FB9D2)()

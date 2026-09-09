@@ -1,6 +1,8 @@
 #include "bsp_fm17622.h"
 #include "bsp_flash.h"
 #include "bsp_watchdog.h"
+#include "bsp_systick.h"
+#include "debug_config.h"
 #include <string.h>
 
 
@@ -130,6 +132,24 @@ void FM17622_AntennaOn(void) {
 }
 
 void FM17622_Init(void) {
+    /*
+     * F8P6 板硬件使能/复位脚: RFID_NPD = PA4 (芯片脚10)
+     * FM17622 的 NPD/NRSTPD 为低有效: 低电平=掉电/复位, 高电平=正常工作。
+     * 若不拉高, FM17622 可能一直处于掉电/复位状态, I2C 完全无响应。
+     * 上电后先拉低复位, 再拉高使能, 等待内部上电复位完成。
+     */
+    rcu_periph_clock_enable(RCU_GPIOA);
+    gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_4);
+    gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_2MHZ, GPIO_PIN_4);
+    gpio_bit_reset(GPIOA, GPIO_PIN_4);   /* 拉低复位 */
+    delay_ms(5);
+    gpio_bit_set(GPIOA, GPIO_PIN_4);     /* 拉高使能 */
+    delay_ms(10);                        /* 等待FM17622内部复位完成 */
+
+#if !RFID_READ_VIA_SE
+    /* 直连模式: 通过MCU的I2C做软复位+寄存器配置
+     * SE读卡模式: 跳过 (FM17622不在MCU总线上, 配置由SE的set_tag_reader完成) */
+
     /* 软复位命令 */
     FM17622_WriteReg(FM_CommandReg, 0x0F);
     volatile uint32_t delay = 50000; while (delay--);
@@ -151,6 +171,44 @@ void FM17622_Init(void) {
 
     /* 复位 I2C 错误计数 */
     s_i2c_err_count = 0;
+#endif /* !RFID_READ_VIA_SE */
+}
+
+/*
+ * 取证诊断: RFID_NPD(PA4) 双状态扫描
+ * 在 PA4=高 和 PA4=低 两种状态下分别:
+ *   1. 全范围 I2C 总线扫描 (打印所有应答地址)
+ *   2. 读一次 FM17622 版本寄存器 (0x37)
+ * 用于判定 RFID_NPD 的真实使能极性:
+ *   高电平使能 → NPD=HIGH 时出现 0x28 且版本有效;
+ *   低电平使能 → NPD=LOW 时出现 0x28 且版本有效。
+ * 诊断结束恢复 PA4=高。生产版(DEBUG_ENABLE=0)编译为空。
+ */
+void FM17622_NpdDiag(void)
+{
+#if DEBUG_ENABLE
+    uint8_t ver;
+
+    /* 状态1: PA4 高 */
+    gpio_bit_set(GPIOA, GPIO_PIN_4);
+    delay_ms(20);
+    DBG_PRINTF("[RFID] NPD=HIGH: scan + version check\r\n");
+    i2c_bus_scan();
+    ver = FM17622_ReadReg(FM_VersionReg);
+    DBG_PRINTF("[RFID] NPD=HIGH: version reg = 0x%02X\r\n", ver);
+
+    /* 状态2: PA4 低 */
+    gpio_bit_reset(GPIOA, GPIO_PIN_4);
+    delay_ms(20);
+    DBG_PRINTF("[RFID] NPD=LOW: scan + version check\r\n");
+    i2c_bus_scan();
+    ver = FM17622_ReadReg(FM_VersionReg);
+    DBG_PRINTF("[RFID] NPD=LOW: version reg = 0x%02X\r\n", ver);
+
+    /* 恢复: PA4 高 (保持当前固件的使能假设) */
+    gpio_bit_set(GPIOA, GPIO_PIN_4);
+    delay_ms(10);
+#endif
 }
 
 uint8_t FM17622_CheckComm(void) {

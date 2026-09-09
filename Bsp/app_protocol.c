@@ -7,6 +7,7 @@
 #include "bsp_systick.h"
 #include "bsp_crypto.h"
 #include "bsp_watchdog.h"
+#include "se_cmd.h"
 #include <string.h>
 
 /*
@@ -172,17 +173,95 @@ void app_process_frame(const parsed_frame_t *pFrame)
 
 /**
  * @brief  RFID 标签轮询任务
- * @note   检测流程: RequestA -> Anticoll -> Select -> Auth -> ReadBlocks -> Encrypt -> Upload
- *         取证版: 各失败点打印一次性/限频诊断信息; 生产版(DEBUG_ENABLE=0)完全静默
+ * @note   读卡路径由 debug_config.h 的 RFID_READ_VIA_SE 决定:
+ *           =1 SE读卡 (F8P6板): set_tag_reader->get_tag_uid->tag_active->get_tag_data
+ *           =0 直连读卡 (旧C8板): RequestA->Anticoll->Select->Auth->ReadBlocks
+ *         取证版: 各失败点打印诊断信息; 生产版(DEBUG_ENABLE=0)完全静默
  */
+#if RFID_READ_VIA_SE
+/* ============================================================
+ * SE 读卡模式: FM17622 挂在 FM15L013(SE) 的 I2C 主机口上,
+ * 由 SE 完成 配置读卡器/寻卡/认证/读数据 (复旦微SDK原生流程)。
+ * ============================================================ */
+
+/* FM17622 寄存器配置参数 (SDK tag_demo 原值) */
+static const uint8_t s_nfc_param[15] = {
+    0x07,0x24,0x26,0x15,0x40,0x27,0xf0,0x28,0x1f,0x0C,0x10,0x26,0x40,0x18,0x54
+};
+
+/* FM17622 I2C 地址候选 (SDK默认0x28; ADR2:0全上拉时可能为0x2E/0x2F, 按序尝试) */
+static const uint8_t s_reader_addr_try[3] = {0x28, 0x2F, 0x2E};
+
+/* 已配置成功的读卡器地址 (0=尚未配置成功, 每次SE认证恢复后重新配置) */
+static uint8_t s_reader_addr = 0;
+
+/* 读卡器配置重试限频: 每5秒最多尝试一轮, 防止失败时刷屏 */
+static uint32_t s_last_setup_ms = 0;
+
+/*
+ * 取证探针: 在配置读卡器前依次探测 SE 的命令可用性
+ *   1. get_se_uid        — SE 基本可命令性
+ *   2. se_active(0x0100) — I2C 通道激活 (SDK I2C demo 原值)
+ *   3. write_se_data(KEY)— 把协议02的KEY以TLV格式载入SE
+ *      (验证"主板主控通过KEY进行认证即可识别三密标签"的KEY解锁假设)
+ */
+static void se_probe_cmds(void)
+{
+    uint8_t  rbuf[64];
+    uint16_t rlen;
+    uint16_t sw;
+
+    sw = get_se_uid(0, rbuf, &rlen);
+    DBG_PRINTF("[SE] probe: get_se_uid SW=0x%04X\r\n", sw);
+
+    sw = se_active(0x0100, rbuf, &rlen);
+    DBG_PRINTF("[SE] probe: se_active(0x0100) SW=0x%04X\r\n", sw);
+
+    uint8_t key_buf[FLASH_KEY_LEN];
+    if (flash_key_is_stored() && flash_key_read(key_buf) == FLASH_OP_OK) {
+        /* TLV: C0 02 00 03 | C1 02 00 00 | C2 10 | KEY[16] = 10+16=26字节 */
+        uint8_t tlv[10 + FLASH_KEY_LEN];
+        tlv[0] = 0xC0; tlv[1] = 0x02; tlv[2] = 0x00; tlv[3] = 0x03;
+        tlv[4] = 0xC1; tlv[5] = 0x02; tlv[6] = 0x00; tlv[7] = 0x00;
+        tlv[8] = 0xC2; tlv[9] = FLASH_KEY_LEN;
+        memcpy(&tlv[10], key_buf, FLASH_KEY_LEN);
+        sw = write_se_data(0x0000, 10 + FLASH_KEY_LEN, tlv, rbuf, &rlen);
+        DBG_PRINTF("[SE] probe: write_se_data(KEY) SW=0x%04X\r\n", sw);
+    } else {
+        DBG_PRINTF("[SE] probe: KEY absent, skip key-load test\r\n");
+    }
+}
+
+/* 通过 SE 配置读卡器: 先跑探针, 再逐个候选地址尝试, 成功返回 1 */
+static uint8_t se_reader_setup(void)
+{
+    uint8_t  rbuf[64];
+    uint16_t rlen;
+    uint16_t sw;
+
+    /* 每轮重试前探测 SE 命令可用性 (仅诊断) */
+    se_probe_cmds();
+
+    for (uint8_t i = 0; i < sizeof(s_reader_addr_try); i++) {
+        uint8_t addr = s_reader_addr_try[i];
+        sw = set_tag_reader(P1_RESET, WRITE_NFC_REG,
+                            sizeof(s_nfc_param), (uint8_t *)s_nfc_param,
+                            addr, SOFT_RST, rbuf, &rlen);
+        DBG_PRINTF("[RFID] set_tag_reader(0x%02X) SW=0x%04X\r\n", addr, sw);
+        if (sw == 0x9000) {
+            s_reader_addr = addr;
+            DBG_PRINTF("[RFID] reader configured at 0x%02X\r\n", addr);
+            return 1;
+        }
+    }
+    return 0;
+}
+#endif /* RFID_READ_VIA_SE */
+
 void app_rfid_poll_task(void)
 {
     static uint32_t last_poll = 0;
     static uint32_t last_reauth = 0;
-    static uint8_t  s_dbg_fail_count = 0;   /* 本"有卡周期"内 Anticoll/Select 失败打印计数 */
-    uint16_t card_type = 0;
-    uint8_t  card_uid[CARD_UID_MAX_LEN];
-    uint8_t  uid_len = 0;
 
     /* 间隔检查: 200ms 轮询一次 */
     if ((g_sys_tick_ms - last_poll) < RFID_POLL_INTERVAL_MS) return;
@@ -200,6 +279,99 @@ void app_rfid_poll_task(void)
         crypto_chip_init();
     }
 #endif
+
+#if RFID_READ_VIA_SE
+    /* ============ SE 读卡路径 (F8P6板) ============ */
+    uint8_t  se_buf[64];
+    uint16_t se_len;
+    uint16_t sw;
+
+    /* SE 未认证: 无法驱动读卡器; 认证恢复后重新配置读卡器 */
+    if (!crypto_chip_ping()) {
+        s_reader_addr = 0;
+        return;
+    }
+
+    /* 配置读卡器 (每次SE认证后一次; 失败每5秒重试一轮, 防刷屏) */
+    if (!s_reader_addr) {
+        if (s_last_setup_ms && (g_sys_tick_ms - s_last_setup_ms) < 5000U) return;
+        s_last_setup_ms = g_sys_tick_ms;
+        if (!se_reader_setup()) return;
+        bsp_watchdog_feed();
+    }
+
+    /* 寻卡 (SE 驱动读卡器轮询标签) */
+    sw = get_tag_uid(Tag_SingleCh, s_reader_addr, se_buf, &se_len);
+    if (sw != 0x9000) {
+        if (s_card_present) {
+            s_card_present = 0;
+            s_last_card_uid_len = 0;
+            DBG_PRINTF("[RFID] card removed\r\n");
+        }
+        return;
+    }
+
+    /* 响应格式 (SDK): ATQA(2) + UID(7) + SAK(2) */
+    if (se_len < 11) {
+        DBG_PRINTF("[RFID] get_tag_uid short resp len=%u\r\n", se_len);
+        return;
+    }
+
+    /* 卡片去重 (7字节UID) */
+    if (s_card_present && s_last_card_uid_len == 7 &&
+        memcmp(s_last_card_uid, &se_buf[2], 7) == 0) {
+        return;
+    }
+    s_card_present = 1;
+    s_last_card_uid_len = 7;
+    memcpy(s_last_card_uid, &se_buf[2], 7);
+    DBG_PRINTF("[RFID] new card UID:");
+    for (uint8_t i = 0; i < 7; i++) DBG_PRINTF(" %02X", se_buf[2 + i]);
+    DBG_PRINTF("\r\n");
+    bsp_watchdog_feed();
+
+    /* KEY 门控 (与甲方产线顺序一致: 先下发KEY再读卡) */
+    uint8_t key_buf[FLASH_KEY_LEN];
+    if (!flash_key_is_stored() || flash_key_read(key_buf) != FLASH_OP_OK) {
+        DBG_PRINTF("[RFID] KEY not stored, skip (need protocol-02 write)\r\n");
+        return;
+    }
+
+    /* 标签认证 (SE 内部根密钥, 单天线 Tag_SigCh_Key) */
+    sw = tag_active(Tag_SigCh_Key, s_reader_addr, se_buf, &se_len);
+    DBG_PRINTF("[RFID] tag_active SW=0x%04X\r\n", sw);
+    if (sw != 0x9000) return;
+    bsp_watchdog_feed();
+
+    /* 读标签数据 (假设返回40字节业务结构) */
+    sw = get_tag_data(0, se_buf, &se_len);
+    DBG_PRINTF("[RFID] get_tag_data SW=0x%04X len=%u\r\n", sw, se_len);
+    if (sw != 0x9000) return;
+    if (se_len < TAG_DATA_LEN) {
+        DBG_PRINTF("[RFID] tag data too short: %u < %u\r\n", se_len, TAG_DATA_LEN);
+        return;
+    }
+    bsp_watchdog_feed();
+
+    /*  加密 (或透传) */
+    uint8_t enc_buf[CRYPTO_CIPHER_MAX_LEN];
+    uint8_t enc_len = 0;
+    if (!crypto_chip_encrypt(se_buf, TAG_DATA_LEN, enc_buf, &enc_len)) {
+        /* 加密失败: 打印一行告警 (不刷屏, 仅在刷卡瞬间触发一次) */
+        DBG_PRINTF("[RFID] encrypt failed, upload skipped (SE=%s)\r\n",
+                   crypto_chip_ping() ? "AUTH" : "NOAUTH");
+        return;
+    }
+
+    /*  上传: CMD=0x01(单天线=左侧), LEN=密文长度 */
+    app_upload_data(APP_CMD_UPLOAD_TAG, enc_buf, enc_len);
+
+#else
+    /* ============ 直连读卡路径 (旧C8板) ============ */
+    static uint8_t  s_dbg_fail_count = 0;   /* 本"有卡周期"内 Anticoll/Select 失败打印计数 */
+    uint16_t card_type = 0;
+    uint8_t  card_uid[CARD_UID_MAX_LEN];
+    uint8_t  uid_len = 0;
 
     /* FM17622离线时跳过RFID轮询 (仅打印一次, 避免刷屏) */
     if (!g_fm17622_online) {
@@ -281,9 +453,7 @@ void app_rfid_poll_task(void)
     uint8_t enc_buf[CRYPTO_CIPHER_MAX_LEN];
     uint8_t enc_len = 0;
     if (!crypto_chip_encrypt(tag_raw, TAG_DATA_LEN, enc_buf, &enc_len)) {
-        /* 加密失败: 打印一行告警 (不刷屏, 仅在刷卡瞬间触发一次)
-         * 原因由 crypto_chip_encrypt 内部打印 (如 SE 未认证/写失败/读失败)
-         */
+        /* 加密失败: 打印一行告警 (不刷屏, 仅在刷卡瞬间触发一次) */
         DBG_PRINTF("[RFID] encrypt failed, upload skipped (SE=%s)\r\n",
                    crypto_chip_ping() ? "AUTH" : "NOAUTH");
         return;
@@ -291,6 +461,7 @@ void app_rfid_poll_task(void)
 
     /*  上传: CMD=0x01(单天线=左侧), LEN=密文长度 */
     app_upload_data(APP_CMD_UPLOAD_TAG, enc_buf, enc_len);
+#endif /* RFID_READ_VIA_SE */
 }
 
 

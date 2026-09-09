@@ -14,16 +14,16 @@
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>GD32E230C8</Device>
+          <Device>GD32E230F8</Device>
           <Vendor>GigaDevice</Vendor>
           <PackID>GigaDevice.GD32E23x_DFP.2.3.2</PackID>
           <PackURL>http://gd32mcu.com/data/documents/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x0002000) IROM(0x08000000,0x0010000) CPUTYPE("Cortex-M23") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2V8M(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0GD32E23x -FS08000000 -FL010000 -FP0($$Device:GD32E230C8$Flash\GD32E23x.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2V8M(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0GD32E23x -FS08000000 -FL010000 -FP0($$Device:GD32E230F8$Flash\GD32E23x.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:GD32E230C8$Device\Include\gd32e23x.h</RegisterFile>
+          <RegisterFile>$$Device:GD32E230F8$Device\Include\gd32e23x.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -33,7 +33,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:GD32E230C8$SVD\GD32E23x.svd</SFDFile>
+          <SFDFile>$$Device:GD32E230F8$SVD\GD32E23x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>

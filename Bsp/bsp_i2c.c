@@ -1,4 +1,6 @@
 #include "bsp_i2c.h"
+#include "bsp_systick.h"
+#include "debug_config.h"
 
 
 static void i2c_delay(void) {
@@ -116,4 +118,28 @@ void i2c_bus_recovery(void) {
         i2c_delay();
     }
     i2c_stop();
+}
+
+/*
+ * I2C 总线扫描 (取证用): 遍历 7 位地址 0x08~0x77, 打印所有有 ACK 应答的设备。
+ * 调用时机: FM17622_Init 之后 (此时 RFID_NPD/PA4 已拉高使能)。
+ * 预期: FMSE 加密芯片 = 7位地址 0x71 (写0xE2); FM17622 = 7位地址 0x28 (写0x50)。
+ * 生产版 (DEBUG_ENABLE=0) 编译为空, 零开销。
+ */
+void i2c_bus_scan(void)
+{
+#if DEBUG_ENABLE
+    DBG_PRINTF("[I2C] bus scan start\r\n");
+    for (uint16_t addr = 0x08U; addr <= 0x77U; addr++) {
+        i2c_start();
+        i2c_send_byte((uint8_t)(addr << 1));
+        if (i2c_wait_ack() == 0) {
+            DBG_PRINTF("[I2C] ACK at 0x%02X (write 0x%02X)\r\n",
+                       addr, (unsigned)(addr << 1));
+        }
+        i2c_stop();
+        delay_ms(1);
+    }
+    DBG_PRINTF("[I2C] bus scan done\r\n");
+#endif
 }

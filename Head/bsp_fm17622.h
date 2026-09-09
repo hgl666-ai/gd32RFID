@@ -67,6 +67,7 @@ uint8_t FM17622_ReadReg(uint8_t regAddr);
 uint8_t FM17622_CheckComm(void);
 void FM17622_AntennaOn(void);
 uint8_t FM17622_RequestA(uint16_t *cardType);
+void FM17622_NpdDiag(void);
 
 
 
