@@ -1,7 +1,7 @@
 {
   "version": 4,
   "sessionHash": "70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6",
-  "updatedAt": 1788759123102,
+  "updatedAt": 1789461426008,
   "draft": null,
   "pendingClaims": [],
   "published": [
@@ -29,6 +29,114 @@
           "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260907T033725696Z-nJWD_VC1A_ZmkooCIl5pWFda-GD32E230系列datasheet.PDF",
           "fileDev": "2774076527",
           "fileIno": "2251799813861666"
+        }
+      ]
+    },
+    {
+      "rootId": "uR9HSjEz8jGp-gG-IA6IK9-H",
+      "clientKey": "d631bde2-fada-458f-a10c-727e25a61c21",
+      "name": "project.hex",
+      "kind": "file",
+      "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260909T075612779Z-uR9HSjEz8jGp-gG-IA6IK9-H-project.hex",
+      "fileCount": 1,
+      "totalSize": 39921,
+      "createdAt": 1788940572773,
+      "aliases": [],
+      "entries": [
+        {
+          "entryId": "ZaR4jFVK9E7ZlR02oYDBKfrQ",
+          "relativePath": "",
+          "safeRelativePath": "",
+          "name": "project.hex",
+          "size": 39921,
+          "mime": "application/octet-stream",
+          "lastModified": 1784357101215,
+          "received": 39921,
+          "status": "ready",
+          "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260909T075612779Z-uR9HSjEz8jGp-gG-IA6IK9-H-project.hex",
+          "fileDev": "2774076527",
+          "fileIno": "2251799813861665"
+        }
+      ]
+    },
+    {
+      "rootId": "OUbxCvUYhy4rAFj72uS-JEsu",
+      "clientKey": "abe4ae72-7355-4355-a821-b056cfc149c0",
+      "name": "log.h",
+      "kind": "file",
+      "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260915T030706531Z-OUbxCvUYhy4rAFj72uS-JEsu-log.h",
+      "fileCount": 1,
+      "totalSize": 1959,
+      "createdAt": 1789441626518,
+      "aliases": [],
+      "entries": [
+        {
+          "entryId": "56X4RgQv3Iv8zGxvANb495A7",
+          "relativePath": "",
+          "safeRelativePath": "",
+          "name": "log.h",
+          "size": 1959,
+          "mime": "application/octet-stream",
+          "lastModified": 1789435824417,
+          "received": 1959,
+          "status": "ready",
+          "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260915T030706531Z-OUbxCvUYhy4rAFj72uS-JEsu-log.h",
+          "fileDev": "2774076527",
+          "fileIno": "2251799813860969"
+        }
+      ]
+    },
+    {
+      "rootId": "dbdDLCOVmXhZy-Zf3E89pERS",
+      "clientKey": "e63a3f28-ca47-43fa-8f2f-752c441e1744",
+      "name": "log.c",
+      "kind": "file",
+      "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260915T030706547Z-dbdDLCOVmXhZy-Zf3E89pERS-log.c",
+      "fileCount": 1,
+      "totalSize": 5322,
+      "createdAt": 1789441626519,
+      "aliases": [],
+      "entries": [
+        {
+          "entryId": "4rF-fu864KZdklpSNU7IwwGG",
+          "relativePath": "",
+          "safeRelativePath": "",
+          "name": "log.c",
+          "size": 5322,
+          "mime": "application/octet-stream",
+          "lastModified": 1789435824916,
+          "received": 5322,
+          "status": "ready",
+          "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260915T030706547Z-dbdDLCOVmXhZy-Zf3E89pERS-log.c",
+          "fileDev": "2774076527",
+          "fileIno": "9007199254916711"
+        }
+      ]
+    },
+    {
+      "rootId": "i3LHPuuIudxuWEdDd1VPEqg5",
+      "clientKey": "4ef3c91c-a7ed-403f-9a26-d66df3b89bcc",
+      "name": "get.bin",
+      "kind": "file",
+      "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260915T083614672Z-i3LHPuuIudxuWEdDd1VPEqg5-get.bin",
+      "fileCount": 1,
+      "totalSize": 65536,
+      "createdAt": 1789461374666,
+      "aliases": [],
+      "entries": [
+        {
+          "entryId": "DXZapxuIpQ_8X8_4pOErajNu",
+          "relativePath": "",
+          "safeRelativePath": "",
+          "name": "get.bin",
+          "size": 65536,
+          "mime": "application/octet-stream",
+          "lastModified": 1789461332532,
+          "received": 65536,
+          "status": "ready",
+          "relPath": ".dsh/uploads/70e4fff79325d28758dd2853594c55128d2e82a37a9008779e134c74e708f0c6/20260915T083614672Z-i3LHPuuIudxuWEdDd1VPEqg5-get.bin",
+          "fileDev": "2774076527",
+          "fileIno": "3096224743992939"
         }
       ]
     }

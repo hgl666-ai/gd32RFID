@@ -1,6 +1,8 @@
 #include "debug_config.h"
 #include "bsp_crypto.h"
 #include "bsp_usart.h"
+#include "bsp_flash.h"
+#include "bsp_uid.h"
 #include "se_cmd.h"
 #include "fmse_i2c.h"
 #include "fmse_port.h"
@@ -51,7 +53,33 @@ uint8_t crypto_chip_init(void)
         DBG_PRINTF("[SE] OFFLINE (ATR timeout, check wiring/address)\r\n");
         return 0;
     }
-    DBG_PRINTF("[SE] ATR OK len=%u\r\n", atr_len);
+    DBG_PRINTF("[SE] ATR OK len=%u:", atr_len);
+    for (uint16_t i = 0; (i < atr_len) && (i < 32U); i++) {
+        DBG_PRINTF(" %02x", atr_buf[i]);
+    }
+    DBG_PRINTF("\r\n");
+
+#if SE_AUTH_CRED_FROM_FLASH
+    /*
+     * 产线方案: SE 的 MCU 认证凭证 = 协议02下发的 KEY(16B) + 主控UID(8B)
+     * 依据: 治具流程 "获取uuid -> 获取密钥 -> 写MCU密钥",
+     *       且 16B KEY / 8B UID 与 mcu_com_key[16]/mcu_uid[8] 尺寸完全对应。
+     * 未过治具(KEY为空)时回退 SDK 示例凭证。
+     */
+    {
+        uint8_t key16[FLASH_KEY_LEN];
+        uint8_t uid8[UID_LEN];
+        uid_read(uid8);
+        if (flash_key_is_stored() && (flash_key_read(key16) == FLASH_OP_OK)) {
+            se_set_credentials(uid8, key16);
+            DBG_PRINTF("[SE] cred: flash KEY + UID(");
+            for (uint8_t i = 0; i < UID_LEN; i++) DBG_PRINTF("%02x", uid8[i]);
+            DBG_PRINTF(")\r\n");
+        } else {
+            DBG_PRINTF("[SE] cred: KEY not stored, fallback to SDK demo cred\r\n");
+        }
+    }
+#endif
 
     /* 双向认证 */
     uint16_t sw = mcu_l013_mutual_auth(rbuf, &rlen);

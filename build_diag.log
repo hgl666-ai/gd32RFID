@@ -1,0 +1,290 @@
+*** Using Compiler 'V6.16', folder: 'D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+User/main.c(4): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+User/main.c(6): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+2 warnings generated.
+compiling main.c...
+compiling bsp_i2c.c...
+Bsp/bsp_crypto.c(3): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/bsp_crypto.c(4): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/bsp_crypto.c(6): warning: In file included from..../Head/se_cmd.h(107): warning: padding struct 'StSeFunc' with 3 bytes to align 'fm_driver_register' [-Wpadded]
+    void (*fm_driver_register)( void *user_drv );
+           ^
+3 warnings generated.
+compiling bsp_crypto.c...
+Bsp/bsp_usart.c(1): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+1 warning generated.
+compiling bsp_usart.c...
+Bsp/bsp_fm17622.c(2): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+1 warning generated.
+compiling bsp_fm17622.c...
+Bsp/app_protocol.c(3): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/app_protocol.c(5): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/app_protocol.c(135): warning: passing 'const uint8_t *' (aka 'const unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    uint16_t frame_len = Pack_Data_Frame(cmd, pData, dataLen, s_tx_buf);
+                                              ^~~~~
+./Head/protocol.h(60): note: passing argument to parameter 'pData' here
+uint16_t Pack_Data_Frame(uint8_t cmd, uint8_t *pData, uint8_t dataLen, uint8_t *outBuffer);
+                                               ^
+Bsp/app_protocol.c(229): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_param, 0x28, SOFT_RST, rbuf, &rlen);
+                                   ^
+Bsp/app_protocol.c(239): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_reg, 0x28, SOFT_RST, rbuf, &rlen);
+                                   ^
+Bsp/app_protocol.c(321): warning: cast from function call of type 'FlagStatus' to non-matching type 'unsigned int' [-Wbad-function-cast]
+               (unsigned)gpio_input_bit_get(GPIOA, GPIO_PIN_3));
+               ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./Head\debug_config.h(82): note: expanded from macro 'DBG_PRINTF'
+    #define DBG_PRINTF(...)        printf(__VA_ARGS__)
+                                          ^~~~~~~~~~~
+Bsp/app_protocol.c(347): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        sizeof(s_nfc_param), (uint8_t *)s_nfc_param,
+                                                        ^
+Bsp/app_protocol.c(362): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_reg, addr, SOFT_RST, rbuf, &rlen);
+                                   ^
+8 warnings generated.
+compiling app_protocol.c...
+Bsp/se_cmd.c(55): warning: cast from 'const void *' to 'char *' drops const qualifier [-Wcast-qual]
+    char* tmpsrc = (char *) src;
+                            ^
+Bsp/se_cmd.c(84): warning: declaration shadows a variable in the global scope [-Wshadow]
+    u8 apdu_padding[8]={0x80,0,0,0,0,0,0,0};
+       ^
+Bsp/se_cmd.c(27): note: previous declaration is here
+static uint8_t apdu_padding[8]={0x80,0,0,0,0,0,0,0};
+               ^
+Bsp/se_cmd.c(85): warning: declaration shadows a variable in the global scope [-Wshadow]
+    u8 apdu_cipher[32];
+       ^
+Bsp/se_cmd.c(28): note: previous declaration is here
+static uint8_t apdu_cipher[32];
+               ^
+Bsp/se_cmd.c(81): warning: no previous prototype for function 'cmd_data_wrap' [-Wmissing-prototypes]
+void cmd_data_wrap(u8 *inbuf, u8 inlen, u8 *keybuf, u8 keylen, u8 *outbuf, u8 *outlen)
+     ^
+Bsp/se_cmd.c(81): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void cmd_data_wrap(u8 *inbuf, u8 inlen, u8 *keybuf, u8 keylen, u8 *outbuf, u8 *outlen)
+^
+static 
+Bsp/se_cmd.c(100): warning: unused parameter 'keylen' [-Wunused-parameter]
+void response_data_unwrap(u8 *inbuf, u8 inlen, u8 *keybuf, u8 keylen, u8 *outbuf, u16 *outlen)
+                                                              ^
+Bsp/se_cmd.c(100): warning: no previous prototype for function 'response_data_unwrap' [-Wmissing-prototypes]
+void response_data_unwrap(u8 *inbuf, u8 inlen, u8 *keybuf, u8 keylen, u8 *outbuf, u16 *outlen)
+     ^
+Bsp/se_cmd.c(100): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void response_data_unwrap(u8 *inbuf, u8 inlen, u8 *keybuf, u8 keylen, u8 *outbuf, u16 *outlen)
+^
+static 
+Bsp/se_cmd.c(4): warning: In file included from..../Head/se_cmd.h(107): warning: padding struct 'StSeFunc' with 3 bytes to align 'fm_driver_register' [-Wpadded]
+    void (*fm_driver_register)( void *user_drv );
+           ^
+Bsp/se_cmd.c(6): warning: In file included from..../Head\fmse_port.h(18): warning: padding struct 'StSeI2CDriver' with 3 bytes to align 'fm_i2c_power_on' [-Wpadded]
+    void (*fm_i2c_power_on)(void);
+           ^
+Bsp/se_cmd.c(149): warning: no previous prototype for function 'fm_chk_result' [-Wmissing-prototypes]
+uint16_t fm_chk_result( uint8_t result )
+         ^
+Bsp/se_cmd.c(149): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint16_t fm_chk_result( uint8_t result )
+^
+static 
+Bsp/se_cmd.c(206): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(217): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        gfm_SeCmdHand.p3.lc = inlen + padding_num;
+                            ~ ~~~~~~^~~~~~~~~~~~~
+Bsp/se_cmd.c(227): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            if (*rlen >= 2) SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+                               ~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(262): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+        fm_memmove(gfm_SeCmdHand.capdu, (uint8_t *)inbuf, inlen);
+                                                   ^
+Bsp/se_cmd.c(270): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            if (*rlen >= 2) SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+                               ~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(297): warning: implicit conversion loses integer precision: 'TAG_CHN' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(308): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(316): warning: implicit conversion loses integer precision: 'int' to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    response_data_unwrap(apdu_rbuf, apdu_rlen - 2, session_key, 16, rbuf, rlen);
+    ~~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~^~~
+Bsp/se_cmd.c(334): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen + 2;
+                        ~ ~~~~~~^~~
+Bsp/se_cmd.c(346): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(354): warning: implicit conversion loses integer precision: 'int' to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    response_data_unwrap(apdu_rbuf, apdu_rlen - 2, session_key, 16, rbuf, rlen);
+    ~~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~^~~
+Bsp/se_cmd.c(371): warning: implicit conversion loses integer precision: 'TAG_ROOT_KEY' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(382): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(390): warning: implicit conversion loses integer precision: 'int' to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    response_data_unwrap(apdu_rbuf, apdu_rlen - 2, session_key, 16, rbuf, rlen);
+    ~~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~^~~
+Bsp/se_cmd.c(407): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(408): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(418): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(438): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(448): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(456): warning: implicit conversion loses integer precision: 'int' to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    response_data_unwrap(apdu_rbuf, apdu_rlen - 2, session_key, 16, rbuf, rlen);
+    ~~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~^~~
+Bsp/se_cmd.c(474): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(484): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(492): warning: implicit conversion loses integer precision: 'int' to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    response_data_unwrap(apdu_rbuf, apdu_rlen - 2, session_key, 16, rbuf, rlen);
+    ~~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~^~~
+Bsp/se_cmd.c(519): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(527): warning: implicit conversion loses integer precision: 'int' to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    response_data_unwrap(apdu_rbuf, apdu_rlen - 2, session_key, 16, rbuf, rlen);
+    ~~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~^~~
+Bsp/se_cmd.c(555): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+                SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+                   ~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(533): warning: no previous prototype for function 'se_auth1' [-Wmissing-prototypes]
+uint16_t se_auth1( uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen )
+         ^
+Bsp/se_cmd.c(533): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint16_t se_auth1( uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen )
+^
+static 
+Bsp/se_cmd.c(589): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+                SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+                   ~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(567): warning: no previous prototype for function 'se_auth2' [-Wmissing-prototypes]
+uint16_t se_auth2( uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen )
+         ^
+Bsp/se_cmd.c(567): note: declare 'static' if the function is not intended to be used outside of this translation unit
+uint16_t se_auth2( uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen )
+^
+static 
+Bsp/se_cmd.c(618): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        mcu_rnd[i] = rand();
+                   ~ ^~~~~~
+Bsp/se_cmd.c(661): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(673): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(703): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(715): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(752): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(753): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(761): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        gfm_SeCmdHand.p3.lc = inlen+padding_num;
+                            ~ ~~~~~^~~~~~~~~~~~
+Bsp/se_cmd.c(774): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+                SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+                   ~ ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(805): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(806): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(815): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        gfm_SeCmdHand.p3.lc = inlen+padding_num;
+                            ~ ~~~~~^~~~~~~~~~~~
+Bsp/se_cmd.c(828): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+                SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+                   ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(866): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(867): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(875): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        gfm_SeCmdHand.p3.lc = inlen+padding_num;
+                            ~ ~~~~~^~~~~~~~~~~~
+Bsp/se_cmd.c(886): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(854): warning: unused parameter 'rbuf' [-Wunused-parameter]
+uint16_t dec_se_life_count( uint16_t para, uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen )
+                                                                                    ^
+Bsp/se_cmd.c(912): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(913): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(922): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        gfm_SeCmdHand.p3.lc = inlen+padding_num;
+                            ~ ~~~~~^~~~~~~~~~~~
+Bsp/se_cmd.c(933): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/se_cmd.c(964): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p2    = para;
+                        ~ ^~~~
+Bsp/se_cmd.c(965): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+    gfm_SeCmdHand.p3.lc = inlen;
+                        ~ ^~~~~
+Bsp/se_cmd.c(974): warning: implicit conversion loses integer precision: 'int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        gfm_SeCmdHand.p3.lc = inlen+padding_num;
+                            ~ ~~~~~^~~~~~~~~~~~
+Bsp/se_cmd.c(985): warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+            SW = apdu_rbuf[apdu_rlen - 2] << 8 | apdu_rbuf[apdu_rlen - 1];
+               ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+64 warnings generated.
+compiling se_cmd.c...
+linking...
+Program Size: Code=15888 RO-data=3652 RW-data=128 ZI-data=3832  
+FromELF: creating hex file...
+After Build - User command #1: D:\Develop\Keil_MDK\ARM\ARMCC\bin\fromelf.exe  --bin -o "D:\Project\RFID_M1\RFID\Objects\project.bin" "D:\Project\RFID_M1\RFID\Objects\project.axf"
+".\Objects\project.axf" - 0 Error(s), 79 Warning(s).
+Build Time Elapsed:  00:00:01

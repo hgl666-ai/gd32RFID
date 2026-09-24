@@ -1,0 +1,58 @@
+*** Using Compiler 'V6.16', folder: 'D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+User/main.c(4): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+User/main.c(6): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+2 warnings generated.
+compiling main.c...
+Bsp/bsp_crypto.c(3): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/bsp_crypto.c(4): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/bsp_crypto.c(6): warning: In file included from..../Head/se_cmd.h(107): warning: padding struct 'StSeFunc' with 3 bytes to align 'fm_driver_register' [-Wpadded]
+    void (*fm_driver_register)( void *user_drv );
+           ^
+3 warnings generated.
+compiling bsp_crypto.c...
+Bsp/bsp_usart.c(1): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+1 warning generated.
+compiling bsp_usart.c...
+compiling bsp_i2c.c...
+Bsp/app_protocol.c(3): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/app_protocol.c(5): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/app_protocol.c(135): warning: passing 'const uint8_t *' (aka 'const unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    uint16_t frame_len = Pack_Data_Frame(cmd, pData, dataLen, s_tx_buf);
+                                              ^~~~~
+./Head/protocol.h(60): note: passing argument to parameter 'pData' here
+uint16_t Pack_Data_Frame(uint8_t cmd, uint8_t *pData, uint8_t dataLen, uint8_t *outBuffer);
+                                               ^
+Bsp/app_protocol.c(275): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        sizeof(s_nfc_param), (uint8_t *)s_nfc_param,
+                                                        ^
+Bsp/app_protocol.c(285): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_reg, addr, SOFT_RST, rbuf, &rlen);
+                                   ^
+5 warnings generated.
+compiling app_protocol.c...
+Bsp/bsp_fm17622.c(2): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+1 warning generated.
+compiling bsp_fm17622.c...
+linking...
+Program Size: Code=15824 RO-data=3356 RW-data=128 ZI-data=3832  
+FromELF: creating hex file...
+After Build - User command #1: D:\Develop\Keil_MDK\ARM\ARMCC\bin\fromelf.exe  --bin -o "D:\Project\RFID_M1\RFID\Objects\project.bin" "D:\Project\RFID_M1\RFID\Objects\project.axf"
+".\Objects\project.axf" - 0 Error(s), 12 Warning(s).
+Build Time Elapsed:  00:00:01

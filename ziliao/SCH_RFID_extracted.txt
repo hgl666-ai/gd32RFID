@@ -1,0 +1,316 @@
+                                        1                                                                     2                                                                        3                                                                  4                                                      5                                                              6
+                                                                                                                                                3.3V
+                                                                          GND
+           XDWF-0125WT-04P                                                                                                                                                                                       3.3V
+           CN1
+                                                                                                                                                                                                                                                                                       GND
+                         VCC                     TP5                                                                                                   R10
+      6
+
+
+
+
+                 1                           1                                 C4                                                                      0Ω                                                                R8
+           6
+
+
+
+
+               1                                 1                                         U3
+                 2        NFC_RX                                                                                                                                            TVDD                                         0Ω
+               2                                                 3.3V                     1                                                                                                                                                                                             C26
+
+
+
+
+                                                                                                                                                                                                          AVDD
+                 3        NFC_TX                                               100nF         ADJ(GND)
+               3                                                                          2                             4                                         C1
+                                                                                                                                                                C2 C32
+                 4                                                                           VOUT(TAB)            TAB                                  R9
+               4                                                                          3                                                                                                                                                                                             1nF
+                                                                                                                                                       0Ω/NC         100nF                                                C5
+A                                                                                            VIN                                                                                                                                                                                                                                                                                         A
+           5
+
+
+
+
+                                                                                                                        3.3V                               22uF 22uF                                                                                                        VMID_1
+      5
+
+
+
+
+                                                                 VCC           C3           AMS1117-3.3                                                                                                                   4.7uF
+                                                                                                                                                                                                                                                                                        R21
+
+                                                                               100nF                                                            VCC
+      GND                                                                                                                                                              GND                                                                                                                                       R23
+                                                                                                                                                                                                                                                                                        1kΩ C27         15pF
+                                                                                                                                                                                                                 GND                                                           RX_1                              1kΩ
+
+    电源信号接口                                                                GND
+                                                                                                   5V转3.3V                                                                                                                                                                                                     R22              R24           R25
+
+
+
+
+                                                                                                                                                       AVDD
+                                                                                                          EA_1          R15                                                                                                                                                                                    0Ω               0Ω            0Ω
+                                                                                                                            4.7kΩ
+                                                                                                          RFID_SCL       R6
+                                                                                                                            2kΩ
+                                                                                                          ADR0_1        R16                                 R20 RFID_NPD                                                                                                                                                     C15      27pF
+                                                                                                                            4.7kΩ                      4.7kΩ
+                                                                                                          ADR1_1        R17
+                                                                                                                            4.7kΩ                                                                                                                                                            L3 560nH                                                                     R12
+                                                                          GND                             ADR2_1        R18                                                                                                                                                                                                  C14      27pF
+                                                                                                                            4.7kΩ                                                                                                                                            TX1_1                                                                                         0Ω
+                                                                                                                                                                                                                                                                                                           C12                                   C16          C17
+                                            AVDD                        U1
+                                                                                                                                                                                                                                                                                                                             C13
+                                                                                                                                            GND
+                                                                                    EA 32
+                                                                                   SCL 31
+                                                                                    D6 30
+                                                                                    D5 29
+                                                                                    D4 28
+                                                                                    D3 27
+                                                                                    D2 26
+                                                                                    D1 25
+                                                                          33
+
+
+
+
+                                                                                                                                                                                                                                                                                                           220pF             27pF                120pF 27pF
+                                                                              EP
+
+
+
+
+                                                     R1
+                                                     10kΩ
+                                                                                                                                                                                                                                                  LED1
+
+
+
+
+                                                                                                                                                                          AVDD
+                             AVDD                       RFID_I2C 1                                        24         RFID_SDA      R7                                                                                                                                                                    GND         GND                      GND        GND
+
+
+
+
+                                                                                                                                                                                                                 3.3V
+                                                     I2C                                              SDA                              2kΩ                                                                              R31                                   SYS_LED
+                                                   2                                                      23         RFID_IRQ     R19                                                                                         5.1kΩ
+                                                     PVDD                                             IRQ                             4.7kΩ
+B                             C7    C8
+                                         R2
+                                            0Ω
+                                                   3                                                      22         SOS27.12_OUT                                                                                                                                                                                                                                                        B
+                                                     NC                                            OSCOUT
+                                                   4                                                      21         SOS27.12_IN                                                                                                                  GL0603UG01
+                                                     DVSS                                           OSCIN
+                                                   5                                                      20                             TP1                                                                                                      LED2
+                              100nF 100nF            PVSS                                              NC
+
+
+
+
+                                                                                                                                                                                                                                                                 GND
+                                                                                                                                                                                                                 3.3V
+                                             RFID_NPD
+                                                   6                                                      19                          1                                                                                 R32
+                                                     NPD                                              AUX                                1                                                                                    5.1kΩ
+                                     C9 2.2uF      7                                                      18
+                                                     NC                                              AVSS               GND
+                                    R3         PT2 8                                                      17               RX_1                                                                                                                                                                                              C20      27pF
+                                        0Ω           TOUT                                              RX                                                                                                                                         GL0603UG01
+                             GND
+                   TP2                                                                                                                                                                                                                                                                       L4 560nH                                                                     R14
+                                             FM17622-QNA-T-G                                                                                                                                                                                                                                                                 C21      27pF
+                             1        PT2                                                                                                                                                                                                                                      TX2_1                                                                                       0Ω
+                                                                                                    AVDD
+                                                                                          TVDD 12 TVDD
+                                                                                                    TVSS
+
+
+
+
+                                                                                                    TVSS
+
+                                                                                          VMID_116 VMID
+
+
+
+
+                         1
+                                                                                            TX1_1 TX1
+
+                                                                                          TX2_1 13 TX2
+
+
+
+
+                                                                                                                                                                                                                                                                                                           C18         C19                       C22          C23
+                                                                                                    NC
+                                                                                                  9
+                                                                                                 10
+                                                                                                 11
+
+
+
+                                                                                                 14
+                                                                                                 15
+
+
+
+
+                                                            R4
+                                              AVDD               0Ω                                                                                                                                                                                                                                        220pF       27pF                      120pF 27pF         以上电容必须COG 精度±5%及以上
+                                                                                                                                                                                                                                X1 27.12MHz
+                                                                      GND                                                                                                                                                                                 SOS27.12_IN
+                                                                                                                                                                                                  GND                          2              1
+                                                                                        GND
+
+
+
+
+                                                                                                                                                                                                                        C24                         C25
+                                                                                                                            GNDGND
+
+
+
+
+                                                                                                             100nF
+                                                                                                                                                                                                                               3              4                                                          GND         GND                      GND        GND
+                                                                                            R5       C11
+                                                                                   3.3V
+
+
+
+
+                                                                                                     C10     2.2uF                                                                                                      12pF                        12pF
+                                                                                             0Ω                                                                                               SOS27.12_OUT
+                                                                                                                                                                                                                                                                GND
+
+                                                                                                                                                                                                        3.3V                                                                                                               3.3V
+
+                                                                         U2                 GD32E230F8P6TR
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                    GND GND
+                                                                                                                                                                                            TP3           R33                                                                                                                 C34      10uF
+                          BOOT                               1                                                 20           PA14-SWCLK
+C                                                              BOOT0                                     PA14                                                                                                                         FM15L013                                                                                                                                           C
+                                                                                                                                                                                    1
+
+
+
+                          OSCIN                              2                                                 19           PA13-SWDIO
+                                                               OSCIN/PF0                                 PA13                                                                                                             U4                                                                                                  C35      100nF
+                                                                                                                                                                                   1
+
+
+
+
+                          OSCOUT                             3                                                 18           NFC_RX
+                                                               OSCOUT/PF1                          PA10(PA12)                                                                              I2C1_SDA       4.7kΩ          1                                                                                     8
+                          NRST                               4                                                 17           NFC_TX                                                                                         PA5/GPIO3/CT_RFU/I2C_SDA/SPI_NSS                                                VCC
+                                                               NRST                                 PA9(PA11)                                                                                RFID_IRQ                    2                                                                                     7                RFID_NPD
+            3.3V
+
+
+
+
+                                                                                                                                                                   3.3V
+
+
+
+
+                                                             5                                                 16                                                                                                          PA7/GPIO5/CT_IO/I2C_IRQ/SPI_IRQ               PA1/GPIO1/CT_RST/I2C_A2/SPI_MOSI/SWIO
+                                                               VDDA                                       VDD                                                                                RFID_SDA                    3                                                                                     6                RFID_SCL
+                                                                                                                                                                          GND
+
+
+
+
+                          I2C1_SCL                           6                                                 15                                                                                                          PA6/GPIO4/CT_HRS/I2C_HRS/SPI_MISO            PA0/GPIO0/CT_CLK/I2C_A1/SPI_HRS/SWCLK
+                                                               PA0                                         Vss                                                                                                           4                                                                                     5                I2C1_SCL
+                          I2C1_SDA                           7                                                 14                                                                                                          GND                                                PA3/GPIO2/CT_RFU/I2C_SCL/SPI_SCK
+                                                               PA1                                        PB1                                                                                                                                                                                                                   R34
+                                                             8                                                 13
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                              1
+                                                               PA2                                        PA7
+                          RFID_IRQ                           9                                                 12
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                               1
+                                                               PA3                                        PA6                                                                                                                                                                                                                                                       TP4
+                          RFID_NPD                          10                                                 11           SYS_LED                                                                              GND
+                                                               PA4                                        PA5                                                                                                                                                                                                                   4.7kΩ
+
+                                                                                                                                      3.3V                                                                                                                                                                                    3.3V
+
+
+                                                                                                                                        C36                                                                                                                                                                      创建日期                                  2026-05-22
+                    R26                              R27
+                                                                                                                                        100nF
+                                                                                                                                                                                   原理图                                                     RFID模块                         V1.1                                   更新日期                                  2026-08-12
+                                                                        GND
+    3.3V
+
+
+
+
+                                     BOOT
+
+                                                                                                                                                                                                                                           RFID模块                         V1.1
+                    10kΩ                             10kΩ
+
+                    R28
+                                                                                                                                                                                   板子                                                                                                                            图页                                    RFID射频
+                                                                        GND
+
+
+
+
+                                                                                                                                      GND
+    3.3V
+
+
+
+
+                                     NRST     C28         100nF
+                    10kΩ                                                                                                                                                           绘制                              孔阳德
+D
+                                     X2 8MHz
+                                                                                                   3.3V                                                                            审阅                              戴景梁                                                                                               RFID模块                                                              D
+
+            OSCOUT               1                    3     OSCIN
+                                                                                                   R29                               PA14-SWCLK          1
+                                                                                                       10kΩ                                                1              TP6
+                                                                                             GND
+
+
+
+
+                    C29                                          C30                               R30                               PA13-SWDIO          1
+                                 4                    2                                                10kΩ                                                1              TP7                                                                                 版本        尺寸                                                   页               1                共            1
+                    12pF                                         12pF                                                                NRST                1
+                                                                                                                                                              1           TP8
+                                                                                                                                                                                                                                                              V1.1        A4                                         东莞一迈智能科技有限公司
+               GND                                           GND
+                                        1                                                                     2                                                                        3                                                                  4                                                      5                                                              6
+

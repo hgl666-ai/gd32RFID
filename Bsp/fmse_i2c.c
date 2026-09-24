@@ -221,10 +221,10 @@ uint8_t fm_i2c_get_atr(uint8_t *rbuf, uint16_t *rlen)
     fmse_init_timeout_ms(POLL_TIMEOUT);
     do
     {
+        bsp_watchdog_feed();
         ret = fm_i2c_recv_frame(rbuf, rlen);
         if (!ret)
             break;
-        bsp_watchdog_feed();
     }
     while (!fmse_check_timeout());
 
@@ -244,6 +244,14 @@ uint8_t fm_i2c_transceive(uint8_t *sbuf, uint16_t slen, uint8_t *rbuf, uint16_t 
     fmse_init_timeout_ms(poll_timeout);
     do
     {
+        /*
+         * 每条 SE 命令至少喂一次狗 (放在循环体最前, 成功返回也要喂):
+         * 单条 SE 命令耗时可达百 ms, 而调用方(诊断探针/轮询)是连续调用的,
+         * 若只在"重试"分支喂狗, 连续多条命令累计会超过 1s 看门狗周期 →
+         * MCU 在命令序列中途被复位(表现为串口反复刷屏重启)。
+         */
+        bsp_watchdog_feed();
+
         ret = fm_i2c_recv_frame(rbuf, rlen);
 
         if (ret == 12)          /* SE 未就绪, 等待后再轮询 */
@@ -252,11 +260,10 @@ uint8_t fm_i2c_transceive(uint8_t *sbuf, uint16_t slen, uint8_t *rbuf, uint16_t 
         }
         else if (ret == 0x04)   /* SE 内部错误, 跳过本轮 */
         {
-            /* 空操作, 仅喂狗后继续轮询 */
+            /* 空操作, 继续轮询 */
         }
         else
             break;
-        bsp_watchdog_feed();
     }
     while (!fmse_check_timeout());
 

@@ -3,4 +3,5 @@
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h Head\se_cmd.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h Head\des.h
+  Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h Head\des.h \
+  Head\debug_config.h

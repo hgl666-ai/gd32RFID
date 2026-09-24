@@ -29,6 +29,20 @@ int main(void)
     bsp_watchdog_init();
 
     /*
+     * 复位原因取证 (排查"串口反复刷屏"式重启循环):
+     *   FWDGT = 看门狗超时复位 (说明有代码路径超过1s未喂狗)
+     *   PIN   = 外部复位引脚;  SW = 软件复位;  POR = 上电复位 (正常)
+     * 打印后清标志, 使下一次复位原因可分辨。
+     */
+    DBG_PRINTF("[SYS] reset cause:%s%s%s%s%s\r\n",
+               (rcu_flag_get(RCU_FLAG_FWDGTRST) != RESET) ? " FWDGT" : "",
+               (rcu_flag_get(RCU_FLAG_SWRST)    != RESET) ? " SW"    : "",
+               (rcu_flag_get(RCU_FLAG_EPRST)    != RESET) ? " PIN"   : "",
+               (rcu_flag_get(RCU_FLAG_PORRST)   != RESET) ? " POR"   : "",
+               (rcu_flag_get(RCU_FLAG_LPRST)    != RESET) ? " LP"    : "");
+    rcu_all_reset_flag_clear();
+
+    /*
      * 初始化期间持续喂狗!
      * 看门狗200ms超时, FM17622_Init + crypto_chip_init 的初始化总耗时
      * 可能超过200ms, 不喂狗会导致MCU反复复位重启(表现为串口刷屏)。
@@ -40,9 +54,18 @@ int main(void)
     FM17622_Init();
     bsp_watchdog_feed();
 
-    /* 取证: RFID_NPD 双状态诊断 (PA4高/低各做一次总线扫描+版本读取) */
+    /*
+     * 取证: RFID_NPD 双状态诊断 (PA4高/低各做一次总线扫描+版本读取)
+     * 仅"MCU直连读卡器"的板子有意义。
+     * ★ SE读卡板(F8P6)必须跳过: PA4 同时接着 FM17622 的 NPD,
+     *   该诊断会把读卡器按住复位约 0.5 秒, 而 SE 正在运行 ——
+     *   已在 2026-09-16 实测该板上读卡器不在 MCU 总线上(全地址仅 SE 0x71 应答),
+     *   故毫无收益却引入"读卡器被复位"的干扰, 直接关掉。
+     */
+#if DEBUG_ENABLE && !RFID_READ_VIA_SE
     FM17622_NpdDiag();
     bsp_watchdog_feed();
+#endif
 
 #if !RFID_READ_VIA_SE
     /* 直连模式: 校验FM17622在线 (SE读卡模式下读卡器不在MCU总线上, 跳过) */

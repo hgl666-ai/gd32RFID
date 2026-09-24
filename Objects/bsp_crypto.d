@@ -16,5 +16,6 @@
   Head\gd32e23x_pmu.h Head\gd32e23x_rcu.h Head\gd32e23x_rtc.h \
   Head\gd32e23x_spi.h Head\gd32e23x_timer.h Head\gd32e23x_usart.h \
   Head\gd32e23x_wwdgt.h Head\gd32e23x_misc.h Head\gd32e23x_cmp.h \
-  Head\se_cmd.h Head\fmse_i2c.h Head\se_cmd.h Head\fmse_port.h \
+  Head\bsp_flash.h Head\bsp_uid.h Head\se_cmd.h Head\fmse_i2c.h \
+  Head\se_cmd.h Head\fmse_port.h \
   D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin\..\include\string.h

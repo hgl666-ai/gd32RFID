@@ -183,6 +183,11 @@ typedef enum {
 } TAG_ROOT_KEY;
 
 /* extern function */
+void se_set_credentials(const uint8_t *pUid8, const uint8_t *pKey16);
+uint16_t se_probe_cmd(uint8_t cla, uint8_t ins, uint8_t p1, uint8_t p2,
+                      uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen);
+uint16_t se_probe_raw(uint8_t cla, uint8_t ins, uint8_t p1, uint8_t p2,
+                      uint16_t inlen, const uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen);
 uint16_t mcu_l013_mutual_auth( uint8_t *rbuf, uint16_t *rlen );
 uint16_t get_tag_uid( TAG_CHN para, uint8_t i2cAddr, uint8_t *rbuf, uint16_t *rlen );
 uint16_t tag_active( TAG_ROOT_KEY para, uint8_t i2cAddr, uint8_t *rbuf, uint16_t *rlen );

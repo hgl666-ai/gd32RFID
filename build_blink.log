@@ -1,0 +1,55 @@
+*** Using Compiler 'V6.16', folder: 'D:\Develop\Keil_MDK\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+Bsp/app_protocol.c(3): warning: In file included from..../Head\bsp_usart.h(25): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/app_protocol.c(5): warning: In file included from..../Head\bsp_flash.h(56): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+Bsp/app_protocol.c(135): warning: passing 'const uint8_t *' (aka 'const unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    uint16_t frame_len = Pack_Data_Frame(cmd, pData, dataLen, s_tx_buf);
+                                              ^~~~~
+./Head/protocol.h(60): note: passing argument to parameter 'pData' here
+uint16_t Pack_Data_Frame(uint8_t cmd, uint8_t *pData, uint8_t dataLen, uint8_t *outBuffer);
+                                               ^
+Bsp/app_protocol.c(229): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_param, 0x28, SOFT_RST, rbuf, &rlen);
+                                   ^
+Bsp/app_protocol.c(239): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_reg, 0x28, SOFT_RST, rbuf, &rlen);
+                                   ^
+Bsp/app_protocol.c(321): warning: cast from function call of type 'FlagStatus' to non-matching type 'unsigned int' [-Wbad-function-cast]
+               (unsigned)gpio_input_bit_get(GPIOA, GPIO_PIN_3));
+               ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./Head\debug_config.h(95): note: expanded from macro 'DBG_PRINTF'
+    #define DBG_PRINTF(...)        printf(__VA_ARGS__)
+                                          ^~~~~~~~~~~
+Bsp/app_protocol.c(387): warning: cast from function call of type 'FlagStatus' to non-matching type 'uint8_t' (aka 'unsigned char') [-Wbad-function-cast]
+        lvl = (uint8_t)gpio_input_bit_get(GPIOA, GPIO_PIN_4);   /* 引脚实际电平 */
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/app_protocol.c(392): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                            (uint8_t *)s_nfc_param, 0x28, SOFT_RST, rb, &rl);
+                                       ^
+Bsp/app_protocol.c(420): warning: cast from function call of type 'FlagStatus' to non-matching type 'uint8_t' (aka 'unsigned char') [-Wbad-function-cast]
+        lvl = (uint8_t)gpio_input_bit_get(GPIOA, GPIO_PIN_4);
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bsp/app_protocol.c(424): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                            (uint8_t *)s_nfc_param, 0x28, SOFT_RST, rb, &rl);
+                                       ^
+Bsp/app_protocol.c(340): warning: function 'se_reader_blink_probe' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+Bsp/app_protocol.c(458): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        sizeof(s_nfc_param), (uint8_t *)s_nfc_param,
+                                                        ^
+Bsp/app_protocol.c(473): warning: cast from 'const unsigned char *' to 'unsigned char *' drops const qualifier [-Wcast-qual]
+                        (uint8_t *)s_nfc_reg, addr, SOFT_RST, rbuf, &rlen);
+                                   ^
+13 warnings generated.
+compiling app_protocol.c...
+linking...
+Program Size: Code=16024 RO-data=3940 RW-data=128 ZI-data=3832  
+FromELF: creating hex file...
+After Build - User command #1: D:\Develop\Keil_MDK\ARM\ARMCC\bin\fromelf.exe  --bin -o "D:\Project\RFID_M1\RFID\Objects\project.bin" "D:\Project\RFID_M1\RFID\Objects\project.axf"
+".\Objects\project.axf" - 0 Error(s), 13 Warning(s).
+Build Time Elapsed:  00:00:02

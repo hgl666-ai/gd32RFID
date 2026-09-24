@@ -5,6 +5,7 @@
 #include "fmse_i2c.h"
 #include "fmse_port.h"
 #include "des.h"
+#include "debug_config.h"
 
 typedef uint8_t  u8;
 typedef uint16_t u16;
@@ -30,9 +31,21 @@ static uint8_t apdu_rbuf[64];   /* SE 响应缓冲区, 同上 */
 static uint16_t apdu_rlen;
 uint8_t session_key[16];
 
-/* 内存设置 */
-void* fm_memset( void* dst, int val, size_t count )
+/* 十六进制转储 (与 SDK se_app.c 的 dump_data 完全一致, 仅把 printf 换成 DBG_PRINTF,
+ * 以便生产版(DEBUG_ENABLE=0)完全静默、不污染串口协议帧) */
+void dump_data( uint16_t len, uint8_t *buf )
 {
+    uint16_t i;
+
+    for ( i = 0; i < len; i++ )
+    {
+        DBG_PRINTF( "%02X,", buf[i] );
+    }
+    DBG_PRINTF( "\r\n" );
+}
+
+/* 内存设置 */
+void* fm_memset( void* dst, int val, size_t count ){
     char * tmpdst = (char *) dst;
     char tmpval   = (char) val;
 
@@ -177,6 +190,110 @@ uint16_t fm_chk_result( uint8_t result )
     return (SW);
 }
 
+/* 设置MCU认证凭证
+ * 产线方案: pUid8 = 主控UID(8字节), pKey16 = 协议02下发的KEY(16字节)
+ * (与 se_cmd.c 内静态示例值同尺寸, 供产线数据覆盖) */
+void se_set_credentials(const uint8_t *pUid8, const uint8_t *pKey16)
+{
+    if (pUid8 != NULL)  memcpy(mcu_uid, pUid8, 8);
+    if (pKey16 != NULL) memcpy(mcu_com_key, pKey16, 16);
+}
+
+/* 通用受保护命令探针 (仅诊断用)
+ * 用指定 CLA/INS/P1P2 发送一条 session_key 保护的命令, 返回SW。
+ * 用法: 排查生产SE是否使用不同的CLA/INS; 只用于只读类命令, 不做任何状态修改。 */uint16_t se_probe_cmd(uint8_t cla, uint8_t ins, uint8_t p1, uint8_t p2,
+                      uint16_t inlen, uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen)
+{
+    uint8_t  result   = 0;
+    uint16_t slen     = 0;
+    uint16_t SW       = IF_ERR_NULL_POINT;
+    uint16_t interval = POLL_INTERVAL;
+    uint32_t timeout  = POLL_TIMEOUT;
+    uint8_t  padding_num;
+
+    gfm_SeCmdHand.cla   = cla;
+    gfm_SeCmdHand.ins   = ins;
+    gfm_SeCmdHand.p1    = p1;
+    gfm_SeCmdHand.p2    = p2;
+    gfm_SeCmdHand.p3.lc = inlen;
+    slen = 5;
+    if ((inlen > 0) && (inbuf != NULL)) {
+        memcpy((uint8_t *)&gfm_SeCmdHand.capdu, inbuf, inlen);
+        slen += inlen;
+    }
+
+    /* ISO 9797-1 Method 2 填充 + session_key 包装 (与SDK命令一致) */
+    padding_num = 8 - (inlen % 8);
+    if (padding_num) {
+        fm_memmove(gfm_SeCmdHand.capdu + inlen, apdu_padding, padding_num);
+        gfm_SeCmdHand.p3.lc = inlen + padding_num;
+        slen = 5 + inlen + padding_num;
+    }
+    des3_ecb_encrypt(apdu_cipher, (uint8_t *)&gfm_SeCmdHand.capdu, inlen + padding_num, session_key, 16);
+    fm_memmove((uint8_t *)&gfm_SeCmdHand.capdu, apdu_cipher, inlen + padding_num);
+
+    if (pgfm_SeFunc) {
+        result = pgfm_SeFunc->fm_apdu_transceive((uint8_t *)&gfm_SeCmdHand, slen,
+                                                 rbuf, rlen, interval, timeout);
+        if (!result) {
+            if (*rlen >= 2) SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+            else            SW = IF_ERR_LENGTH;
+        } else {
+            SW = fm_chk_result(result);
+        }
+    }
+    /* 取证: 打印实发帧与实收帧原始字节 (确认帧格式/对齐, 排除读取错位) */
+    DBG_PRINTF("[SE] probe TX cla=%02X ins=%02X lc=%u:", cla, ins, (unsigned)inlen);
+    for (uint16_t i = 0; (i < slen) && (i < 32U); i++)
+        DBG_PRINTF(" %02X", ((uint8_t *)&gfm_SeCmdHand)[i]);
+    DBG_PRINTF("\r\n[SE] probe RX ret=%02X rlen=%u:", result, (unsigned)*rlen);
+    for (uint16_t i = 0; (i < *rlen) && (i < 16U); i++) DBG_PRINTF(" %02X", rbuf[i]);
+    DBG_PRINTF("\r\n");
+    return SW;
+}
+
+/* 诊断用: 原样发送一条 APDU —— 数据域**不做** session_key 包装与 ISO9797 填充。
+ * 目的: 对比"加密载荷"(SDK风格, Lc=填充后长度)与"明文载荷"(Lc=自然长度)两种格式,
+ *       定位 SE 返回 0x6700(长度错误)/0x6985(使用条件不满足) 的真实原因。
+ * 安全性: CLA/INS/P1P2 都在明文头里, 指令分发不受数据域影响;
+ *         仅用于只读/配置类指令(set_tag_reader/get_tag_uid/tag_active/get_tag_data)。 */
+uint16_t se_probe_raw(uint8_t cla, uint8_t ins, uint8_t p1, uint8_t p2,
+                      uint16_t inlen, const uint8_t *inbuf, uint8_t *rbuf, uint16_t *rlen)
+{
+    uint8_t  result = 0;
+    uint16_t slen   = 0;
+    uint16_t SW     = IF_ERR_NULL_POINT;
+
+    gfm_SeCmdHand.cla   = cla;
+    gfm_SeCmdHand.ins   = ins;
+    gfm_SeCmdHand.p1    = p1;
+    gfm_SeCmdHand.p2    = p2;
+    gfm_SeCmdHand.p3.lc = (uint8_t)inlen;
+    slen = 5;
+    if ((inlen > 0U) && (inbuf != NULL)) {
+        fm_memmove(gfm_SeCmdHand.capdu, (uint8_t *)inbuf, inlen);
+        slen += inlen;
+    }
+
+    if (pgfm_SeFunc) {
+        result = pgfm_SeFunc->fm_apdu_transceive((uint8_t *)&gfm_SeCmdHand, slen,
+                                                 rbuf, rlen, POLL_INTERVAL, POLL_TIMEOUT);
+        if (!result) {
+            if (*rlen >= 2) SW = rbuf[*rlen - 2] << 8 | rbuf[*rlen - 1];
+            else            SW = IF_ERR_LENGTH;
+        } else {
+            SW = fm_chk_result(result);
+        }
+    }
+    DBG_PRINTF("[SE] raw TX cla=%02X ins=%02X p1=%02X p2=%02X lc=%u:", cla, ins, p1, p2, (unsigned)inlen);
+    for (uint16_t i = 0; (i < slen) && (i < 32U); i++)
+        DBG_PRINTF(" %02X", ((uint8_t *)&gfm_SeCmdHand)[i]);
+    DBG_PRINTF("\r\n[SE] raw RX ret=%02X rlen=%u:", result, (unsigned)*rlen);
+    for (uint16_t i = 0; (i < *rlen) && (i < 16U); i++) DBG_PRINTF(" %02X", rbuf[i]);
+    DBG_PRINTF("\r\n");
+    return SW;
+}
+
 /* 获取标签 UID */
 uint16_t get_tag_uid( TAG_CHN para, uint8_t i2cAddr, uint8_t *rbuf, uint16_t *rlen )
 {
@@ -233,6 +350,7 @@ uint16_t set_tag_reader( uint8_t rst, uint8_t wrmode, uint16_t inlen, uint8_t *i
 
     cmd_data_wrap( gfm_SeCmdHand.capdu, gfm_SeCmdHand.p3.lc, session_key, 16, gfm_SeCmdHand.capdu, & gfm_SeCmdHand.p3.lc);
     slen = 5 + gfm_SeCmdHand.p3.lc;
+    dump_data(slen, (uint8_t *) &gfm_SeCmdHand);   /* 与 SDK 一致: 打印实发帧 */
 
     if ( pgfm_SeFunc )
     {
